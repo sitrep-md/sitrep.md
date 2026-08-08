@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    q: 'What is sitrep?',
+    a: 'sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. It reads the plans, decisions and progress your agents already write - no new format, no import - and shows what moved, what is stalled and what is waiting on you, across every project.',
+  },
+  {
+    q: 'What is an AI project status dashboard?',
+    a: 'A tool that turns the markdown files AI coding agents produce - plans, analyses, decision logs, progress notes - into a glanceable overview of project state. Instead of re-reading documents to work out where things stand, you see extracted status, phases, open decisions and staleness across all your projects at once.',
+  },
+  {
+    q: 'Which AI coding agents does sitrep work with?',
+    a: 'sitrep reads Claude Code, Cursor and Codex markdown across all your projects - and any other markdown, agent-written or human-written. It is agent-agnostic by construction: it parses conventions in the files themselves, not any tool-specific format.',
+  },
+  {
+    q: 'Do I need to add frontmatter or restructure my files?',
+    a: 'No. Zero adoption cost is a core promise: no new format, no frontmatter requirement, no import, no vault, no restructuring. You point sitrep at folders and it reads what is already there. Extraction vocabularies are editable settings, never demands on your files.',
+  },
+  {
+    q: 'How does sitrep know the status of a project?',
+    a: 'It extracts the conventions already common in agent-written docs: dated status lines like "**Status (2026-08-08):** waiting on review", phase headings like "## Phase 2 (SHIPPED)", decision tables with a verdict column, and due-date lines. It deliberately ignores misleading signals - checkboxes (QA sign-off, not progress) and git history alone (in real corpora much of the in-progress work is gitignored or untracked).',
+  },
+  {
+    q: 'Is sitrep a markdown viewer or editor?',
+    a: 'Neither. sitrep renders markdown at full fidelity - GFM, highlighted code, Mermaid, KaTeX, callouts - but rendering is the floor, not the product. It is not an editor at all: it will never restructure, rewrite or manage your files.',
+  },
+  {
+    q: 'Does sitrep write to my files?',
+    a: 'Only through one narrow, explicit surface: three convention-shaped operations - set a status, set a due date, mark a decision superseded - each writing a single line in the document&#39;s own convention, behind a preview and a content-hash guard. No other code path writes to your documents, ever. Sorting, filtering and saved views are local view state and never touch the file.',
+  },
+  {
+    q: 'Is my data uploaded anywhere?',
+    a: 'No. sitrep is local-first: fully functional forever with no account and no network, and no telemetry by default. Your files never leave your machine. A future optional sync layer will be end-to-end encrypted with user-held keys - the relay cannot read the data it carries.',
+  },
+  {
+    q: 'How is sitrep different from Obsidian or a second-brain app?',
+    a: 'Obsidian is a knowledge base you author into; sitrep is a status dashboard over files you never authored for it. There are no vaults, no backlink graphs and no embeddings - search stays scoped to jumping to the decision or doc you need. If you want a second brain, use Obsidian; sitrep answers a different question: where do my projects stand?',
+  },
+  {
+    q: 'Does sitrep replace my task manager?',
+    a: 'No, and it refuses to become one. A task manager makes you author its format; authoring structured state is the exact friction sitrep removes. It surfaces the state your docs already contain, including the decisions still waiting on you.',
+  },
+  {
+    q: 'What platforms does sitrep run on?',
+    a: 'macOS first, Windows second, Linux best-effort. It is a desktop app - local-first by design, not a web service.',
+  },
+  {
+    q: 'When can I use it?',
+    a: 'sitrep is in active development and launching first on macOS. This site is where availability will be announced, and the pages here describe only what the product actually does - claims are measured before they are made.',
+  },
+  {
+    q: 'Can my agents query sitrep?',
+    a: 'That is the plan: an MCP server exposing the parsed state - status, rulings, due dates, search - read-only first, so agents can consult project state in their own loop. Any writes would go through the same single writing surface as the UI.',
+  },
+];
+
+const faqSchema = [
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://sitrep.md/faq/#faq',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a.replace(/&#39;/g, "'") },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep FAQ - AI project status dashboard, answered"
+  description="What an AI project status dashboard is, which agents sitrep reads, whether it needs frontmatter, what it writes, where your data lives, and how it differs from Obsidian or a task manager."
+  schema={faqSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">FAQ</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        Questions, answered concretely
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Concrete and checkable beats superlatives. If an answer here ever
+        stops being true, that is a bug.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-label="Frequently asked questions">
+      <dl class="grid max-w-3xl gap-10">
+        {
+          faqs.map(({ q, a }) => (
+            <div class="flex flex-col gap-2">
+              <dt class="text-lg font-medium tracking-tight">{q}</dt>
+              <dd class="max-w-prose text-ink-muted" set:html={a} />
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

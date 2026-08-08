@@ -1,27 +1,251 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const appSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': 'https://sitrep.md/#app',
+    name: 'sitrep',
+    url: 'https://sitrep.md/',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'macOS',
+    description:
+      'sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. It reads the plans, decisions and progress your AI agents already write - no new format, no import - and shows status, phases, open decisions and staleness across every project.',
+    featureList: [
+      'Reads Claude Code, Cursor and Codex markdown across all your projects',
+      'Extracts status, phases, decisions and due dates from the conventions already in your docs',
+      'Email-client-style overview - newest activity first, pending items surfaced',
+      'Surfaces the decisions still waiting on you',
+      'Live refresh in place - the page is never taken away from you',
+      'Local-first: files never leave your machine, no account, no telemetry by default',
+    ],
+  },
+];
+
+const promises = [
+  {
+    title: 'Zero adoption cost',
+    body: 'sitrep reads what agents already write. No new format, no frontmatter, no import, no restructuring. Point it at folders.',
+  },
+  {
+    title: 'State first',
+    body: 'Status, phases, decisions and staleness, glanceable across projects - an email client for project state, not a file tree.',
+  },
+  {
+    title: 'Reading parity',
+    body: 'Full GFM, highlighted code, Mermaid, KaTeX, callouts. Rendering is the floor, not the product - and never the excuse.',
+  },
+  {
+    title: 'Nothing takes the page away',
+    body: 'Live refresh lands in place, scroll re-anchors, reload restores your position. Esc peels one layer at a time.',
+  },
+  {
+    title: 'One writing surface',
+    body: 'Three convention-shaped ops - status, due, supersede - behind a preview and a content-hash guard. No other code path ever writes to your files.',
+  },
+  {
+    title: 'Local-first and private',
+    body: 'Fully functional forever with no account and no network. No telemetry by default. Your files never leave your machine.',
+  },
+];
+
+const never = [
+  'a general markdown editor, or one more pretty viewer',
+  'an agent orchestrator or parallel-session runner',
+  'a task manager with a format of its own',
+  'a second brain, vault or knowledge base',
+  'live agent control from your phone',
+  'a cloud-only or account-required product',
+];
 ---
 
 <BaseLayout
   title="sitrep - AI project status dashboard"
-  description="A state layer on top of the markdown your AI agents already generate. Never open a cold project again."
+  description="sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. Never open a cold project again."
+  schema={appSchema}
 >
-  <header class="flex items-center justify-between px-6 py-4">
-    <span class="text-sm font-semibold tracking-tight">sitrep<span class="text-ink-faint">.md</span></span>
-    <ThemeToggle />
-  </header>
+  <Nav />
 
-  <main class="mx-auto flex max-w-2xl flex-col items-start gap-6 px-6 pt-[18vh]">
-    <p class="text-xs font-medium uppercase tracking-widest text-accent">AI project status dashboard</p>
-    <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-      Never open a cold project again.
-    </h1>
-    <p class="max-w-prose text-lg text-ink-muted">
-      A state layer on top of the markdown your AI agents already generate.
-      Status, phases and decisions extracted from the docs you have - no
-      frontmatter, no new format, no adoption cost.
-    </p>
-    <p class="text-sm text-ink-faint">Coming soon.</p>
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <!-- Hero -->
+    <section class="flex flex-col items-start gap-6 pt-[12vh] pb-20 sm:pb-24">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">AI project status dashboard</p>
+      <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+        Never open a cold project again.
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        sitrep is a state layer on top of the markdown your AI agents already
+        generate. It reads the plans, decisions and progress your agents
+        already write - no new format, no import - and answers, at a glance
+        and across every project: what moved, what is stalled, and what is
+        waiting on you.
+      </p>
+      <p class="text-sm text-ink-faint">
+        In development. Launching first on macOS. Local-first - your files never leave your machine.
+      </p>
+    </section>
+
+    <!-- The problem -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="problem">
+      <h2 id="problem" class="text-2xl font-semibold tracking-tight">
+        The first fifteen minutes of every session
+      </h2>
+      <div class="mt-6 grid gap-8 sm:grid-cols-2">
+        <p class="max-w-prose text-ink-muted">
+          Run Claude Code, Cursor or Codex across a few projects and you
+          accumulate plans, analyses and decision documents you never asked
+          for and cannot keep in your head. The state of your work is written
+          down - it is just scattered across hundreds of markdown files in a
+          dozen repos.
+        </p>
+        <p class="max-w-prose text-ink-muted">
+          So every return to a cold project starts the same way: scrolling
+          old chats, re-opening docs, re-deriving where things stand. sitrep
+          exists so that re-entry stops costing the first fifteen minutes of
+          a session. Open it, see the situation, resume.
+        </p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="how">
+      <h2 id="how" class="text-2xl font-semibold tracking-tight">How it works</h2>
+      <ol class="mt-8 grid gap-8 sm:grid-cols-3">
+        <li class="flex flex-col gap-2">
+          <span class="text-xs font-medium text-accent">01</span>
+          <h3 class="font-medium">Point it at folders</h3>
+          <p class="text-sm text-ink-muted">
+            No import, no vault. sitrep indexes the markdown already on your
+            disk and watches it with kernel events - a corpus of tens of
+            thousands of files narrows to the few hundred documents that are
+            actually project docs.
+          </p>
+        </li>
+        <li class="flex flex-col gap-2">
+          <span class="text-xs font-medium text-accent">02</span>
+          <h3 class="font-medium">It extracts the state</h3>
+          <p class="text-sm text-ink-muted">
+            Status lines, phase headings, decision tables, due dates - the
+            conventions agents and humans already use are parsed into
+            structured state. Extraction vocabularies are editable settings,
+            never demands on your files.
+          </p>
+        </li>
+        <li class="flex flex-col gap-2">
+          <span class="text-xs font-medium text-accent">03</span>
+          <h3 class="font-medium">You triage, not archaeology</h3>
+          <p class="text-sm text-ink-muted">
+            An email-client-style overview: newest activity first, pending
+            decisions surfaced, what the docs claim beside when they last
+            changed. Click through to read any doc in full fidelity.
+          </p>
+        </li>
+      </ol>
+      <p class="mt-8 text-sm">
+        <a href="/how-it-works/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          The conventions it reads, in detail
+        </a>
+      </p>
+    </section>
+
+    <!-- Promises -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="promises">
+      <h2 id="promises" class="text-2xl font-semibold tracking-tight">The product contract</h2>
+      <p class="mt-3 max-w-prose text-ink-muted">
+        Eight promises every feature is tested against. A feature that breaks
+        one is wrong even if it is useful.
+      </p>
+      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {
+          promises.map(({ title, body }) => (
+            <li class="flex max-w-prose flex-col gap-1.5">
+              <h3 class="font-medium">{title}</h3>
+              <p class="text-sm text-ink-muted">{body}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-8 text-sm">
+        <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          All eight promises, and the rules that hold them
+        </a>
+      </p>
+    </section>
+
+    <!-- Anti-roadmap -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="never">
+      <h2 id="never" class="text-2xl font-semibold tracking-tight">What sitrep will never be</h2>
+      <p class="mt-3 max-w-prose text-ink-muted">
+        Not a viewer, not an editor, not a Notion/Obsidian replacement. The
+        anti-roadmap is written down and binding - sitrep will never be:
+      </p>
+      <ul class="mt-6 grid max-w-2xl gap-2.5 text-ink-muted">
+        {
+          never.map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span aria-hidden="true" class="text-ink-faint select-none">&times;</span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Honesty -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="measured">
+      <h2 id="measured" class="text-2xl font-semibold tracking-tight">Measured, not asserted</h2>
+      <div class="mt-6 grid gap-8 sm:grid-cols-2">
+        <p class="max-w-prose text-ink-muted">
+          sitrep is built over a real working corpus: roughly 54,900 markdown
+          files across four workspaces, of which about 730 are actual project
+          documents. Every extraction rule is measured against that corpus
+          before it ships, and every UI claim is verified by driving the real
+          app in headless Chrome and reading numbers back.
+        </p>
+        <p class="max-w-prose text-ink-muted">
+          The same standard applies to what we say here. Claims stay concrete
+          and checkable - which agents it reads, what it extracts, what it
+          refuses to do - and comparisons, when they come, will be honest
+          about when you should pick the other tool.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ teaser -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="faq-teaser">
+      <h2 id="faq-teaser" class="text-2xl font-semibold tracking-tight">Common questions</h2>
+      <dl class="mt-8 grid gap-8 sm:grid-cols-3">
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Do I need to change my files?</dt>
+          <dd class="text-sm text-ink-muted">
+            No. No frontmatter, no format, no import. sitrep reads what your
+            agents already write.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Is my data uploaded anywhere?</dt>
+          <dd class="text-sm text-ink-muted">
+            No. sitrep is local-first and fully functional with no account
+            and no network. No telemetry by default.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Is it a markdown viewer?</dt>
+          <dd class="text-sm text-ink-muted">
+            No - it renders markdown well, but the product is the state
+            layer: status, decisions and staleness across projects.
+          </dd>
+        </div>
+      </dl>
+      <p class="mt-8 text-sm">
+        <a href="/faq/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          All questions and answers
+        </a>
+      </p>
+    </section>
   </main>
+
+  <Footer />
 </BaseLayout>

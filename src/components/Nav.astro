@@ -1,0 +1,33 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+  { href: '/how-it-works/', label: 'How it works' },
+  { href: '/principles/', label: 'Principles' },
+  { href: '/faq/', label: 'FAQ' },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4">
+  <a href="/" class="text-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+    sitrep<span class="text-ink-faint">.md</span>
+  </a>
+  <nav class="flex items-center gap-1 sm:gap-2" aria-label="Main">
+    {
+      links.map(({ href, label }) => (
+        <a
+          href={href}
+          aria-current={current === href ? 'page' : undefined}
+          class:list={[
+            'rounded-md px-2 py-1.5 text-xs transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-2.5 sm:text-[0.8125rem]',
+            current === href ? 'text-ink' : 'text-ink-muted',
+          ]}
+        >
+          {label}
+        </a>
+      ))
+    }
+    <span class="ml-1 sm:ml-2"><ThemeToggle /></span>
+  </nav>
+</header>

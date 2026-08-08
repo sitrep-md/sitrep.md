@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="How sitrep works - conventions, not configuration"
+  description="How an AI project status dashboard reads state out of ordinary markdown: the status lines, phase headings and decision tables sitrep extracts, and the rules that keep it honest."
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">How it works</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        Conventions, not configuration
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        sitrep is a state layer on top of the markdown your AI agents already
+        generate. It does not define a format - it recognizes the shapes that
+        agents and humans already use, and turns them into cross-project
+        state.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="indexing">
+      <h2 id="indexing" class="text-xl font-semibold tracking-tight">1. Indexing: from a disk to a corpus</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          You point sitrep at the folders where your projects live. That is
+          the whole setup. There is no import step, no vault, and nothing is
+          copied or moved - sitrep reads your files where they are.
+        </p>
+        <p>
+          Real workspaces are mostly noise: node_modules, build output,
+          vendored docs, changelogs of dependencies. An exclusion engine
+          separates project documents from that noise - in the corpus sitrep
+          is developed against, roughly 54,900 markdown files narrow to about
+          730 real docs. What counts as a doc is visible and adjustable, not
+          a black box.
+        </p>
+        <p>
+          Watching uses kernel file events, never a directory walk, so
+          startup is instant and steady-state work is proportional to what
+          changed - not to how big your corpus is. Editors that save
+          atomically (write a temp file, rename it over the target) are
+          handled; the document updates even though the file system never
+          reported its name.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="extraction">
+      <h2 id="extraction" class="text-xl font-semibold tracking-tight">2. Extraction: the conventions it reads</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Agent-written project docs converge on a handful of shapes. sitrep
+          parses those shapes - and only those - into structured state:
+        </p>
+      </div>
+      <dl class="mt-6 grid max-w-3xl gap-6">
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Status lines</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            A line like <code class="rounded bg-surface-raised px-1.5 py-0.5 text-[0.8em] border border-line">**Status (2026-08-08):** waiting on review</code>
+            becomes the document's dated status. The vocabulary that maps
+            wording to states (active, blocked, done, ...) is editable data
+            in Settings, never a demand on your files.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Phase headings</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Headings shaped like <code class="rounded bg-surface-raised px-1.5 py-0.5 text-[0.8em] border border-line">## Phase 2 (SHIPPED)</code>
+            become a progress meter per document - which phases exist, which
+            shipped, which are in progress.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Decisions and rulings</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Two shapes only: a list item under a decision/ruling/ADR heading,
+            or a row of a table with a verdict column
+            (<code class="rounded bg-surface-raised px-1.5 py-0.5 text-[0.8em] border border-line">Question | Verdict | Why</code>).
+            Each ruling is tracked as open, blocked, decided or superseded -
+            so "what is still waiting on a decision" is a query, not a
+            re-read. Scanning prose for decision-shaped sentences invents
+            findings, so sitrep deliberately does not.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Due dates</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Convention-shaped due lines surface upcoming and overdue items in
+            the overview.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">What it deliberately ignores</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Checkboxes are QA sign-off in real corpora, not progress - nearly
+            every checklist reads zero ticked, and counting them reports
+            healthy projects as abandoned. Git history is a tag, not the
+            timeline - in a real corpus over a quarter of project docs are
+            gitignored, untracked or dirty, and those are disproportionately
+            the in-progress work. sitrep classifies from the documents
+            themselves.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="overview">
+      <h2 id="overview" class="text-xl font-semibold tracking-tight">3. The overview: an email client for project state</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          The reading surface is deliberately shaped like an email client,
+          not a file tree: newest activity first, pending items surfaced,
+          filters as removable chips. Across every project at once you see
+          what moved, what is stalled, what is waiting on a decision, and
+          what the docs claim beside when they last changed.
+        </p>
+        <p>
+          Opening a document gives full reading fidelity - GitHub-flavored
+          markdown, syntax-highlighted code with copy buttons, Mermaid
+          diagrams rendered offline and theme-aware, KaTeX, callouts, fast on
+          multi-thousand-line files. Rendering is a floor sitrep meets, not
+          the product it sells.
+        </p>
+        <p>
+          And nothing takes the page away from you: when a watched file
+          changes, the open document refreshes in place, scroll re-anchored;
+          reload restores your position; Esc peels one layer at a time.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="writeback">
+      <h2 id="writeback" class="text-xl font-semibold tracking-tight">4. The one writing surface</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          sitrep is a reader with exactly one, narrow writing surface: three
+          convention-shaped operations - set a status, set a due date, mark a
+          ruling superseded - each writing a single line in the document's
+          own convention, behind a server-side preview and a content-hash
+          guard that refuses to touch a file that changed since you looked at
+          it.
+        </p>
+        <p>
+          No other code path writes to your documents. Sorting, filtering,
+          hidden columns and saved views are local view state with export -
+          they never touch the file. This is a product-level covenant, not an
+          implementation detail.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="measured2">
+      <h2 id="measured2" class="text-xl font-semibold tracking-tight">5. Why you can trust the numbers</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Every extraction rule ships only after being measured against the
+          real development corpus - if a heuristic would misread the corpus,
+          it does not ship. Every UI behaviour is verified by driving the
+          real app in headless Chrome: contrast in both themes, scroll
+          restoration, live refresh, the lot. A claim that cannot be measured
+          is not made.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

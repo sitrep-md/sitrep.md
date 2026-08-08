@@ -1,0 +1,21 @@
+# sitrep
+
+> sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. It reads the plans, decisions and progress your agents already write - no new format, no import - and shows status, phases, open decisions and staleness across every project. Tagline: "Never open a cold project again."
+
+Key facts:
+
+- Category: AI project status dashboard (not a markdown viewer, not an editor, not a Notion/Obsidian replacement, not a task manager, not an agent orchestrator).
+- Reads Claude Code, Cursor and Codex markdown across all your projects - and any other markdown; it parses conventions in the files, not a tool-specific format.
+- Zero adoption cost: no frontmatter, no new format, no import, no vault. Point it at folders.
+- Extracts: dated status lines ("**Status (2026-08-08):** ..."), phase headings ("## Phase 2 (SHIPPED)"), decisions/rulings from lists under decision headings or tables with a verdict column, and due dates. Deliberately ignores checkbox counts and does not trust git history alone.
+- Overview: email-client style - newest activity first, pending decisions surfaced, what the docs claim beside when they last changed.
+- One writing surface: three convention-shaped ops (status, due, supersede) behind a preview and a content-hash guard; nothing else ever writes to user files.
+- Local-first and private: fully functional with no account and no network; no telemetry by default; files never leave the machine.
+- Platforms: macOS first, Windows second, Linux best-effort. Status: in development; this site announces availability.
+
+## Pages
+
+- [Home](https://sitrep.md/): what sitrep is, the problem it solves, the product contract
+- [How it works](https://sitrep.md/how-it-works/): indexing, the extracted conventions, the overview, the single writing surface
+- [Principles](https://sitrep.md/principles/): the eight promises and the binding anti-roadmap
+- [FAQ](https://sitrep.md/faq/): the real question set, answered concretely

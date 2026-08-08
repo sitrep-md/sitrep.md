@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const promises = [
+  {
+    title: '1. Zero adoption cost',
+    body: 'sitrep reads what agents already write - no new format, no frontmatter requirement, no import, no vault, no restructuring. Point it at folders. Extraction conventions are editable settings, never demands on your files.',
+  },
+  {
+    title: '2. State first',
+    body: 'Status, phases, rulings, due dates and staleness are extracted and glanceable across projects, newest activity first, pending items surfaced - an email client for project state, not a file tree.',
+  },
+  {
+    title: '3. Reading parity',
+    body: 'The rendering bundle every AI-native viewer ships is the floor, not the product: full GFM, syntax-highlighted code with copy buttons, offline theme-aware Mermaid, KaTeX, callouts, and no lag on multi-thousand-line files. sitrep never competes on rendering; it also never loses to it.',
+  },
+  {
+    title: '4. Nothing takes the page away from you',
+    body: 'Live refresh in place, scroll re-anchored, reload restores position, Esc peels one layer. The reader’s state is never the app’s to reset.',
+  },
+  {
+    title: '5. One writing surface',
+    body: 'Three convention-shaped ops - status, due, supersede - behind a preview and a content-hash guard are the only code path that ever writes to your documents. View transforms are local state with export, never a write.',
+  },
+  {
+    title: '6. Local-first and private',
+    body: 'Fully functional forever with no account and no network. Files never leave the machine unless sync is explicitly enabled; sync is end-to-end encrypted with user-held keys. No telemetry by default.',
+  },
+  {
+    title: '7. Fast',
+    body: 'Instant startup on kernel file events - never a tree walk. Instant search. Work stays proportional to what changed, never to corpus size.',
+  },
+  {
+    title: '8. Honest',
+    body: 'Claims are measured before they are made - in the UI, in comparisons, and in community participation. Concrete and checkable beats superlatives; no astroturfing, ever.',
+  },
+];
+
+const never = [
+  {
+    what: 'A general markdown editor or prettier viewer',
+    why: 'Reading parity yes, viewer identity no. The viewer market is a commodity; the job sitrep does is bigger than rendering.',
+  },
+  {
+    what: 'Agent orchestration or a parallel-session runner',
+    why: 'Steering agents is a different product and contradicts the passive-overview identity. sitrep shows state; it does not drive.',
+  },
+  {
+    what: 'A task manager with its own authored format',
+    why: 'Authoring structured tasks is the exact friction sitrep removes. The moment it dictates a format, zero adoption cost is gone.',
+  },
+  {
+    what: 'A second brain or Notion/Obsidian replacement',
+    why: 'Search stays scoped to the docs it parses - jump to the decision. No vaults, no backlink graphs, no embeddings without a measured need.',
+  },
+  {
+    what: 'Live agent control from mobile',
+    why: 'sitrep sells state visibility, explicitly not steering. A future mobile mirror is read-only.',
+  },
+  {
+    what: 'A cloud-only or account-required core',
+    why: 'That would delete the local-first promise, and with it the reason the product can be trusted with your files at all.',
+  },
+];
+---
+
+<BaseLayout
+  title="Principles - the sitrep product contract"
+  description="The eight promises sitrep is tested against and the anti-roadmap it refuses to build: no editor, no agent orchestration, no vaults, no account-required core. Local-first, one writing surface, measured claims."
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Principles</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        The product contract
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        sitrep is an AI project status dashboard - and just as importantly, a
+        list of things it refuses to become. Both halves are written down,
+        and every feature is tested against them. A feature that breaks a
+        promise is wrong even if it is useful.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="the-promises">
+      <h2 id="the-promises" class="text-xl font-semibold tracking-tight">The eight promises</h2>
+      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {
+          promises.map(({ title, body }) => (
+            <li class="flex max-w-prose flex-col gap-1.5">
+              <h3 class="font-medium">{title}</h3>
+              <p class="text-sm text-ink-muted">{body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="anti-roadmap">
+      <h2 id="anti-roadmap" class="text-xl font-semibold tracking-tight">The anti-roadmap</h2>
+      <p class="mt-3 max-w-prose text-ink-muted">
+        Not a viewer, not an editor, not a Notion/Obsidian replacement. Each
+        refusal has a reason, and the list is binding - features that drift
+        toward it get stopped, not shipped.
+      </p>
+      <dl class="mt-8 grid gap-7">
+        {
+          never.map(({ what, why }) => (
+            <div class="flex max-w-2xl flex-col gap-1.5">
+              <dt class="flex gap-3 font-medium">
+                <span aria-hidden="true" class="text-ink-faint select-none">&times;</span>
+                {what}
+              </dt>
+              <dd class="pl-6 text-sm text-ink-muted">{why}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="held">
+      <h2 id="held" class="text-xl font-semibold tracking-tight">How the contract is held</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          These are not aspirations on a wall. The promises live in the
+          repository as a cross-session contract that every working session -
+          human or agent - loads before building anything; a task that
+          conflicts with a rule stops rather than builds. Decisions, rejected
+          alternatives and open questions are recorded in a rulings table
+          that the product itself parses - sitrep reads its own decision log
+          as a fixture, so a regression in the extractor shows up as a moved
+          number in its own docs.
+        </p>
+        <p>
+          If a promise here ever stops being true, that is a bug with the
+          same priority as one in code.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
