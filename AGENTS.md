@@ -7,9 +7,17 @@ Guidance for agent sessions in `sitrep-www`, the marketing site for sitrep
 
 The public landing site for **sitrep - an AI project status dashboard**.
 Astro (static output) + Tailwind v4, built with Bun, served as Cloudflare
-Workers static assets. Currently a scaffold: one landing page, dark mode,
-SEO basics. This repo is the site only; the product lives elsewhere
-(currently a private repo, moving to a sibling dir here).
+Workers static assets. This repo is the site only; the product lives
+elsewhere (currently a private repo, moving to a sibling
+dir here).
+
+Pages: `/` (landing), `/how-it-works/`, `/principles/`, `/faq/` (carries
+FAQPage JSON-LD), plus `public/llms.txt`, an AI-crawler-welcoming
+`public/robots.txt`, and an IndexNow key file. Every page emits a JSON-LD
+@graph through `BaseLayout` (`WebSite` always; pass extra nodes via the
+`schema` prop). The pricing points are an OPEN ruling in the
+product strategy - they appear nowhere on the site and must not until the
+ruling closes.
 
 ## Product identity - the copy contract
 
@@ -73,6 +81,10 @@ real thing, port the pattern from there instead of inventing one:
 - `bunx wrangler deploy --env ""` / `bunx wrangler deploy --env dev` -
   manual deploy (CI normally does this). Needs `CLOUDFLARE_API_TOKEN` and
   `CLOUDFLARE_ACCOUNT_ID` in the environment.
+- `bun run indexnow` - submit the live sitemap's URLs to IndexNow
+  (Bing/Copilot/ChatGPT ride Bing's index). Run after every content ship to
+  live; the GEO playbook's cadence is at least one pushed content ship per
+  week.
 
 ## Deploy topology (don't rediscover this)
 

@@ -29,4 +29,7 @@ Scripts Write + Account Settings Read, no IP restriction) and
 account-level `workers/domains` API, deliberately not declared in
 `wrangler.jsonc` - see AGENTS.md for the reasoning.
 
+After a content ship reaches live, run `bun run indexnow` to push the
+sitemap's URLs to IndexNow.
+
 Agent guidance lives in `AGENTS.md` (`CLAUDE.md` symlinks to it).
