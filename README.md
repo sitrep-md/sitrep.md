@@ -1,43 +1,32 @@
-# Astro Starter Kit: Minimal
+# sitrep-www
+
+Marketing site for [sitrep](https://sitrep.md) - an AI project status
+dashboard: a state layer on top of the markdown your AI agents already
+generate.
+
+Astro (static) + Tailwind v4, built with Bun, served as Cloudflare Workers
+static assets.
+
+## Develop
 
 ```sh
-bun create astro@latest -- --template minimal
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deploy
 
-## 🚀 Project Structure
+CI deploys on push:
 
-Inside of your Astro project, you'll see the following folders and files:
+- `dev` branch -> `sitrep-www-dev` -> https://dev.sitrep.md (robots.txt
+  overridden to `Disallow: /` at build time)
+- `main` branch -> `sitrep-www` -> https://sitrep.md
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+`main` moves by fast-forwarding to `dev` (`git merge --ff-only dev`).
+Secrets: `CLOUDFLARE_API_TOKEN` (the `sitrep-www-ci` account token, Workers
+Scripts Write + Account Settings Read, no IP restriction) and
+`CLOUDFLARE_ACCOUNT_ID`. Custom domains are attached once via the
+account-level `workers/domains` API, deliberately not declared in
+`wrangler.jsonc` - see AGENTS.md for the reasoning.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Agent guidance lives in `AGENTS.md` (`CLAUDE.md` symlinks to it).
