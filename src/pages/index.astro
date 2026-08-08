@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+---
+
+<BaseLayout
+  title="sitrep - AI project status dashboard"
+  description="A state layer on top of the markdown your AI agents already generate. Never open a cold project again."
+>
+  <header class="flex items-center justify-between px-6 py-4">
+    <span class="text-sm font-semibold tracking-tight">sitrep<span class="text-ink-faint">.md</span></span>
+    <ThemeToggle />
+  </header>
+
+  <main class="mx-auto flex max-w-2xl flex-col items-start gap-6 px-6 pt-[18vh]">
+    <p class="text-xs font-medium uppercase tracking-widest text-accent">AI project status dashboard</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+      Never open a cold project again.
+    </h1>
+    <p class="max-w-prose text-lg text-ink-muted">
+      A state layer on top of the markdown your AI agents already generate.
+      Status, phases and decisions extracted from the docs you have - no
+      frontmatter, no new format, no adoption cost.
+    </p>
+    <p class="text-sm text-ink-faint">Coming soon.</p>
+  </main>
+</BaseLayout>

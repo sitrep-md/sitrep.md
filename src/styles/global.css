@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/*
+  One palette, two themes, flipped under [data-theme] - same contract as the
+  sitrep app: components name roles (bg-surface, text-ink-muted), never colours,
+  and there are zero `dark:` variants. Any change to a stop here must hold
+  4.5:1 for text and 3:1 for meaning-bearing UI in both themes.
+*/
+
+:root {
+  --surface: oklch(0.985 0.003 95);
+  --surface-raised: oklch(1 0 0);
+  --ink: oklch(0.24 0.012 260);
+  --ink-muted: oklch(0.45 0.015 260);
+  --ink-faint: oklch(0.55 0.012 260);
+  --border: oklch(0.88 0.006 260);
+  --accent: oklch(0.52 0.13 155);
+}
+
+[data-theme="dark"] {
+  --surface: oklch(0.19 0.012 260);
+  --surface-raised: oklch(0.23 0.014 260);
+  --ink: oklch(0.93 0.006 95);
+  --ink-muted: oklch(0.72 0.012 260);
+  --ink-faint: oklch(0.62 0.012 260);
+  --border: oklch(0.32 0.014 260);
+  --accent: oklch(0.72 0.13 155);
+}
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--border);
+  --color-accent: var(--accent);
+}
+
+html {
+  background-color: var(--surface);
+  color: var(--ink);
+}
