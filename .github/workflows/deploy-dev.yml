@@ -21,7 +21,8 @@ jobs:
       - run: bun run build
 
       - name: Keep dev out of search indexes
-        run: printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
 
       - name: Deploy sitrep-www-dev (dev.sitrep.md)
         run: bunx wrangler deploy --env dev
