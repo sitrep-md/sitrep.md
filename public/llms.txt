@@ -12,6 +12,7 @@ Key facts:
 - One writing surface: three convention-shaped ops (status, due, supersede) behind a preview and a content-hash guard; nothing else ever writes to user files.
 - Local-first and private: fully functional with no account and no network; no telemetry by default; files never leave the machine.
 - Security is verifiable, not asserted: the app works fully offline (checkable with a firewall); the planned sync layer is end-to-end encrypted with user-held keys, its protocol published before it ships, with bring-your-own S3-compatible storage as an escape hatch; no key escrow.
+- Licensing never phones home to stay valid: offline-verifiable signed license keys (ed25519), fail-open activation with a long offline grace, local features never check entitlements; payment via a merchant of record. The website itself sets no cookies and runs no trackers - no cookie banner because there is nothing to consent to.
 - Nearest alternatives, honestly: Obsidian + Dataview (better for a knowledge base you author and hand-built dashboards) and Backlog.md (better for a git-native task board you author structured tasks into); sitrep differs by parsing organic agent markdown with zero authoring, across projects.
 - Platforms: macOS first, Windows second, Linux best-effort. Status: in development; this site announces availability.
 

@@ -10,7 +10,7 @@ const pageSchema = [
     url: 'https://sitrep.md/security/',
     name: 'sitrep security and privacy',
     description:
-      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. The sync design is end-to-end encrypted with user-held keys, published before it ships, and verifiable - including bring-your-own storage.',
+      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. The sync design is end-to-end encrypted with user-held keys, published before it ships, and verifiable - including bring-your-own storage.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -58,7 +58,7 @@ const serverCannotSee = [
 
 <BaseLayout
   title="Security and privacy - sitrep"
-  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, and a published end-to-end-encrypted sync design you can verify - including bring-your-own storage."
+  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and a published end-to-end-encrypted sync design you can verify."
   schema={pageSchema}
 >
   <Nav />
@@ -183,6 +183,48 @@ const serverCannotSee = [
       </p>
     </section>
 
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="licensing">
+      <h2 id="licensing" class="text-xl font-semibold tracking-tight">Trial and licensing, offline</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          sitrep will be a paid desktop app, and paid apps usually mean phone-home
+          license servers. sitrep's licensing is designed so that it never
+          conflicts with the local-first promise - like sync, this is the
+          design the app <strong class="font-medium text-ink">will ship with</strong>,
+          stated before launch so it can be held against us.
+        </p>
+        <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
+          <li>
+            The trial is the full app, locally: no account, no sign-up, no
+            network required to start reading your own files.
+          </li>
+          <li>
+            A license key is a cryptographically signed file (ed25519),
+            verified on your machine. The app can check that your license is
+            valid with the network cable unplugged - forever.
+          </li>
+          <li>
+            Activation pings are optional and fail open, with a long offline
+            grace period. The app never bricks because our server is down,
+            your network is down, or we have a bad week.
+          </li>
+          <li>
+            Local features never check entitlements at all. Only sync - the
+            part that uses our infrastructure - carries a subscription
+            entitlement, and cancelling it stops sync and nothing else.
+          </li>
+          <li>
+            Payment runs through a merchant of record: we never see or store
+            your card details.
+          </li>
+        </ul>
+        <p class="text-sm">
+          This one you will be able to verify the same way as the rest:
+          activate a license, then cut the network. Nothing degrades.
+        </p>
+      </div>
+    </section>
+
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="verify">
       <h2 id="verify" class="text-xl font-semibold tracking-tight">How to verify, instead of trusting</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
@@ -241,12 +283,24 @@ const serverCannotSee = [
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="this-site">
       <h2 id="this-site" class="text-xl font-semibold tracking-tight">This website</h2>
-      <p class="mt-5 max-w-prose text-ink-muted">
-        In the same spirit: sitrep.md (the site, not the app) uses Google
-        Analytics to measure whether search engines and AI assistants send
-        people here - nothing more. No cross-site tracking, no ad pixels. The
-        app itself contains no analytics of any kind.
-      </p>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Noticed there is no cookie banner? That is not an oversight, and it
+          is not non-compliance. Consent banners exist to ask permission for
+          tracking; sitrep.md sets no cookies, runs no third-party scripts
+          and does no tracking of any kind, so there is nothing to ask your
+          consent for. The page you are reading is static HTML.
+        </p>
+        <p>
+          Today the site carries no analytics at all. When we add
+          measurement - to learn whether search engines and AI assistants
+          actually send people here - it will be Cloudflare's cookieless,
+          aggregate Web Analytics: page counts and referrers, no cookies, no
+          fingerprinting, no cross-site anything, and still no banner,
+          because there will still be nothing to consent to. If that ever
+          changes, this page changes first.
+        </p>
+      </div>
     </section>
   </main>
 
