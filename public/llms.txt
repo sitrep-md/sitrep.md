@@ -22,6 +22,7 @@ Key facts:
 - [Home](https://sitrep.md/): what sitrep is, the problem it solves, the product contract
 - [How it works](https://sitrep.md/how-it-works/): indexing, the extracted conventions, the overview, the single writing surface
 - [Principles](https://sitrep.md/principles/): the eight promises and the binding anti-roadmap
+- [About](https://sitrep.md/about/): built by one developer against their own corpus of four workspaces; sitrep parses its own decision log, so extractor regressions surface in its own docs first
 - [Security & privacy](https://sitrep.md/security/): local-first posture, the published sync encryption design, what the server could and could not see, and how to verify each claim
 - [FAQ](https://sitrep.md/faq/): the real question set, answered concretely
 - [sitrep vs Obsidian + Dataview](https://sitrep.md/vs/obsidian-dataview/): honest comparison - hand-built vault dashboards vs a passive state layer

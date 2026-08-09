@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/about/#page',
+    url: 'https://sitrep.md/about/',
+    name: 'About sitrep - built by one person, over their own corpus',
+    description:
+      'sitrep is built by one developer who runs AI coding agents across four workspaces and dozens of projects - and measures every claim against that corpus before shipping it.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+    author: { '@id': 'https://sitrep.md/about/#person' },
+  },
+  {
+    '@type': 'Person',
+    '@id': 'https://sitrep.md/about/#person',
+    name: 'Sander',
+    description: 'Developer in Estonia; maker of sitrep, the AI project status dashboard.',
+  },
+];
+---
+
+<BaseLayout
+  title="About sitrep - one person, four workspaces"
+  description="Who makes sitrep and why: a developer running AI coding agents across four workspaces and dozens of projects, building the AI project status dashboard against their own corpus - and measuring every claim before making it."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">About</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        One person, four workspaces, too many projects
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        sitrep is built by one developer. This page says who, why, and what
+        that means for the product - because when an app asks to read your
+        whole disk, "who made this" is a fair question.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="why">
+      <h2 id="why" class="text-xl font-semibold tracking-tight">Why sitrep exists</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          I'm Sander, a developer in Estonia. I work across four workspaces -
+          freelance client projects alongside my own - each holding anywhere
+          from a few projects to a dozen. I have been leaning on AI coding
+          tools since autocomplete was the top-tier option, which means I got
+          the modern problem early: Claude Code, Cursor and Codex sessions
+          that leave behind plans, analyses and decision documents nobody
+          asked for, in volumes nobody can hold in their head.
+        </p>
+        <p>
+          The breaking point was familiar to anyone juggling projects:
+          opening one after three weeks away and genuinely not knowing where
+          it stood - what was decided, what was blocked, which plan was
+          still true. The state existed. It was written down. It was just
+          scattered across hundreds of markdown files, and I was the
+          extraction layer. sitrep is that extraction layer as software: an
+          AI project status dashboard - a state layer on top of the markdown
+          your AI agents already generate.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="dogfood">
+      <h2 id="dogfood" class="text-xl font-semibold tracking-tight">Built against its own corpus</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          sitrep runs against my real working corpus every day: roughly
+          54,900 markdown files across those four workspaces, of which about
+          730 are actual project documents. Every extraction heuristic is
+          measured against that corpus before it ships - when the intuitive
+          threshold for a staleness signal would have flagged half of
+          everything, the measurement won and the threshold moved.
+        </p>
+        <p>
+          The dogfooding goes one level deeper than most: sitrep's own
+          strategy and decision documents live in the corpus it parses, so
+          the product reads its own decision log. A regression in the
+          extractor shows up as a moved number in sitrep's own docs before
+          any user could see it.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="solo">
+      <h2 id="solo" class="text-xl font-semibold tracking-tight">What solo means for you</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          No growth team, no roadmap by committee. The
+          <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">product contract</a>
+          - eight promises and a binding list of things sitrep refuses to
+          become - holds precisely because there is nobody to please except
+          the people using it. When you write support, you reach the person
+          who wrote the code.
+        </p>
+        <p>
+          My work is private - client projects and my own - so there is no
+          public repository trail to point at, and I won't pretend
+          otherwise. That is exactly why this site is built the way it is:
+          the claims are designed to be
+          <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">verified, not believed</a>
+          - cut the network and everything still works, read the sync
+          protocol when it ships, bring your own storage. "Trust me" is not
+          an argument, and sitrep never asks you to accept it as one.
+        </p>
+        <p class="text-ink">- Sander</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
