@@ -33,12 +33,14 @@ import Footer from '../components/Footer.astro';
           copied or moved - sitrep reads your files where they are.
         </p>
         <p>
-          Real workspaces are mostly noise: node_modules, build output,
-          vendored docs, changelogs of dependencies. An exclusion engine
-          separates project documents from that noise - in the corpus sitrep
-          is developed against, roughly 54,900 markdown files narrow to about
-          730 real docs. What counts as a doc is visible and adjustable, not
-          a black box.
+          Real workspaces are mostly noise, and not just node_modules and
+          build output: the bulk is machine-shaped markdown that real work
+          accumulates - issue-tracker exports, archived records, vendored
+          docs, files that are markdown only in extension. An exclusion
+          engine separates project documents from all of that - in the
+          corpus sitrep is developed against, roughly 54,900 markdown files
+          narrow to about 730 real docs. What counts as a doc is visible and
+          adjustable, not a black box.
         </p>
         <p>
           Watching uses kernel file events, never a directory walk, so
