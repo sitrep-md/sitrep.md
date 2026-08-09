@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: 'Won&#39;t staleness flags just nag me?',
-    a: 'The thresholds were measured, not guessed: every flag was read against the real development corpus before shipping, and the intuitive two-week threshold would have flagged half of everything - so the drift line sits at thirty days, where the reviewed false-positive rate was zero. When sitrep is unsure it stays quiet, because a false "this doc lies" is worse than a missed one. The plan is to make the thresholds settings with global, workspace and project granularity.',
+    a: 'The thresholds were measured, not guessed: every flag was read against the real development corpus before shipping, and the intuitive two-week threshold would have flagged half of everything - so the drift line sits at thirty days, where the reviewed false-positive rate was zero. When sitrep is unsure it stays quiet, because a false "this doc lies" is worse than a missed one. And the thresholds are settings with global, workspace and project granularity - a fast project can call three days stale while a quarterly one is fine at ninety.',
   },
   {
     q: 'How do I keep track of all the markdown files Claude Code creates?',

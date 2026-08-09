@@ -194,10 +194,13 @@ import Footer from '../components/Footer.astro';
           false-positive rate on the live corpus was zero. When sitrep is
           not sure, it stays quiet: a missed stale doc is invisible, but a
           false "this doc lies" would poison the one promise the feature
-          makes. Today's thresholds are fixed defaults validated on that
-          corpus; the plan is to make them - like every other knob - settings
-          with global, workspace and project granularity, your deviations
-          stored as data while the defaults stay in code.
+          makes. And because projects have rhythms, the thresholds are
+          settings, not constants: global, per-workspace and per-project
+          granularity, the most specific value winning, your deviations
+          stored as data while the measured defaults stay in code. A
+          fast-moving project can call three days stale while a quarterly
+          one is fine at ninety - and since staleness is computed at read
+          time, a changed threshold is true on the next view, no reindex.
         </p>
       </div>
     </section>
