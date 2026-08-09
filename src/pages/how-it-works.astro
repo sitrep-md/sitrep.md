@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 
 <BaseLayout
   title="How sitrep works - conventions, not configuration"
-  description="How an AI project status dashboard reads state out of ordinary markdown: the status lines, phase headings and decision tables sitrep extracts, and the rules that keep it honest."
+  description="How an AI project status dashboard reads state out of ordinary markdown: the status lines, phase headings and decision tables sitrep extracts, the staleness signals that flag docs your repo moved past, and the rules that keep it honest."
 >
   <Nav />
 
@@ -136,8 +136,74 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="staleness">
+      <h2 id="staleness" class="text-xl font-semibold tracking-tight">4. Staleness: when the docs lie</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          The nastiest failure mode of agent-written docs is drift: the agent
+          patches code without updating the plan, and a confident document
+          describes a reality that no longer exists. A stale plan looks
+          exactly like a current one - until something compares the claim
+          against what actually moved. That comparison is what sitrep does.
+        </p>
+        <p>
+          A document <em>claims</em> work is happening when it carries an
+          active dated status (in progress, planned, blocked) or a phase
+          list that has started but not finished. For every claiming doc,
+          sitrep asks three questions, strongest first, and the first "yes"
+          wins:
+        </p>
+      </div>
+      <dl class="mt-6 grid max-w-3xl gap-6">
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Dead claim</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Has the doc's entire project been silent for over two months
+            while the doc still claims activity? Nobody is doing this work,
+            whatever the document says.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Left behind</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Is the project actively moving while this doc sits untouched for
+            over a month? The repo outgrew the plan - this is the drift case.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Stale claim</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Is the claim's own date more than a week old? The status line
+            needs re-asserting - quiet metadata, not an alarm.
+          </dd>
+        </div>
+      </dl>
+      <div class="mt-6 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          The badge always shows the number that tripped it - "left behind
+          40d" means your project moved 40 days past this document. And the
+          signal is computed fresh at the moment you ask, never stored, so
+          the staleness flag is the one thing in the system that cannot
+          itself go stale.
+        </p>
+        <p>
+          The thresholds were measured, not guessed: every flag was read
+          against the real development corpus before the feature shipped,
+          and the intuitive two-week drift threshold would have flagged half
+          of everything - so it is thirty days, a line at which the reviewed
+          false-positive rate on the live corpus was zero. When sitrep is
+          not sure, it stays quiet: a missed stale doc is invisible, but a
+          false "this doc lies" would poison the one promise the feature
+          makes. Today's thresholds are fixed defaults validated on that
+          corpus; the plan is to make them - like every other knob - settings
+          with global, workspace and project granularity, your deviations
+          stored as data while the defaults stay in code.
+        </p>
+      </div>
+    </section>
+
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="writeback">
-      <h2 id="writeback" class="text-xl font-semibold tracking-tight">4. The one writing surface</h2>
+      <h2 id="writeback" class="text-xl font-semibold tracking-tight">5. The one writing surface</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           sitrep is a reader with exactly one, narrow writing surface: three
@@ -157,7 +223,7 @@ import Footer from '../components/Footer.astro';
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="measured2">
-      <h2 id="measured2" class="text-xl font-semibold tracking-tight">5. Why you can trust the numbers</h2>
+      <h2 id="measured2" class="text-xl font-semibold tracking-tight">6. Why you can trust the numbers</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           Every extraction rule ships only after being measured against the
