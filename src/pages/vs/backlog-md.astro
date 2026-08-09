@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/backlog-md/#page',
+    url: 'https://sitrep.md/vs/backlog-md/',
+    name: 'sitrep vs Backlog.md - task board or state layer',
+    description:
+      'An honest comparison of sitrep and Backlog.md: a git-native task board you and your agents author structured tasks into, versus a passive state layer parsed from the organic markdown your agents already wrote.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'Git-native task manager: CLI plus kanban board, tasks as markdown files in the repo',
+  },
+  {
+    dim: 'Format demanded',
+    sitrep: 'None - parses the organic markdown agents already write',
+    other: 'Its own task file format; tasks are authored into it',
+  },
+  {
+    dim: 'What it reads',
+    sitrep: 'Plans, analyses, decision logs, progress notes - files nobody structured for a tool',
+    other: 'Its own tasks and docs',
+  },
+  {
+    dim: 'State surfaced',
+    sitrep: 'Status, phases, open decisions, due dates and staleness',
+    other: 'Task status on a per-repo board',
+  },
+  {
+    dim: 'Scope',
+    sitrep: 'Cross-project - one overview across every repo and workspace',
+    other: 'Per-repo',
+  },
+  {
+    dim: 'Writes to your files',
+    sitrep: 'Three guarded state operations in the document’s own convention; nothing else, ever',
+    other: 'Creates and updates its own task files',
+  },
+  {
+    dim: 'Agent integration',
+    sitrep: 'MCP server exposing parsed state, read-only first',
+    other: 'MCP server for task management',
+  },
+  {
+    dim: 'Sharing and mobile',
+    sitrep: 'Planned: read-only, end-to-end-encrypted mirror and share links',
+    other: 'Git-based sharing; local web UI bound to 127.0.0.1, no mobile',
+  },
+  {
+    dim: 'License and price',
+    sitrep: 'Commercial desktop app, in development',
+    other: 'Free, MIT-licensed open source',
+  },
+  {
+    dim: 'Local-first',
+    sitrep: 'Yes - no account, no network, no telemetry by default',
+    other: 'Yes - no account, no telemetry',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs Backlog.md - task board or state layer"
+  description="Backlog.md is a git-native task board you author structured tasks into; sitrep is an AI project status dashboard parsed from the markdown your agents already wrote. When to choose each, honestly - including when Backlog.md is the better pick."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs Backlog.md
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Backlog.md is one of the strongest tools in this space: free,
+        open-source, local-first, markdown-native, with an MCP server - the
+        same values sitrep holds. The difference is the job. If you want a
+        task board, Backlog.md is better than sitrep, because sitrep is not a
+        task manager and refuses to become one.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by the maker of sitrep. Read the
+        framing with that in mind - and note that where the honest answer is
+        "use Backlog.md", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Backlog.md gives you and your agents a structured task format to
+          author into - tasks live as markdown files in the repo, move across
+          a kanban board, and travel through git. sitrep is an AI project
+          status dashboard: a state layer on top of the markdown your AI
+          agents already generate - it authors nothing and asks you to author
+          nothing.
+        </p>
+        <p>
+          Put differently: with Backlog.md, the source of truth is tasks you
+          created. With sitrep, the source of truth is the plans, decision
+          logs and progress notes your agents already wrote - sitrep parses
+          status, phases, open decisions and due dates out of them, across
+          every project at once.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">Backlog.md</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-backlog">
+      <h2 id="choose-backlog" class="text-xl font-semibold tracking-tight">When to choose Backlog.md</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want a structured task board that both you and your agents
+          create and update tasks on, inside the repo, versioned by git.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your workflow is one repo at a time, and a per-repo board matches
+          how you work.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want free, MIT-licensed open source you can read, fork and
+          extend.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Explicitly decomposing work into tasks is a discipline you want,
+          not a friction you resent.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        A task manager with its own authored format is on sitrep's
+        anti-roadmap permanently - that job is Backlog.md's, and it does it
+        well.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          The state of your work already lives in organic markdown - plans,
+          analyses, decision docs your agents produced - and authoring a
+          parallel task structure would just be a second source of truth to
+          maintain.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You run several projects and need one overview: what moved, what is
+          stalled, what is waiting on a decision - across all of them, newest
+          activity first.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You care about staleness: which docs claim things the repo has
+          since moved past.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Re-entry is the pain - opening a cold project after weeks and
+          spending the first fifteen minutes reconstructing where things
+          stand.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        These tools are complementary, not substitutes. Backlog.md is an
+        authored task layer inside a repo; sitrep is a passive state layer
+        across repos. If your agents work Backlog.md tasks and also write
+        plans and decision docs, sitrep sits above both - it reads whatever
+        markdown is there. Nothing about adopting one forecloses the other,
+        and they share the same posture:
+        <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">local-first, no account, no telemetry</a>.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

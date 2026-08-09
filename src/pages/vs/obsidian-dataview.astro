@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/obsidian-dataview/#page',
+    url: 'https://sitrep.md/vs/obsidian-dataview/',
+    name: 'sitrep vs Obsidian + Dataview for AI project status',
+    description:
+      'An honest comparison of sitrep and Obsidian with Dataview for tracking the state of AI coding projects: hand-built dashboards over a vault you author, versus a passive state layer over the markdown your agents already generate.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'Knowledge base and editor; Dataview adds a query language over your vault',
+  },
+  {
+    dim: 'Cross-project overview',
+    sitrep: 'The core feature - status, phases, decisions and staleness across every project, newest activity first',
+    other: 'Possible, if you build and maintain the dashboards yourself with DQL queries',
+  },
+  {
+    dim: 'Works on unmodified agent markdown',
+    sitrep: 'Yes - parses the organic conventions in plans, analyses and decision docs as agents write them',
+    other: 'No - Dataview needs structured frontmatter, tags or inline fields to query against',
+  },
+  {
+    dim: 'Setup required',
+    sitrep: 'Point it at folders',
+    other: 'Create a vault, add files to it, structure notes, write and maintain queries',
+  },
+  {
+    dim: 'Editing',
+    sitrep: 'Not an editor - three guarded state operations are the only writes',
+    other: 'A full editor; writing is the point',
+  },
+  {
+    dim: 'Mobile and sync',
+    sitrep: 'Planned: a read-only, end-to-end-encrypted mirror of parsed state',
+    other: 'Mature mobile apps today, with a paid Sync service',
+  },
+  {
+    dim: 'Search',
+    sitrep: 'Scoped to the project docs it parses - jump to the decision',
+    other: 'Full-text over the whole vault, plus backlinks and graph',
+  },
+  {
+    dim: 'Local-first',
+    sitrep: 'Yes - no account, no network, no telemetry by default',
+    other: 'Yes - plain markdown on disk',
+  },
+  {
+    dim: 'Availability',
+    sitrep: 'In development, launching first on macOS',
+    other: 'Mature, free core app, huge plugin ecosystem',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs Obsidian + Dataview - AI project status"
+  description="Obsidian with Dataview is the closest DIY substitute for sitrep - and often the right choice. The difference is authoring: hand-built dashboards over a vault you structure, versus a state layer that parses the markdown your AI agents already generate."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs Obsidian&nbsp;+&nbsp;Dataview
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Obsidian with the Dataview plugin is the closest do-it-yourself
+        substitute for sitrep - and for many people it is the right choice.
+        Here is the honest version of when it is, and when it is not.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by the maker of sitrep. Read the
+        framing with that in mind - and note that where the honest answer is
+        "use Obsidian", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Obsidian is a knowledge base you author into; with Dataview, it
+          rewards that authoring with dashboards you design yourself. sitrep
+          is an AI project status dashboard: a state layer on top of the
+          markdown your AI agents already generate - it parses status,
+          phases, decisions and due dates out of files nobody structured for
+          any tool.
+        </p>
+        <p>
+          Both are local-first markdown tools, which is why they get
+          compared. But they answer different questions. Obsidian answers
+          "what do I know?" from notes you wrote. sitrep answers "where do my
+          projects stand?" from docs your agents wrote.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">Obsidian + Dataview</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-obsidian">
+      <h2 id="choose-obsidian" class="text-xl font-semibold tracking-tight">When to choose Obsidian + Dataview</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want a durable knowledge base you fully control - notes, ideas
+          and references you author yourself, kept for years.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You enjoy building your own system: dashboards, templates and
+          queries tuned exactly to how you think.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You need mobile access and sync today, not when a waitlist clears.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Backlinks, graphs and a plugin ecosystem are features you actually
+          use, not clutter.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        In that case Obsidian is excellent, and sitrep will not try to talk
+        you out of it - a second brain is on sitrep's anti-roadmap,
+        permanently.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          The markdown piling up on your disk was written by Claude Code,
+          Cursor or Codex - not by you - and restructuring it into a vault is
+          exactly the work you do not want.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want project state - what moved, what is stalled, what is
+          waiting on you - without authoring frontmatter or writing queries.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You juggle several projects and the pain is re-entry: opening a
+          cold project and re-deriving where things stand.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You have tried the Obsidian dashboard route and abandoned it when
+          the queries went stale - a pattern common enough that it is one of
+          the reasons sitrep exists.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        The tools compose. Keep Obsidian for the knowledge you author; point
+        sitrep at the folders your agents write into. sitrep never asks you
+        to move a file, so there is nothing to migrate and no overlap to
+        manage - it is explicitly not a Notion/Obsidian replacement, and that
+        refusal is written into its
+        <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">product contract</a>.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

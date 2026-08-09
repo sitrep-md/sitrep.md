@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/security/#page',
+    url: 'https://sitrep.md/security/',
+    name: 'sitrep security and privacy',
+    description:
+      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. The sync design is end-to-end encrypted with user-held keys, published before it ships, and verifiable - including bring-your-own storage.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const principles = [
+  {
+    title: 'Local-first, forever',
+    body: 'sitrep is fully functional with no account and no network - not as a trial mode, as the product. Local features are never metered, never expire, and never check entitlements. Sync, when it ships, is an optional layer on top; cancelling it leaves the local app whole.',
+  },
+  {
+    title: 'No telemetry by default',
+    body: 'The app ships with no analytics SDKs. Crash reports are opt-in and contain no document content and no paths beyond the app’s own internals. What the app would ever send over the network is short enough to list, and it is listed on this page.',
+  },
+  {
+    title: 'One narrow write path',
+    body: 'Exactly three convention-shaped operations - set a status, set a due date, mark a decision superseded - can write to your documents, each behind a preview and a content-hash guard. No other code path writes to your files, ever. A tool you point at your whole disk has to be able to say that.',
+  },
+  {
+    title: 'We cannot read what we relay',
+    body: 'The planned sync layer is end-to-end encrypted with keys generated on your device and never sent to us. The server stores ciphertext. This is a property of the design, not a promise in a policy - the protocol is published so the claim can be checked.',
+  },
+  {
+    title: 'No key escrow, no reset backdoor',
+    body: 'There is no recovery service on our side. Lose every device and the recovery key, and the mirror is gone - your local corpus is never at risk, and the mirror rebuilds from your desktop in minutes. An escrow would turn "we cannot read your data" into marketing copy.',
+  },
+  {
+    title: 'Claims are checkable',
+    body: 'Every claim on this page maps to a verification path below: cut the network, read the protocol, bring your own storage. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
+  },
+];
+
+const serverSees = [
+  'The email address on the sync account',
+  'How many devices are paired',
+  'Encrypted blob sizes and timestamps',
+];
+
+const serverCannotSee = [
+  'File names',
+  'File contents',
+  'Extracted state - statuses, decisions, due dates',
+  'Project names or structure',
+];
+---
+
+<BaseLayout
+  title="Security and privacy - sitrep"
+  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, and a published end-to-end-encrypted sync design you can verify - including bring-your-own storage."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Security &amp; privacy</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        Private by architecture, not by policy
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        sitrep is an AI project status dashboard that reads the markdown on
+        your disk - which means it deserves more scrutiny than most apps, not
+        less. This page states what sitrep does with your files, what any
+        future server could and could not see, and how you can verify each
+        claim instead of taking our word for it.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="today">
+      <h2 id="today" class="text-xl font-semibold tracking-tight">What we hold today: nothing</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          sitrep is a local-first desktop app. There is no account, no server
+          component, and no telemetry by default. Your files are indexed into
+          a local database on your machine and never leave it. The complete
+          list of data we hold about sitrep users is: nothing.
+        </p>
+        <p>
+          That stays true after launch. The only network traffic the shipped
+          app will produce is a static update-manifest check - and sync, if
+          you explicitly enable it, under the design below.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="principles">
+      <h2 id="principles" class="text-xl font-semibold tracking-tight">The principles</h2>
+      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {
+          principles.map(({ title, body }) => (
+            <li class="flex max-w-prose flex-col gap-1.5">
+              <h3 class="font-medium">{title}</h3>
+              <p class="text-sm text-ink-muted">{body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="sync-design">
+      <h2 id="sync-design" class="text-xl font-semibold tracking-tight">The sync design</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Sync - a read-only, encrypted mirror of parsed state and docs on a
+          phone or second machine - is <strong class="font-medium text-ink">not built yet</strong>.
+          The design is decided and published now, before any backend exists,
+          so it can be judged before you are asked to trust it.
+        </p>
+        <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
+          <li>
+            One symmetric account key, generated on your first device and
+            never sent to the server. All content is encrypted on your device
+            (XChaCha20-Poly1305 via libsodium) before anything is uploaded;
+            the server stores ciphertext.
+          </li>
+          <li>
+            New devices pair over a QR / short code: the existing device
+            approves and hands over the wrapped key directly. No passphrase
+            ceremony required at onboarding.
+          </li>
+          <li>
+            Optional hardening for the security-conscious: a user passphrase
+            (Argon2id-wrapped key) and a printable recovery key - offered
+            once, skippable, with a plain warning that we cannot reset it.
+          </li>
+          <li>
+            Metadata is minimized, not just content: blob names are HMAC-keyed
+            ids and the sync manifest itself is encrypted, so the server
+            cannot infer your project structure from the shapes it stores.
+          </li>
+          <li>
+            A read-only share link encrypts the shared subset with a per-link
+            key that travels in the URL fragment - which never reaches the
+            server. Revoking the link deletes the blobs.
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-10 grid max-w-3xl gap-8 sm:grid-cols-2">
+        <div class="flex flex-col gap-3">
+          <h3 class="font-medium">What the server can see</h3>
+          <ul class="flex flex-col gap-2 text-sm text-ink-muted">
+            {
+              serverSees.map((item) => (
+                <li class="flex gap-3">
+                  <span aria-hidden="true" class="text-ink-faint select-none">&bull;</span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h3 class="font-medium">What the server cannot see</h3>
+          <ul class="flex flex-col gap-2 text-sm text-ink-muted">
+            {
+              serverCannotSee.map((item) => (
+                <li class="flex gap-3">
+                  <span aria-hidden="true" class="text-ink-faint select-none">&times;</span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <p class="mt-8 max-w-prose text-sm text-ink-muted">
+        When sync ships, this page will restate that list against the actual
+        implementation. If the two ever disagree, the page is wrong or the
+        product is - either one is treated as a bug.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="verify">
+      <h2 id="verify" class="text-xl font-semibold tracking-tight">How to verify, instead of trusting</h2>
+      <p class="mt-3 max-w-prose text-ink-muted">
+        "Private" and "encrypted" are claims every product makes. These are
+        the paths by which sitrep's can be checked.
+      </p>
+      <dl class="mt-8 grid max-w-3xl gap-7">
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Cut the network</dt>
+          <dd class="text-sm text-ink-muted">
+            Run sitrep with Wi-Fi off, or deny it network access outright with
+            an outbound firewall like Little Snitch or LuLu. Everything works:
+            indexing, extraction, the overview, search, the reader. An app
+            that is fully functional offline has no covert channel to lose
+            your data through.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Read the traffic</dt>
+          <dd class="text-sm text-ink-muted">
+            The shipped app's outbound connections are few enough to
+            enumerate: a static update-manifest fetch, and sync endpoints if
+            you enabled sync. Watch them with any proxy or firewall; anything
+            else appearing is a bug we want reported.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Read the protocol</dt>
+          <dd class="text-sm text-ink-muted">
+            The sync protocol will be public from day one - what is encrypted
+            with what, what the server stores, what pairing exchanges. The
+            "we cannot read your data" claim should be checkable against a
+            document, not against our sincerity.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Bring your own storage</dt>
+          <dd class="text-sm text-ink-muted">
+            The sync client will speak the same protocol to any S3-compatible
+            endpoint, including one you run yourself - and you can inspect the
+            ciphertext it writes there. A hosted service is honest when
+            leaving it is easy.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Independent audit</dt>
+          <dd class="text-sm text-ink-muted">
+            A third-party audit of the sync client is planned once the sync
+            layer has the revenue to justify one. Until then, the published
+            protocol and BYO-storage path exist precisely so you do not have
+            to wait for our auditors.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="this-site">
+      <h2 id="this-site" class="text-xl font-semibold tracking-tight">This website</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        In the same spirit: sitrep.md (the site, not the app) uses Google
+        Analytics to measure whether search engines and AI assistants send
+        people here - nothing more. No cross-site tracking, no ad pixels. The
+        app itself contains no analytics of any kind.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

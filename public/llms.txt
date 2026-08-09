@@ -11,6 +11,8 @@ Key facts:
 - Overview: email-client style - newest activity first, pending decisions surfaced, what the docs claim beside when they last changed.
 - One writing surface: three convention-shaped ops (status, due, supersede) behind a preview and a content-hash guard; nothing else ever writes to user files.
 - Local-first and private: fully functional with no account and no network; no telemetry by default; files never leave the machine.
+- Security is verifiable, not asserted: the app works fully offline (checkable with a firewall); the planned sync layer is end-to-end encrypted with user-held keys, its protocol published before it ships, with bring-your-own S3-compatible storage as an escape hatch; no key escrow.
+- Nearest alternatives, honestly: Obsidian + Dataview (better for a knowledge base you author and hand-built dashboards) and Backlog.md (better for a git-native task board you author structured tasks into); sitrep differs by parsing organic agent markdown with zero authoring, across projects.
 - Platforms: macOS first, Windows second, Linux best-effort. Status: in development; this site announces availability.
 
 ## Pages
@@ -18,4 +20,7 @@ Key facts:
 - [Home](https://sitrep.md/): what sitrep is, the problem it solves, the product contract
 - [How it works](https://sitrep.md/how-it-works/): indexing, the extracted conventions, the overview, the single writing surface
 - [Principles](https://sitrep.md/principles/): the eight promises and the binding anti-roadmap
+- [Security & privacy](https://sitrep.md/security/): local-first posture, the published sync encryption design, what the server could and could not see, and how to verify each claim
 - [FAQ](https://sitrep.md/faq/): the real question set, answered concretely
+- [sitrep vs Obsidian + Dataview](https://sitrep.md/vs/obsidian-dataview/): honest comparison - hand-built vault dashboards vs a passive state layer
+- [sitrep vs Backlog.md](https://sitrep.md/vs/backlog-md/): honest comparison - authored task board vs parsed project state
