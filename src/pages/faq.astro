@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: 'How does sitrep know a document is stale?',
-    a: 'A doc claims work is happening when it carries an active dated status or an unfinished phase list. sitrep asks three questions, strongest first: has the whole project been silent over two months (dead claim)? Is the project moving while this doc sat untouched over a month (left behind)? Is the claim&#39;s own date over a week old (stale claim)? The badge shows the number that tripped it - "left behind 40d" means your repo moved 40 days past the plan - and it is computed fresh at read time, never stored.',
+    a: 'A doc claims work is happening when it carries an active dated status or an unfinished phase list. sitrep asks four questions, strongest first: has the whole project been silent over two months (dead claim)? Is this a plan whose own linked step docs moved two weeks past it (plan adrift - the classic agent failure, where a session updates the six step documents and never touches the master plan)? Is the project moving while this doc sat untouched over a month (left behind)? Is the claim&#39;s own date over a week old (stale claim)? The badge shows the number that tripped it - "left behind 40d" means your repo moved 40 days past the plan - and it is computed fresh at read time, never stored.',
   },
   {
     q: 'Won&#39;t staleness flags just nag me?',

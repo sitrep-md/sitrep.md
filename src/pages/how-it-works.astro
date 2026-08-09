@@ -152,7 +152,7 @@ import Footer from '../components/Footer.astro';
           A document <em>claims</em> work is happening when it carries an
           active dated status (in progress, planned, blocked) or a phase
           list that has started but not finished. For every claiming doc,
-          sitrep asks three questions, strongest first, and the first "yes"
+          sitrep asks four questions, strongest first, and the first "yes"
           wins:
         </p>
       </div>
@@ -163,6 +163,16 @@ import Footer from '../components/Footer.astro';
             Has the doc's entire project been silent for over two months
             while the doc still claims activity? Nobody is doing this work,
             whatever the document says.
+          </dd>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <dt class="font-medium">Plan adrift</dt>
+          <dd class="max-w-prose text-sm text-ink-muted">
+            Is this a plan whose own step documents kept moving while the
+            plan stood still? A session told to "update the docs" updates
+            the six files it was pointed at and never revisits the master
+            plan that links them - sitrep follows those links and catches
+            the master the moment its children move two weeks past it.
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
