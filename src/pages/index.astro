@@ -193,6 +193,65 @@ const never = [
       </ul>
     </section>
 
+    <!-- Comparison -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="fits">
+      <h2 id="fits" class="text-2xl font-semibold tracking-tight">Where sitrep fits</h2>
+      <p class="mt-3 max-w-prose text-ink-muted">
+        Every adjacent tool asks you to produce state in its shape. sitrep
+        reads the state your files already contain. Each comparison below is
+        honest about when the other tool is the better choice.
+      </p>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[44rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium">Tool</th>
+              <th scope="col" class="py-3 pr-4 font-medium">What it is</th>
+              <th scope="col" class="py-3 pr-4 font-medium">How you get project state</th>
+              <th scope="col" class="py-3 font-medium">Comparison</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-line align-top">
+              <th scope="row" class="py-3 pr-4 text-left font-medium">sitrep</th>
+              <td class="py-3 pr-4 text-ink-muted">AI project status dashboard</td>
+              <td class="py-3 pr-4 text-ink-muted">Point it at folders - it parses the markdown your agents already wrote, across every project</td>
+              <td class="py-3 text-ink-muted">-</td>
+            </tr>
+            <tr class="border-b border-line align-top">
+              <th scope="row" class="py-3 pr-4 text-left font-medium">Backlog.md</th>
+              <td class="py-3 pr-4 text-ink-muted">Git-native task board</td>
+              <td class="py-3 pr-4 text-ink-muted">You and your agents author tasks in its format, per repo</td>
+              <td class="py-3"><a href="/vs/backlog-md/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs Backlog.md</a></td>
+            </tr>
+            <tr class="border-b border-line align-top">
+              <th scope="row" class="py-3 pr-4 text-left font-medium">Obsidian + Dataview</th>
+              <td class="py-3 pr-4 text-ink-muted">Knowledge base + query plugin</td>
+              <td class="py-3 pr-4 text-ink-muted">You structure notes with frontmatter and build dashboards by hand</td>
+              <td class="py-3"><a href="/vs/obsidian-dataview/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs Obsidian&nbsp;+&nbsp;Dataview</a></td>
+            </tr>
+            <tr class="border-b border-line align-top">
+              <th scope="row" class="py-3 pr-4 text-left font-medium">Nimbalyst</th>
+              <td class="py-3 pr-4 text-ink-muted">Visual agent workspace</td>
+              <td class="py-3 pr-4 text-ink-muted">You run sessions inside it and track them there</td>
+              <td class="py-3"><a href="/vs/nimbalyst/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs Nimbalyst</a></td>
+            </tr>
+            <tr class="align-top">
+              <th scope="row" class="py-3 pr-4 text-left font-medium">Plain VS Code + CLAUDE.md</th>
+              <td class="py-3 pr-4 text-ink-muted">The free DIY default</td>
+              <td class="py-3 pr-4 text-ink-muted">You read the files and keep the state in your head</td>
+              <td class="py-3"><a href="/vs/vscode-claude-md/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs VS&nbsp;Code&nbsp;+&nbsp;CLAUDE.md</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 max-w-prose text-sm text-ink-faint">
+        Markdown viewers are deliberately absent: sitrep renders markdown at
+        full fidelity, but a viewer answers "show me this file" and sitrep
+        answers "where do my projects stand".
+      </p>
+    </section>
+
     <!-- Honesty -->
     <section class="border-t border-line py-16 sm:py-20" aria-labelledby="measured">
       <h2 id="measured" class="text-2xl font-semibold tracking-tight">Measured, not asserted</h2>
@@ -211,21 +270,9 @@ const never = [
           should pick the other tool.
         </p>
       </div>
-      <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+      <p class="mt-8 text-sm">
         <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
           Security &amp; privacy, and how to verify it
-        </a>
-        <a href="/vs/obsidian-dataview/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          sitrep vs Obsidian&nbsp;+&nbsp;Dataview
-        </a>
-        <a href="/vs/backlog-md/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          sitrep vs Backlog.md
-        </a>
-        <a href="/vs/nimbalyst/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          sitrep vs Nimbalyst
-        </a>
-        <a href="/vs/vscode-claude-md/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          sitrep vs plain VS&nbsp;Code&nbsp;+&nbsp;CLAUDE.md
         </a>
       </p>
     </section>

@@ -45,6 +45,22 @@ const faqs = [
     a: 'No, and it refuses to become one. A task manager makes you author its format; authoring structured state is the exact friction sitrep removes. It surfaces the state your docs already contain, including the decisions still waiting on you.',
   },
   {
+    q: 'How do I keep track of all the markdown files Claude Code creates?',
+    a: 'Stop tracking files and track state instead. sitrep points at the folders your projects already live in and parses the plans, analyses and decision docs Claude Code writes into one cross-project overview - status, phases, open decisions, due dates - so the pile of markdown becomes a glanceable inbox instead of a reading list.',
+  },
+  {
+    q: 'How do I resume a Claude Code project after weeks away?',
+    a: 'Open sitrep instead of your memory: the project&#39;s docs are parsed into what moved last, what the stated status is, which decisions are still open and what has gone stale. Re-entry becomes triage - read the one or two documents that matter - rather than re-deriving where things stand from scratch.',
+  },
+  {
+    q: 'How do I see what my AI agents did across all my repos?',
+    a: 'That is sitrep&#39;s core surface: an email-client-style overview across every project - newest activity first, pending items surfaced. It is agent-agnostic, so sessions run in Claude Code, Cursor, Codex or anything else that writes markdown all land in the same inbox, whichever machine or tool produced them.',
+  },
+  {
+    q: 'Can sitrep stop me re-explaining context to Claude every session?',
+    a: 'Partly, and honestly: your CLAUDE.md still briefs the agent. What sitrep adds is an MCP server exposing parsed state - status, open decisions, due items, search - so a cold session can query where things stand instead of re-reading every doc. And it briefs you, which CLAUDE.md never did.',
+  },
+  {
     q: 'What platforms does sitrep run on?',
     a: 'macOS first, Windows second, Linux best-effort. It is a desktop app - local-first by design, not a web service.',
   },
