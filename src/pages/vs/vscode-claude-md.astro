@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/vscode-claude-md/#page',
+    url: 'https://sitrep.md/vs/vscode-claude-md/',
+    name: 'sitrep vs plain VS Code + CLAUDE.md - do you need a tool at all?',
+    description:
+      'An honest comparison of sitrep and the do-it-yourself default: VS Code, a file tree, and hand-maintained CLAUDE.md files. Including when the DIY setup is genuinely enough.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'Your editor, a file tree, and whatever discipline you bring',
+  },
+  {
+    dim: 'Cross-project overview',
+    sitrep: 'The core feature - every project in one inbox, newest activity first',
+    other: 'None - one window per workspace; state across projects lives in your head',
+  },
+  {
+    dim: 'Where project state lives',
+    sitrep: 'Extracted from the docs: status lines, phase headings, decision tables, due dates',
+    other: 'In the files, unextracted - you re-read plans and scroll history to find it',
+  },
+  {
+    dim: 'Re-entry after weeks away',
+    sitrep: 'Open the inbox: what moved, what stalled, what is waiting on you',
+    other: 'Open the folder, grep, scroll, reconstruct - the first fifteen minutes of the session',
+  },
+  {
+    dim: 'Who the context serves',
+    sitrep: 'You - CLAUDE.md and friends serve the agent; sitrep is the human-side view',
+    other: 'The agent - CLAUDE.md briefs the next session, not the person opening the repo',
+  },
+  {
+    dim: 'Staleness',
+    sitrep: 'Surfaced - what a doc claims shown beside when it last changed',
+    other: 'Invisible - a stale plan looks exactly like a current one',
+  },
+  {
+    dim: 'Maintenance cost',
+    sitrep: 'None - it parses what agents already write',
+    other: 'Ongoing - CLAUDE.md files stay useful only as long as you keep editing them',
+  },
+  {
+    dim: 'Price',
+    sitrep: 'Commercial desktop app, in development',
+    other: 'Free - you already have it',
+  },
+  {
+    dim: 'Local-first',
+    sitrep: 'Yes - no account, no network, no telemetry by default',
+    other: 'Yes',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs plain VS Code + CLAUDE.md"
+  description="The honest baseline comparison: do you need an AI project status dashboard at all, or is VS Code plus a hand-maintained CLAUDE.md enough? For one or two hot projects it genuinely is. Here is where the DIY setup stops scaling, concretely."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs plain VS&nbsp;Code&nbsp;+&nbsp;CLAUDE.md
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        The most honest comparison on this site, because the alternative is
+        free and you already have it: your editor, a file tree, and
+        hand-maintained context files. For one or two projects you touch
+        daily, that setup is genuinely enough - and this page starts by
+        saying so.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by the maker of sitrep. Read the
+        framing with that in mind - and note that where the honest answer is
+        "you don't need a tool", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          The DIY setup stores project state in files and in your head; you
+          are the extraction layer. sitrep is an AI project status
+          dashboard: a state layer on top of the markdown your AI agents
+          already generate - the status lines, phase headings, decision
+          tables and due dates scattered across your repos, parsed and
+          shown as one overview instead of re-read one file at a time.
+        </p>
+        <p>
+          Note what the DIY setup's own centerpiece is for: CLAUDE.md files
+          brief the <em>agent</em> at session start. Nothing in that loop
+          briefs <em>you</em>. The gap sitrep fills is the human-side one -
+          and it reads your CLAUDE.md files along with everything else.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">VS Code + CLAUDE.md</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-diy">
+      <h2 id="choose-diy" class="text-xl font-semibold tracking-tight">When the DIY setup is enough</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You run one or two projects and touch them most days - the state
+          fits in your head because it never has time to fall out.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your agents produce little markdown beyond code - there is not
+          much state to lose track of.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You genuinely maintain your CLAUDE.md and plan files, and the
+          discipline holds. Some people's does.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Adding any tool feels heavier than the problem. That instinct is
+          usually right - respect it until the problem grows.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        If that is you, keep the free setup. sitrep's zero-adoption-cost
+        promise cuts both ways: because it changes nothing about your files,
+        there is also nothing to prepare before adopting it later.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">Where the DIY setup stops scaling</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Projects multiply. Five active repos means five heads' worth of
+          state in one head; re-entry starts costing the first fifteen
+          minutes of every session, and by Friday the fragments add up to a
+          missing day.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Agent output outgrows reading. A few weeks of Claude Code, Cursor
+          or Codex leaves hundreds of plans, analyses and decision docs -
+          more state than any file tree communicates.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          The docs start lying. A plan says phase 2 while the repo moved on;
+          a decision was superseded three files later. Nothing in an editor
+          flags it - staleness surfacing needs a layer that knows what the
+          docs claim and when everything last moved.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Decisions go missing. "Waiting on you" is a state no file tree
+          shows - it has to be extracted from the documents and surfaced, or
+          it silently ages.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Adding sitrep changes nothing</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        This is the shortest migration section ever written, because there
+        is no migration: you keep VS Code, you keep your CLAUDE.md files,
+        you keep every workflow you have. sitrep points at the folders you
+        already use and parses what is already in them - no import, no
+        frontmatter, no restructuring. If it earns nothing at a glance, you
+        delete it and your files never knew it was there. The
+        <a href="/how-it-works/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">conventions it reads</a>
+        are the ones your agents already write.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/nimbalyst/#page',
+    url: 'https://sitrep.md/vs/nimbalyst/',
+    name: 'sitrep vs Nimbalyst - workspace or status dashboard',
+    description:
+      'An honest comparison of sitrep and Nimbalyst: a visual workspace you actively run AI coding sessions inside, versus a passive state layer over the markdown those sessions leave behind.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'A visual workspace and session manager for AI coding agents (successor to Crystal)',
+  },
+  {
+    dim: 'How you use it',
+    sitrep: 'Glance at it - it reads what already happened, whatever tool ran the session',
+    other: 'Work inside it - run sessions, review diffs, edit documents in its own editors',
+  },
+  {
+    dim: 'Parses organic agent markdown',
+    sitrep: 'Yes - status, phases, decisions and due dates from files nobody structured for a tool',
+    other: 'No - it tracks its own sessions and tasks, with WYSIWYG markdown and diagram editors',
+  },
+  {
+    dim: 'Scope',
+    sitrep: 'Cross-project - one overview across every repo and workspace on disk',
+    other: 'The workspaces and sessions you run inside it',
+  },
+  {
+    dim: 'Runs agents',
+    sitrep: 'Never - orchestration is on the anti-roadmap',
+    other: 'Yes - parallel sessions with diff review are the core feature',
+  },
+  {
+    dim: 'Editing',
+    sitrep: 'Not an editor - three guarded state operations are the only writes',
+    other: 'Visual editors are part of the product',
+  },
+  {
+    dim: 'Mobile',
+    sitrep: 'Planned: a read-only, end-to-end-encrypted mirror of parsed state',
+    other: 'iOS companion app',
+  },
+  {
+    dim: 'License',
+    sitrep: 'Commercial desktop app, in development',
+    other: 'Open source (MIT), free for individuals, with a team tier',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs Nimbalyst - workspace or status dashboard"
+  description="Nimbalyst is a visual workspace you run AI coding sessions inside; sitrep is an AI project status dashboard that reads the markdown those sessions leave behind. When to choose each, honestly - including when Nimbalyst is the better pick."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs Nimbalyst
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Nimbalyst is a serious, well-built visual workspace for running
+        Claude Code and Codex sessions - open source, actively developed,
+        with an iOS companion. sitrep does a different job, and the fastest
+        way to pick is to notice which direction you face: Nimbalyst is
+        where you work; sitrep is where you look.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by the maker of sitrep. Read the
+        framing with that in mind - and note that where the honest answer is
+        "use Nimbalyst", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Nimbalyst is a workspace you operate inside: it runs parallel agent
+          sessions, shows you their diffs, and gives you visual editors for
+          the documents around them. sitrep is an AI project status
+          dashboard: a state layer on top of the markdown your AI agents
+          already generate - it runs nothing, edits nothing, and works the
+          same whichever tool produced the files.
+        </p>
+        <p>
+          The two answer different moments. Nimbalyst is for the hours you
+          are actively driving agents. sitrep is for the moment before that:
+          opening a cold project after days away and needing to know what
+          moved, what is stalled, and what is waiting on you - across every
+          project, not just the ones in a workspace.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">Nimbalyst</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-nimbalyst">
+      <h2 id="choose-nimbalyst" class="text-xl font-semibold tracking-tight">When to choose Nimbalyst</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want to run several agent sessions in parallel and review
+          their diffs in one place - active orchestration is the job.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You like working in a visual environment: WYSIWYG markdown,
+          diagrams, a session board.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want open source you can read and extend, free for individual
+          use, from an active team.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want a companion app for keeping an eye on live sessions from
+          an iPhone.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        sitrep will never compete on any of that: running agents is on its
+        anti-roadmap permanently. If orchestration is what you need,
+        Nimbalyst is a good place to get it.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your question is not "how do I run agents" but "where do my
+          projects stand" - especially after time away.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your state lives in the documents agents leave behind - plans,
+          decision logs, analyses - not in session history, and you want it
+          parsed rather than re-read.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You work across many repos and tools - some sessions in a
+          terminal, some in an IDE, some on another machine - and want one
+          overview that does not care where the work happened.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want a tool that never runs, edits or restructures anything -
+          a glance, not a second cockpit.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        There is no migration between these tools, because sitrep demands
+        nothing: point it at the folders your Nimbalyst workspaces (and
+        everything else) write into, and it starts parsing state from the
+        markdown that is already there. Drive sessions in Nimbalyst; open
+        sitrep when you come back cold. Neither tool has to know the other
+        exists - which is the whole idea behind
+        <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">zero adoption cost</a>.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

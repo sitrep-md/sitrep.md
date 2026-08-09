@@ -25,3 +25,5 @@ Key facts:
 - [FAQ](https://sitrep.md/faq/): the real question set, answered concretely
 - [sitrep vs Obsidian + Dataview](https://sitrep.md/vs/obsidian-dataview/): honest comparison - hand-built vault dashboards vs a passive state layer
 - [sitrep vs Backlog.md](https://sitrep.md/vs/backlog-md/): honest comparison - authored task board vs parsed project state
+- [sitrep vs Nimbalyst](https://sitrep.md/vs/nimbalyst/): honest comparison - a visual workspace you run sessions inside vs a passive cross-project overview
+- [sitrep vs plain VS Code + CLAUDE.md](https://sitrep.md/vs/vscode-claude-md/): the baseline comparison - when the free DIY setup is enough and where it stops scaling
