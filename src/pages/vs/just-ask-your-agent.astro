@@ -122,8 +122,8 @@ const rows = [
           What the prompt has that <Sitrep /> never will: judgment. An agent
           reads meaning - it can notice that a doc marked active declares
           its own approach dead in the prose, weigh contradictions, answer
-          follow-ups. <Sitrep /> deliberately refuses to interpret prose,
-          because an extractor that guesses at meaning invents findings.
+          follow-ups. The extractor deliberately refuses to interpret prose,
+          because guessing at meaning invents findings.
           One is an instrument, the other is an analyst.
         </p>
       </div>
@@ -233,8 +233,7 @@ const rows = [
         <p>
           This is the pairing the comparison actually resolves to: the
           prompt is not <Sitrep />'s competitor so much as its best client.
-          <Sitrep /> ships an MCP server that hands agents its parsed state,
-          read-only - so "what is waiting on me?" stops being a
+          The MCP server hands agents its parsed state, read-only - so "what is waiting on me?" stops being a
           re-derivation and becomes a lookup, and the agent spends its
           context on judgment instead of discovery.
         </p>

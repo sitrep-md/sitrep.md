@@ -44,4 +44,19 @@
       background-clip: text;
     }
   }
+  /* Inside a link the wordmark yields to the link: an anchor must read as
+     one colour under one continuous underline, and the inline-block box
+     alone would break the underline (text decorations do not propagate
+     into atomic inline boxes). Declared last so it wins the @supports
+     path's transparent-ink treatment too. */
+  :global(a) .sitrep-wm {
+    display: inline;
+    color: inherit;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+  }
+  :global(a) .sitrep-wm::after {
+    content: none;
+  }
 </style>
