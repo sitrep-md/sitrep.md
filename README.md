@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/lockup-dark.png">
+  <img src="public/lockup-light.png" alt="sitrep.md" width="300">
+</picture>
+
 # sitrep - AI project status dashboard
 
 **A state layer on top of the markdown your AI agents already generate.
