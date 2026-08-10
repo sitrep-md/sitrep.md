@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/beads/#page',
+    url: 'https://sitrep.md/vs/beads/',
+    name: 'sitrep vs Beads - agent memory or human overview',
+    description:
+      'An honest comparison of sitrep and Beads: a dependency-aware issue tracker that upgrades your coding agent by replacing organic markdown with its own git-synced database, versus a passive state layer parsed from the markdown your agents already wrote.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'Dependency-aware issue tracker for coding agents: the bd CLI over a git-synced database',
+  },
+  {
+    dim: 'Built for',
+    sitrep: 'The human - a glanceable overview you read',
+    other: 'The agent - structured memory it plans, claims and closes issues in',
+  },
+  {
+    dim: 'Format demanded',
+    sitrep: 'None - parses the organic markdown agents already write',
+    other: 'Full adoption: install the CLI, route agents through it, work becomes issues in its database',
+  },
+  {
+    dim: 'What it reads',
+    sitrep: 'Plans, analyses, decision logs, progress notes - files nobody structured for a tool',
+    other: 'Its own issue graph; the organic markdown history in your repos is invisible to it',
+  },
+  {
+    dim: 'Scope',
+    sitrep: 'Cross-project - one overview across every repo and workspace',
+    other: 'Per-repo; repos that never installed it do not exist for it',
+  },
+  {
+    dim: 'Human overview',
+    sitrep: 'The core feature - status, decisions, staleness, newest activity first',
+    other: 'A CLI; dashboards exist only as third-party community tools',
+  },
+  {
+    dim: 'Writes to your files',
+    sitrep: 'Three guarded state operations in the document’s own convention; nothing else, ever',
+    other: 'Read-write by design - agents continuously update its issue database',
+  },
+  {
+    dim: 'Agent integration',
+    sitrep: 'MCP server exposing parsed state, read-only first',
+    other: 'Deep and agent-first: setup commands for the major agents, MCP, hooks, ready-work queues',
+  },
+  {
+    dim: 'License and price',
+    sitrep: 'Commercial desktop app, in development',
+    other: 'Free, MIT-licensed open source',
+  },
+  {
+    dim: 'Local-first',
+    sitrep: 'Yes - no account, no network, no telemetry by default',
+    other: 'Yes - local and git-backed, no cloud dependency',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs Beads - agent memory or human overview"
+  description="Beads upgrades your coding agent's memory by replacing markdown plans with a dependency-aware, git-synced issue tracker; sitrep is a status dashboard parsed from the markdown your agents already wrote. When to choose each, honestly - including when Beads is the better pick."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs Beads
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Beads is the strongest agent-side state tool in this space: a
+        dependency-aware issue tracker your coding agents plan, claim and
+        close work in, synced through git. If the problem you are solving is
+        your agent's memory, Beads is better than sitrep, because sitrep does
+        not manage agents at all. The two tools point in opposite directions
+        - and compose.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
+        framing with that in mind - and note that where the honest answer is
+        "use Beads", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Beads exists because markdown plans are a poor memory for agents:
+          it replaces them with a structured issue graph - dependencies,
+          blockers, epics, ready-work queues - that agents read and write
+          through the bd CLI, versioned and synced through git. sitrep points
+          the other way: it is an AI project status dashboard for the human,
+          a state layer parsed out of the organic markdown your agents
+          already produce, with no format for anyone to adopt.
+        </p>
+        <p>
+          Put differently: Beads makes the agent smarter inside a repo that
+          adopted it. sitrep makes you oriented across every repo, including
+          the ones nobody instrumented - because the plans, decision logs and
+          progress notes are already lying there.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">Beads</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-beads">
+      <h2 id="choose-beads" class="text-xl font-semibold tracking-tight">When to choose Beads</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your agents run long-horizon, multi-session or multi-agent work in
+          a repo, and losing the thread between sessions is the pain you are
+          solving.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want real dependency edges - blockers, epics, discovered-from
+          links, ready-work queues - not a flat task list.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          The agent is the primary consumer of project state, and a CLI is
+          how you are happy to meet it.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want free, MIT-licensed open source with a large, active
+          contributor community.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        Agent-side state infrastructure is on sitrep's anti-roadmap
+        permanently - that job is Beads', and it does it better than
+        anything else right now.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Months of project state already live in organic markdown - plans,
+          analyses, decision docs - and migrating it into any tracker is
+          exactly the work you do not want.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want a human overview across every project - what moved, what
+          is stalled, what is waiting on you - not a per-repo CLI.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Some of your repos will never adopt any tool, and you still need to
+          see them.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want zero operational weight: nothing to install per repo,
+          nothing to migrate, nothing agents must be routed through.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        These tools compose unusually well, because they never touch the same
+        files. Beads structures the agent's working memory inside the repos
+        that adopted it; sitrep reads the plans, analyses and decision docs
+        those same agents keep writing anyway - across every repo, Beads or
+        not. One is the agent's notebook, the other is your situation room.
+        Both are
+        <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">local-first</a>,
+        git-friendly, and account-free.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

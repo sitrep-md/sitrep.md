@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/agentsview/#page',
+    url: 'https://sitrep.md/vs/agentsview/',
+    name: 'sitrep vs AgentsView - session logs or project state',
+    description:
+      'An honest comparison of sitrep and AgentsView: analytics over the session transcripts your coding agents leave behind - what ran, what it cost - versus a status layer parsed from the markdown they wrote - where projects stand and what is waiting on you.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'Session analytics for coding agents - dashboards over the transcripts they leave on disk',
+  },
+  {
+    dim: 'What it reads',
+    sitrep: 'The markdown agents wrote: plans, analyses, decision logs, progress notes',
+    other: 'The logs agents left: session transcripts - prompts, tool calls, tokens - across many agent CLIs',
+  },
+  {
+    dim: 'Question answered',
+    sitrep: '"Where do my projects stand, and what is waiting on me?" - forward-looking',
+    other: '"What did my agents do, when, and what did it cost?" - retrospective',
+  },
+  {
+    dim: 'Format demanded',
+    sitrep: 'None - reads what is already there',
+    other: 'None - reads what is already there',
+  },
+  {
+    dim: 'Scope',
+    sitrep: 'Cross-project, across every repo and workspace',
+    other: 'Cross-project, across every indexed agent and repo',
+  },
+  {
+    dim: 'State surfaced',
+    sitrep: 'Status, phases, open decisions, due dates, staleness against the repo',
+    other: 'Activity, heatmaps, cost and token spend, session summaries and search',
+  },
+  {
+    dim: 'Writes to your files',
+    sitrep: 'Three guarded state operations in the document’s own convention; nothing else, ever',
+    other: 'Nothing - read-only over the logs',
+  },
+  {
+    dim: 'Agent integration',
+    sitrep: 'MCP server exposing parsed state, read-only first',
+    other: 'Reads the session files of many agent CLIs; the agents are the subject, not the client',
+  },
+  {
+    dim: 'License and price',
+    sitrep: 'Commercial desktop app, in development',
+    other: 'Free, MIT-licensed open source',
+  },
+  {
+    dim: 'Local-first',
+    sitrep: 'Yes - no account, no network, no telemetry by default',
+    other: 'Yes by default - indexes locally on your machine',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs AgentsView - session logs or project state"
+  description="AgentsView and sitrep are the closest neighbors in this space: both local-first, both passive, both cross-project. The difference is the source of truth - AgentsView reads the session logs your agents leave (activity and cost); sitrep reads the markdown they wrote (status and decisions)."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs AgentsView
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Of every tool on these comparison pages, AgentsView is the closest
+        neighbor: free, open-source, local-first, passive, cross-project -
+        the same posture sitrep holds on every axis. The difference is what
+        each one reads, and therefore what question it can answer. For "what
+        did my agents actually do?", AgentsView is the better tool, plainly.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
+        framing with that in mind - and note that where the honest answer is
+        "use AgentsView", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Your coding agents leave two trails behind. One is the session
+          transcript - every prompt, tool call and token, logged as data.
+          The other is the markdown they wrote on purpose - plans, analyses,
+          decision logs, progress notes. AgentsView indexes the first trail
+          and turns it into activity dashboards: what ran, when, at what
+          cost. sitrep parses the second and turns it into a status view:
+          where each project stands, what is stalled, what is waiting on
+          you.
+        </p>
+        <p>
+          One is telemetry, the other is state. Telemetry tells you the
+          agent worked for three hours on Tuesday; state tells you the
+          migration is at phase 2 of 5 and blocked on a decision only you
+          can make.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">AgentsView</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-av">
+      <h2 id="choose-av" class="text-xl font-semibold tracking-tight">When to choose AgentsView</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want to see and search what your agents did - sessions,
+          timelines, heatmaps - across many different agent CLIs.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Token and cost tracking matters: you want spend per project and
+          per agent, measured from the logs.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You need to find a past session - what was asked, what was tried -
+          and replay the trail.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want free, MIT-licensed open source you can run today.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        Session telemetry is not on sitrep's roadmap - transcripts are the
+        agent's diary, and sitrep deliberately reads only what agents wrote
+        for the project record.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          The question is where things stand, not what happened: status,
+          phases, open decisions, due dates - parsed from the docs
+          themselves.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Re-entry is the pain: opening a cold project after weeks and
+          needing the state, not the history.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You care whether the docs still tell the truth - staleness against
+          repo activity is a signal you want surfaced, not something you
+          reconstruct from timelines.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your state lives in markdown that no session produced - notes from
+          other tools, hand-written decision logs, docs from before the
+          agents arrived.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        This is the most genuinely complementary pairing on these pages:
+        same machine, same repos, zero overlap in what is read. Run
+        AgentsView to know what your agents did and what it cost; run sitrep
+        to know where your projects stand and what needs you. Neither asks
+        you to change anything about how you or your agents work, and both
+        keep everything
+        <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">on your machine</a>.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/vs/task-master/#page',
+    url: 'https://sitrep.md/vs/task-master/',
+    name: 'sitrep vs Task Master - directing work or observing state',
+    description:
+      'An honest comparison of sitrep and Task Master (claude-task-master): a PRD-to-tasks system your agent executes, versus a passive state layer parsed from the markdown your agents already wrote.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+
+const rows = [
+  {
+    dim: 'What it is',
+    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    other: 'AI task-decomposition system: a PRD in, dependency-ordered tasks out, executed by your agent',
+  },
+  {
+    dim: 'Direction of flow',
+    sitrep: 'Observes - state flows from what agents already wrote to you',
+    other: 'Directs - work flows from a plan you author down to the agent',
+  },
+  {
+    dim: 'Format demanded',
+    sitrep: 'None - parses the organic markdown agents already write',
+    other: 'Its own: a PRD you write, and generated task files the agent works through',
+  },
+  {
+    dim: 'Who consumes it',
+    sitrep: 'The human - a glanceable overview you read',
+    other: 'The agent, via its MCP server and CLI; there is no human dashboard',
+  },
+  {
+    dim: 'Scope',
+    sitrep: 'Cross-project - one overview across every repo and workspace',
+    other: 'Per-repo; each project has its own task file',
+  },
+  {
+    dim: 'Runtime cost',
+    sitrep: 'Parses locally - no API keys, no per-operation spend',
+    other: 'Operations call an LLM - bring an API key (or drive it through Claude Code) and pay per use',
+  },
+  {
+    dim: 'Staleness signals',
+    sitrep: 'Yes - flags docs whose claims the repo has moved past',
+    other: 'No - tasks say what was planned, not whether reality drifted',
+  },
+  {
+    dim: 'Agent integration',
+    sitrep: 'MCP server exposing parsed state, read-only first',
+    other: 'Deep - purpose-built MCP server; the agent executes the task loop',
+  },
+  {
+    dim: 'License and price',
+    sitrep: 'Commercial desktop app, in development',
+    other: 'Free, open source (MIT with Commons Clause), plus your LLM API usage',
+  },
+  {
+    dim: 'Local-first',
+    sitrep: 'Yes - no account, no network, no telemetry by default',
+    other: 'Local files, but most operations depend on an LLM API',
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep vs Task Master - directing work or observing state"
+  description="Task Master turns a PRD into dependency-ordered tasks your agent executes; sitrep is a status dashboard parsed from the markdown your agents already wrote. One directs the work, the other observes it - when to choose each, honestly."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        sitrep vs Task Master
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Task Master (claude-task-master) is one of the most widely adopted
+        tools in the agentic-coding space: you feed it a PRD, it decomposes
+        the work into dependency-ordered tasks, and your agent executes them.
+        If you want to direct an agent through a build, it is the stronger
+        tool - because sitrep does not direct anything.
+      </p>
+      <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
+        Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
+        framing with that in mind - and note that where the honest answer is
+        "use Task Master", this page says so.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="difference">
+      <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Task Master is prescriptive: state starts as a plan you author -
+          the PRD - which it turns into structured tasks the agent consumes
+          and checks off. sitrep is observational: state is whatever your
+          agents actually wrote down along the way - plans, analyses,
+          decision logs - parsed into a status view after the fact, with
+          nothing authored for the tool.
+        </p>
+        <p>
+          The two answer different questions. Task Master answers "what
+          should my agent do next in this project?" sitrep answers "where do
+          all my projects stand, and what is waiting on me?" - including the
+          projects that never had a PRD.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="table">
+      <h2 id="table" class="text-xl font-semibold tracking-tight">Side by side</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[40rem] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-line text-left">
+              <th scope="col" class="py-3 pr-4 font-medium"></th>
+              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 font-medium">Task Master</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map(({ dim, sitrep, other }) => (
+                <tr class="border-b border-line align-top">
+                  <th scope="row" class="py-3 pr-4 text-left font-medium">{dim}</th>
+                  <td class="py-3 pr-4 text-ink-muted">{sitrep}</td>
+                  <td class="py-3 text-ink-muted">{other}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-tm">
+      <h2 id="choose-tm" class="text-xl font-semibold tracking-tight">When to choose Task Master</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You are starting a well-specified build and can write the PRD -
+          decomposing it into an ordered task graph is exactly the help you
+          want.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your agent loses the plot mid-build, and you want it to work
+          through explicit, dependency-ordered tasks instead of improvising.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your workflow is one project at a time, driven from inside the
+          editor.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Free and open source matters more than a maintained pace - be
+          aware, honestly, that as of mid-2026 its team's energy has visibly
+          shifted to their hosted planning platform.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-prose text-sm text-ink-muted">
+        Directing agents through authored task structures is on sitrep's
+        anti-roadmap permanently - if that is the job, Task Master or Beads
+        is the right shelf.
+      </p>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          Your projects did not start from a PRD - the state lives in the
+          organic markdown your agents produced as they worked, and that is
+          what needs surfacing.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You juggle many projects and the question is cross-cutting: what
+          moved, what stalled, what decision is blocking what.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You want state without spend - no API key, no per-operation LLM
+          calls, everything parsed locally.
+        </li>
+        <li class="flex gap-3 text-sm">
+          <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
+          You care whether the docs still tell the truth - staleness against
+          the repo is a first-class signal, not an unknown.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
+      <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        There is no conflict: Task Master runs the loop inside a project,
+        sitrep watches the whole board. An agent working through Task Master
+        tasks still writes plans, analyses and decisions - sitrep parses
+        those like any other markdown, so the project shows up in your
+        overview whether or not it also has a task file. There is no
+        migration in either direction, because sitrep
+        <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">never asks you to move a file</a>.
+      </p>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        sitrep is in development, launching first on macOS. Local-first -
+        your files never leave your machine.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
