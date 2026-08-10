@@ -1,30 +1,30 @@
 # AGENTS.md
 
-Guidance for agent sessions in `sitrep-www`, the marketing site for sitrep
-(https://sitrep.md). `CLAUDE.md` is a symlink to this file.
+Guidance for agent sessions in this repo - the public home of sitrep
+(https://sitrep.md): the site source, the corrections ledger, and, from the
+macOS launch, the app's releases and issue tracker. `CLAUDE.md` is a
+symlink to this file.
 
 ## What this is
 
 The public landing site for **sitrep - an AI project status dashboard**.
 Astro (static output) + Tailwind v4, built with Bun, served as Cloudflare
-Workers static assets. This repo is the site only; the product lives
-elsewhere (currently a private repo, moving to a sibling
-dir here).
+Workers static assets. This repo is the site and the public record; the
+app's source lives in a private repo.
 
-Pages: `/` (landing), `/how-it-works/`, `/principles/`, `/faq/` (carries
-FAQPage JSON-LD), plus `public/llms.txt`, an AI-crawler-welcoming
-`public/robots.txt`, and an IndexNow key file. Every page emits a JSON-LD
-@graph through `BaseLayout` (`WebSite` always; pass extra nodes via the
-`schema` prop). The pricing points are an OPEN ruling in the
-product strategy - they appear nowhere on the site and must not until the
-ruling closes.
+Pages: `/` (landing), `/how-it-works/`, `/principles/`, `/security/`,
+`/about/`, `/faq/` (carries FAQPage JSON-LD), the `/vs/` comparison pages,
+plus `public/llms.txt`, an AI-crawler-welcoming `public/robots.txt`, and an
+IndexNow key file. Every page emits a JSON-LD @graph through `BaseLayout`
+(`WebSite` always; pass extra nodes via the `schema` prop). Pricing is
+undecided and appears nowhere on the site - do not add numbers until the
+product's decision log closes that ruling.
 
 ## Product identity - the copy contract
 
-The source of truth for positioning is the product repo's strategy layer:
-`docs/strategy.md`, `docs/roadmap.md` (the calendar-bound GEO track),
-`docs/design-rules.md` and `docs/ground-rules.md` in the sitrep product repo.
-Read them before writing any page copy. The parts that bind this site:
+The source of truth for positioning is the product repo's strategy layer;
+sessions with access read it before writing page copy. The parts that bind
+this site:
 
 - Category phrase: **"AI project status dashboard"**. Use it verbatim and
   consistently - category discipline is a ground rule, not a style choice.
@@ -36,6 +36,9 @@ Read them before writing any page copy. The parts that bind this site:
   default), one writing surface in the product.
 - The anti-roadmap is binding: never promise editor features, agent
   orchestration, mobile control, or an account-required core.
+- Claims are concrete and checkable, never superlative. A material public
+  claim that turns out wrong, stale, or unbacked gets a dated entry in
+  `CORRECTIONS.md` with the fix - regardless of how it looks.
 
 ## Design
 
@@ -53,25 +56,6 @@ Same contract as the product app:
   otherwise). Don't move that logic into a framework component; it must run
   before paint or the page flashes.
 
-## Reference implementation
-
-The local reference project is the SEO/GEO/AI-optimized Astro site this
-scaffold deliberately did not copy machinery from yet. When a page needs the
-real thing, port the pattern from there instead of inventing one:
-
-- `src/layouts/BaseLayout.astro` - one JSON-LD `@graph` per page
-  (Organization always, plus route-provided schema).
-- `src/lib/social-image.ts` - centralized OG/Twitter image resolution.
-- `src/lib/schema-html.ts` - HTML reduced to the tag subset Google accepts
-  in structured data.
-- `scripts/linkcheck.mjs` - post-build internal link + hreflang validation.
-- `scripts/gen-og-card.mjs` / `gen-icons.mjs` - hand-run, committed OG cards
-  and favicons.
-- `redirects.mjs` + the emitRedirects hook - centralized 301 table written
-  to `dist/_redirects`.
-- The deploy workflow's Astro image-cache key, when this site gains real
-  images.
-
 ## Commands
 
 - `astro dev --background` - dev server in background mode; manage with
@@ -83,15 +67,15 @@ real thing, port the pattern from there instead of inventing one:
   `CLOUDFLARE_ACCOUNT_ID` in the environment.
 - `bun run indexnow` - submit the live sitemap's URLs to IndexNow
   (Bing/Copilot/ChatGPT ride Bing's index). Run after every content ship to
-  live; the GEO playbook's cadence is at least one pushed content ship per
-  week.
+  live; the cadence is at least one pushed content ship per week.
 
 ## Deploy topology (don't rediscover this)
 
-- Two workers, two branches: push to `dev` deploys `sitrep-www-dev` at
-  **https://dev.sitrep.md**; push to `main` deploys `sitrep-www` at
+- Two workers, two branches: push to `dev` deploys the dev worker at
+  **https://dev.sitrep.md**; push to `main` deploys the live worker at
   **https://sitrep.md**. Workflows in `.github/workflows/`.
-- `dev` is the working branch; `main` is promotion to live.
+- `dev` is the working branch; `main` is promotion to live, moved by
+  `git merge --ff-only dev`.
 - The account has **no workers.dev subdomain**; both targets are custom
   domains on the sitrep.md zone.
 - **Custom domains are attached out-of-band**, once, via the account-level
@@ -105,9 +89,7 @@ real thing, port the pattern from there instead of inventing one:
 ## Git
 
 Commit directly on the current branch (normally `dev`). No feature branches
-or PRs unless asked. Repo: `sitrep-md/sitrep-www` on GitHub; the default SSH
-key authenticates as the right account. Run `bun run build`
-before committing.
+or PRs unless asked. Run `bun run build` before committing.
 
 ## Astro documentation
 
