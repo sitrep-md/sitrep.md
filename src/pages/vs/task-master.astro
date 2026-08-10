@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Sitrep from '../../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -80,14 +81,14 @@ const rows = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        sitrep vs Task Master
+        <Sitrep /> vs Task Master
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
         Task Master (claude-task-master) is one of the most widely adopted
         tools in the agentic-coding space: you feed it a PRD, it decomposes
         the work into dependency-ordered tasks, and your agent executes them.
         If you want to direct an agent through a build, it is the stronger
-        tool - because sitrep does not direct anything.
+        tool - because <Sitrep /> does not direct anything.
       </p>
       <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
         Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
@@ -102,14 +103,14 @@ const rows = [
         <p>
           Task Master is prescriptive: state starts as a plan you author -
           the PRD - which it turns into structured tasks the agent consumes
-          and checks off. sitrep is observational: state is whatever your
+          and checks off. <Sitrep /> is observational: state is whatever your
           agents actually wrote down along the way - plans, analyses,
           decision logs - parsed into a status view after the fact, with
           nothing authored for the tool.
         </p>
         <p>
           The two answer different questions. Task Master answers "what
-          should my agent do next in this project?" sitrep answers "where do
+          should my agent do next in this project?" <Sitrep /> answers "where do
           all my projects stand, and what is waiting on me?" - including the
           projects that never had a PRD.
         </p>
@@ -123,7 +124,7 @@ const rows = [
           <thead>
             <tr class="border-b border-line text-left">
               <th scope="col" class="py-3 pr-4 font-medium"></th>
-              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 pr-4 font-medium"><Sitrep /></th>
               <th scope="col" class="py-3 font-medium">Task Master</th>
             </tr>
           </thead>
@@ -169,14 +170,14 @@ const rows = [
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
-        Directing agents through authored task structures is on sitrep's
+        Directing agents through authored task structures is on <Sitrep />'s
         anti-roadmap permanently - if that is the job, Task Master or Beads
         is the right shelf.
       </p>
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
-      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose <Sitrep /></h2>
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -206,15 +207,14 @@ const rows = [
       <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
       <p class="mt-5 max-w-prose text-ink-muted">
         There is no conflict: Task Master runs the loop inside a project,
-        sitrep watches the whole board. An agent working through Task Master
-        tasks still writes plans, analyses and decisions - sitrep parses
+        <Sitrep /> watches the whole board. An agent working through Task Master
+        tasks still writes plans, analyses and decisions - <Sitrep /> parses
         those like any other markdown, so the project shows up in your
         overview whether or not it also has a task file. There is no
-        migration in either direction, because sitrep
-        <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">never asks you to move a file</a>.
+        migration in either direction, because <Sitrep /> <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">never asks you to move a file</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        sitrep is in development, launching first on macOS. Local-first -
+        <Sitrep /> is in development, launching first on macOS. Local-first -
         your files never leave your machine.
       </p>
     </section>

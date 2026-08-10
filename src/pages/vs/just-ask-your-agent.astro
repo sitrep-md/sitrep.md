@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Sitrep from '../../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -80,10 +81,10 @@ const rows = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        sitrep vs just asking your agent
+        <Sitrep /> vs just asking your agent
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        The realest alternative to sitrep is not any tool on these pages. It
+        The realest alternative to <Sitrep /> is not any tool on these pages. It
         is typing "what is the status of this project?" into the agent you
         already run. That prompt is free, needs no install, and inside one
         warm repo it genuinely works - so this page starts by conceding it,
@@ -100,7 +101,7 @@ const rows = [
       <h2 id="difference" class="text-xl font-semibold tracking-tight">The one-sentence difference</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          The prompt re-derives state; sitrep holds it. Every time you ask,
+          The prompt re-derives state; <Sitrep /> holds it. Every time you ask,
           the agent has to find the record before it can judge it - locate
           the plans, the decision logs, the progress notes, read them, and
           compose an answer. That work is re-paid on every ask, the answer
@@ -109,7 +110,7 @@ const rows = [
           and may get a different paragraph.
         </p>
         <p>
-          sitrep pays the reading cost once, at parse time, and keeps the
+          <Sitrep /> pays the reading cost once, at parse time, and keeps the
           result current as files change. Status, phases, open decisions,
           due dates and staleness are extracted by fixed conventions, so the
           same question gets the same answer twice, every count moves only
@@ -118,10 +119,10 @@ const rows = [
           happen twenty times a day.
         </p>
         <p>
-          What the prompt has that sitrep never will: judgment. An agent
+          What the prompt has that <Sitrep /> never will: judgment. An agent
           reads meaning - it can notice that a doc marked active declares
           its own approach dead in the prose, weigh contradictions, answer
-          follow-ups. sitrep deliberately refuses to interpret prose,
+          follow-ups. <Sitrep /> deliberately refuses to interpret prose,
           because an extractor that guesses at meaning invents findings.
           One is an instrument, the other is an analyst.
         </p>
@@ -135,7 +136,7 @@ const rows = [
           <thead>
             <tr class="border-b border-line text-left">
               <th scope="col" class="py-3 pr-4 font-medium"></th>
-              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 pr-4 font-medium"><Sitrep /></th>
               <th scope="col" class="py-3 font-medium">Asking your agent</th>
             </tr>
           </thead>
@@ -182,13 +183,15 @@ const rows = [
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
-      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose <Sitrep /></h2>
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          The question is plural: where do <em>all</em> the projects stand,
-          what moved since last week, what is waiting on you across every
-          repo - answered at a glance instead of one session per project.
+          <span>
+            The question is plural: where do <em>all</em> the projects stand,
+            what moved since last week, what is waiting on you across every
+            repo - answered at a glance instead of one session per project.
+          </span>
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -205,17 +208,21 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You care whether the docs still tell the truth. A status line is a
-          claim about a moment; sitrep checks claims against the repo's
-          actual activity and flags the ones going stale - arithmetic the
-          prompt would have to redo across every project, every ask.
+          <span>
+            You care whether the docs still tell the truth. A status line is a
+            claim about a moment; <Sitrep /> checks claims against the repo's
+            actual activity and flags the ones going stale - arithmetic the
+            prompt would have to redo across every project, every ask.
+          </span>
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You do not want "keep the docs up to date" to mean unsupervised
-          free-form edits to your project record. sitrep's writes are three
-          guarded state operations, previewed, in the document's own
-          convention - and nothing else, ever.
+          <span>
+            You do not want "keep the docs up to date" to mean unsupervised
+            free-form edits to your project record. <Sitrep />'s writes are
+            three guarded state operations, previewed, in the document's own
+            convention - and nothing else, ever.
+          </span>
         </li>
       </ul>
     </section>
@@ -225,8 +232,8 @@ const rows = [
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           This is the pairing the comparison actually resolves to: the
-          prompt is not sitrep's competitor so much as its best client.
-          sitrep ships an MCP server that hands agents its parsed state,
+          prompt is not <Sitrep />'s competitor so much as its best client.
+          <Sitrep /> ships an MCP server that hands agents its parsed state,
           read-only - so "what is waiting on me?" stops being a
           re-derivation and becomes a lookup, and the agent spends its
           context on judgment instead of discovery.
@@ -235,7 +242,7 @@ const rows = [
           The same split rescues the bigger prompt. "Review recent changes
           and bring the docs up to date" run bare must first reconstruct an
           unverified, single-use picture of where everything stands - then
-          throw it away. Run with sitrep underneath, the stale claims, due
+          throw it away. Run with <Sitrep /> underneath, the stale claims, due
           items and open decisions arrive as a worklist with file and line;
           the agent applies its judgment and makes the edits in your
           session, where you see them; and the dashboard afterwards shows
@@ -244,7 +251,7 @@ const rows = [
           analyst's work.
         </p>
         <p class="text-sm text-ink-faint">
-          sitrep is in development, launching first on macOS. Local-first -
+          <Sitrep /> is in development, launching first on macOS. Local-first -
           your files never leave your machine.
         </p>
       </div>

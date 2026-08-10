@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Sitrep from '../../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -75,11 +76,11 @@ const rows = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        sitrep vs Obsidian&nbsp;+&nbsp;Dataview
+        <Sitrep /> vs Obsidian&nbsp;+&nbsp;Dataview
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
         Obsidian with the Dataview plugin - or the newer built-in Bases - is
-        the closest do-it-yourself substitute for sitrep, and for many people
+        the closest do-it-yourself substitute for <Sitrep />, and for many people
         it is the right choice. Here is the honest version of when it is, and
         when it is not.
       </p>
@@ -95,7 +96,7 @@ const rows = [
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           Obsidian is a knowledge base you author into; with Dataview, it
-          rewards that authoring with dashboards you design yourself. sitrep
+          rewards that authoring with dashboards you design yourself. <Sitrep />
           is an AI project status dashboard: a state layer on top of the
           markdown your AI agents already generate - it parses status,
           phases, decisions and due dates out of files nobody structured for
@@ -104,7 +105,7 @@ const rows = [
         <p>
           Both are local-first markdown tools, which is why they get
           compared. But they answer different questions. Obsidian answers
-          "what do I know?" from notes you wrote. sitrep answers "where do my
+          "what do I know?" from notes you wrote. <Sitrep /> answers "where do my
           projects stand?" from docs your agents wrote.
         </p>
       </div>
@@ -117,7 +118,7 @@ const rows = [
           <thead>
             <tr class="border-b border-line text-left">
               <th scope="col" class="py-3 pr-4 font-medium"></th>
-              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 pr-4 font-medium"><Sitrep /></th>
               <th scope="col" class="py-3 font-medium">Obsidian + Dataview</th>
             </tr>
           </thead>
@@ -152,7 +153,7 @@ const rows = [
           nothing else: no body text, not even the inline fields Dataview
           can read. Point a Base at the markdown Claude Code just wrote and
           you get an empty table, because agents do not write frontmatter.
-          sitrep's whole premise is that half: it parses status, phases and
+          <Sitrep />'s whole premise is that half: it parses status, phases and
           decisions out of files nobody structured for any tool - zero
           frontmatter, zero views to configure.
         </p>
@@ -183,14 +184,14 @@ const rows = [
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
-        In that case Obsidian is excellent, and sitrep will not try to talk
-        you out of it - a second brain is on sitrep's anti-roadmap,
+        In that case Obsidian is excellent, and <Sitrep /> will not try to talk
+        you out of it - a second brain is on <Sitrep />'s anti-roadmap,
         permanently.
       </p>
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
-      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose <Sitrep /></h2>
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -210,9 +211,11 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You have tried the Obsidian dashboard route and abandoned it when
-          the queries went stale - a pattern common enough that it is one of
-          the reasons sitrep exists.
+          <span>
+            You have tried the Obsidian dashboard route and abandoned it when
+            the queries went stale - a pattern common enough that it is one of
+            the reasons <Sitrep /> exists.
+          </span>
         </li>
       </ul>
     </section>
@@ -221,14 +224,14 @@ const rows = [
       <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
       <p class="mt-5 max-w-prose text-ink-muted">
         The tools compose. Keep Obsidian for the knowledge you author; point
-        sitrep at the folders your agents write into. sitrep never asks you
+        <Sitrep /> at the folders your agents write into. <Sitrep /> never asks you
         to move a file, so there is nothing to migrate and no overlap to
         manage - it is explicitly not a Notion/Obsidian replacement, and that
         refusal is written into its
         <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">product contract</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        sitrep is in development, launching first on macOS. Local-first -
+        <Sitrep /> is in development, launching first on macOS. Local-first -
         your files never leave your machine.
       </p>
     </section>
