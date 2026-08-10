@@ -10,7 +10,7 @@ const pageSchema = [
     url: 'https://sitrep.md/vs/obsidian-dataview/',
     name: 'sitrep vs Obsidian + Dataview for AI project status',
     description:
-      'An honest comparison of sitrep and Obsidian with Dataview for tracking the state of AI coding projects: hand-built dashboards over a vault you author, versus a passive state layer over the markdown your agents already generate.',
+      'An honest comparison of sitrep and Obsidian with Dataview or the built-in Bases for tracking the state of AI coding projects: dashboards over a vault you author and structure, versus a passive state layer over the markdown your agents already generate.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -19,7 +19,7 @@ const rows = [
   {
     dim: 'What it is',
     sitrep: 'AI project status dashboard - a passive state layer over existing files',
-    other: 'Knowledge base and editor; Dataview adds a query language over your vault',
+    other: 'Knowledge base and editor; Dataview adds a query language over your vault, the newer built-in Bases a visual database view',
   },
   {
     dim: 'Cross-project overview',
@@ -29,7 +29,7 @@ const rows = [
   {
     dim: 'Works on unmodified agent markdown',
     sitrep: 'Yes - parses the organic conventions in plans, analyses and decision docs as agents write them',
-    other: 'No - Dataview needs structured frontmatter, tags or inline fields to query against',
+    other: 'No - Dataview needs frontmatter, tags or inline fields; Bases is stricter still, reading properties only and no body text',
   },
   {
     dim: 'Setup required',
@@ -44,7 +44,7 @@ const rows = [
   {
     dim: 'Mobile and sync',
     sitrep: 'Planned: a read-only, end-to-end-encrypted mirror of parsed state',
-    other: 'Mature mobile apps today, with a paid Sync service',
+    other: 'Mature mobile apps today, with a paid Sync service - Bases dashboards included',
   },
   {
     dim: 'Search',
@@ -66,7 +66,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs Obsidian + Dataview - AI project status"
-  description="Obsidian with Dataview is the closest DIY substitute for sitrep - and often the right choice. The difference is authoring: hand-built dashboards over a vault you structure, versus a state layer that parses the markdown your AI agents already generate."
+  description="Obsidian with Dataview - or the built-in Bases - is the closest DIY substitute for sitrep, and often the right choice. The difference is authoring: dashboards over a vault you structure with properties, versus a state layer that parses the markdown your AI agents already generate."
   schema={pageSchema}
 >
   <Nav />
@@ -78,9 +78,10 @@ const rows = [
         sitrep vs Obsidian&nbsp;+&nbsp;Dataview
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        Obsidian with the Dataview plugin is the closest do-it-yourself
-        substitute for sitrep - and for many people it is the right choice.
-        Here is the honest version of when it is, and when it is not.
+        Obsidian with the Dataview plugin - or the newer built-in Bases - is
+        the closest do-it-yourself substitute for sitrep, and for many people
+        it is the right choice. Here is the honest version of when it is, and
+        when it is not.
       </p>
       <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
         Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
@@ -132,6 +133,29 @@ const rows = [
             }
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="bases">
+      <h2 id="bases" class="text-xl font-semibold tracking-tight">What about Obsidian Bases?</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Bases - built into Obsidian since late 2025, mobile included -
+          removed the query-writing half of the Dataview tax: no DQL, just a
+          visual editor that turns notes into database views. If you were
+          only avoiding Obsidian because of the query language, Bases is the
+          simpler answer, and this page will not pretend otherwise.
+        </p>
+        <p>
+          What it did not remove is the other half. Bases reads note
+          properties - the frontmatter you author - and file metadata, and
+          nothing else: no body text, not even the inline fields Dataview
+          can read. Point a Base at the markdown Claude Code just wrote and
+          you get an empty table, because agents do not write frontmatter.
+          sitrep's whole premise is that half: it parses status, phases and
+          decisions out of files nobody structured for any tool - zero
+          frontmatter, zero views to configure.
+        </p>
       </div>
     </section>
 
