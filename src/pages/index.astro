@@ -208,9 +208,10 @@ const never = [
       <p class="mt-3 max-w-prose text-ink-muted">
         Every adjacent tool gets project state another way: you author it in
         the tool's shape, you work inside the tool, it reads the session
-        trail instead - or it stays in your head. sitrep parses the state
-        your files already contain. Each comparison below is honest about
-        when the other tool is the better choice.
+        trail instead, you ask an agent to re-derive it every time - or it
+        stays in your head. sitrep parses the state your files already
+        contain. Each comparison below is honest about when the other
+        approach is the better choice.
       </p>
       <div class="mt-8 overflow-x-auto">
         <table class="w-full min-w-[44rem] border-collapse text-sm">
@@ -265,11 +266,17 @@ const never = [
               <td class="py-3 pr-4 text-ink-muted">It indexes session transcripts - activity and cost, not doc state</td>
               <td class="py-3"><a href="/vs/agentsview/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs AgentsView</a></td>
             </tr>
-            <tr class="align-top">
+            <tr class="border-b border-line align-top">
               <th scope="row" class="py-3 pr-4 text-left font-medium">Plain VS Code + CLAUDE.md</th>
               <td class="py-3 pr-4 text-ink-muted">The free DIY default</td>
               <td class="py-3 pr-4 text-ink-muted">You read the files and keep the state in your head</td>
               <td class="py-3"><a href="/vs/vscode-claude-md/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs VS&nbsp;Code&nbsp;+&nbsp;CLAUDE.md</a></td>
+            </tr>
+            <tr class="align-top">
+              <th scope="row" class="py-3 pr-4 text-left font-medium">Just asking your agent</th>
+              <td class="py-3 pr-4 text-ink-muted">The null alternative - a prompt, not a tool</td>
+              <td class="py-3 pr-4 text-ink-muted">The agent re-reads the docs and composes a summary, per ask, per project</td>
+              <td class="py-3"><a href="/vs/just-ask-your-agent/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">vs just asking your agent</a></td>
             </tr>
           </tbody>
         </table>
