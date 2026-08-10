@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Sitrep from '../../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -70,14 +71,14 @@ const rows = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        sitrep vs Nimbalyst
+        <Sitrep /> vs Nimbalyst
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
         Nimbalyst is a serious, well-built visual workspace for running
         Claude Code and Codex sessions - open source, actively developed,
-        with an iOS companion. sitrep does a different job, and the fastest
+        with an iOS companion. <Sitrep /> does a different job, and the fastest
         way to pick is to notice which direction you face: Nimbalyst is
-        where you work; sitrep is where you look.
+        where you work; <Sitrep /> is where you look.
       </p>
       <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
         Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
@@ -92,14 +93,14 @@ const rows = [
         <p>
           Nimbalyst is a workspace you operate inside: it runs parallel agent
           sessions, shows you their diffs, and gives you visual editors for
-          the documents around them. sitrep is an AI project status
+          the documents around them. <Sitrep /> is an AI project status
           dashboard: a state layer on top of the markdown your AI agents
           already generate - it runs nothing, edits nothing, and works the
           same whichever tool produced the files.
         </p>
         <p>
           The two answer different moments. Nimbalyst is for the hours you
-          are actively driving agents. sitrep is for the moment before that:
+          are actively driving agents. <Sitrep /> is for the moment before that:
           opening a cold project after days away and needing to know what
           moved, what is stalled, and what is waiting on you - across every
           project, not just the ones in a workspace.
@@ -114,7 +115,7 @@ const rows = [
           <thead>
             <tr class="border-b border-line text-left">
               <th scope="col" class="py-3 pr-4 font-medium"></th>
-              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 pr-4 font-medium"><Sitrep /></th>
               <th scope="col" class="py-3 font-medium">Nimbalyst</th>
             </tr>
           </thead>
@@ -158,14 +159,14 @@ const rows = [
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
-        sitrep will never compete on any of that: running agents is on its
+        <Sitrep /> will never compete on any of that: running agents is on its
         anti-roadmap permanently. If orchestration is what you need,
         Nimbalyst is a good place to get it.
       </p>
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
-      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose <Sitrep /></h2>
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -195,16 +196,16 @@ const rows = [
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="both">
       <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
       <p class="mt-5 max-w-prose text-ink-muted">
-        There is no migration between these tools, because sitrep demands
+        There is no migration between these tools, because <Sitrep /> demands
         nothing: point it at the folders your Nimbalyst workspaces (and
         everything else) write into, and it starts parsing state from the
-        markdown that is already there. Drive sessions in Nimbalyst; open
-        sitrep when you come back cold. Neither tool has to know the other
+        markdown that is already there. Drive sessions in Nimbalyst;
+        open <Sitrep /> when you come back cold. Neither tool has to know the other
         exists - which is the whole idea behind
         <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">zero adoption cost</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        sitrep is in development, launching first on macOS. Local-first -
+        <Sitrep /> is in development, launching first on macOS. Local-first -
         your files never leave your machine.
       </p>
     </section>

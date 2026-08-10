@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
 
 const promises = [
   {
@@ -79,7 +80,7 @@ const never = [
         The product contract
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        sitrep is an AI project status dashboard - and just as importantly, a
+        <Sitrep /> is an AI project status dashboard - and just as importantly, a
         list of things it refuses to become. Both halves are written down,
         and every feature is tested against them. A feature that breaks a
         promise is wrong even if it is useful.
@@ -131,7 +132,7 @@ const never = [
           human or agent - loads before building anything; a task that
           conflicts with a rule stops rather than builds. Decisions, rejected
           alternatives and open questions are recorded in a rulings table
-          that the product itself parses - sitrep reads its own decision log
+          that the product itself parses - <Sitrep /> reads its own decision log
           as a fixture, so a regression in the extractor shows up as a moved
           number in its own docs.
         </p>

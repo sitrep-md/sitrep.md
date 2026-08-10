@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
 const links = [
@@ -12,7 +13,7 @@ const current = Astro.url.pathname;
 
 <header class="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4">
   <a href="/" class="text-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-    sitrep<span class="text-ink-faint">.md</span>
+    <Logo md />
   </a>
   <nav class="flex items-center gap-1 sm:gap-2" aria-label="Main">
     {

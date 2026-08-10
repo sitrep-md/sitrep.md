@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
 
 const appSchema = [
   {
@@ -85,7 +86,7 @@ const never = [
         Never open a cold project again.
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        sitrep is a state layer on top of the markdown your AI agents already
+        <Sitrep /> is a state layer on top of the markdown your AI agents already
         generate. It reads the plans, decisions and progress your agents
         already write - no new format, no import - and answers, at a glance
         and across every project: what moved, what is stalled, and what is
@@ -111,9 +112,9 @@ const never = [
         </p>
         <p class="max-w-prose text-ink-muted">
           So every return to a cold project starts the same way: scrolling
-          old chats, re-opening docs, re-deriving where things stand. sitrep
-          exists so that re-entry stops costing the first fifteen minutes of
-          a session. Open it, see the situation, resume.
+          old chats, re-opening docs, re-deriving where things
+          stand. <Sitrep /> exists so that re-entry stops costing the first
+          fifteen minutes of a session. Open it, see the situation, resume.
         </p>
       </div>
     </section>
@@ -126,7 +127,7 @@ const never = [
           <span class="text-xs font-medium text-accent">01</span>
           <h3 class="font-medium">Point it at folders</h3>
           <p class="text-sm text-ink-muted">
-            No import, no vault. sitrep indexes the markdown already on your
+            No import, no vault. <Sitrep /> indexes the markdown already on your
             disk and watches it with kernel events - a corpus of tens of
             thousands of files narrows to the few hundred documents that are
             actually project docs.
@@ -185,10 +186,10 @@ const never = [
 
     <!-- Anti-roadmap -->
     <section class="border-t border-line py-16 sm:py-20" aria-labelledby="never">
-      <h2 id="never" class="text-2xl font-semibold tracking-tight">What sitrep will never be</h2>
+      <h2 id="never" class="text-2xl font-semibold tracking-tight">What <Sitrep /> will never be</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
         Not a viewer, not an editor, not a Notion/Obsidian replacement. The
-        anti-roadmap is written down and binding - sitrep will never be:
+        anti-roadmap is written down and binding - <Sitrep /> will never be:
       </p>
       <ul class="mt-6 grid max-w-2xl gap-2.5 text-ink-muted">
         {
@@ -204,12 +205,12 @@ const never = [
 
     <!-- Comparison -->
     <section class="border-t border-line py-16 sm:py-20" aria-labelledby="fits">
-      <h2 id="fits" class="text-2xl font-semibold tracking-tight">Where sitrep fits</h2>
+      <h2 id="fits" class="text-2xl font-semibold tracking-tight">Where <Sitrep /> fits</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
         Every adjacent tool gets project state another way: you author it in
         the tool's shape, you work inside the tool, it reads the session
         trail instead, you ask an agent to re-derive it every time - or it
-        stays in your head. sitrep parses the state your files already
+        stays in your head. <Sitrep /> parses the state your files already
         contain. Each comparison below is honest about when the other
         approach is the better choice.
       </p>
@@ -225,7 +226,7 @@ const never = [
           </thead>
           <tbody>
             <tr class="border-b border-line align-top">
-              <th scope="row" class="py-3 pr-4 text-left font-medium">sitrep</th>
+              <th scope="row" class="py-3 pr-4 text-left font-medium"><Sitrep /></th>
               <td class="py-3 pr-4 text-ink-muted">AI project status dashboard</td>
               <td class="py-3 pr-4 text-ink-muted">Point it at folders - it parses the markdown your agents already wrote, across every project</td>
               <td class="py-3 text-ink-muted">-</td>
@@ -282,9 +283,9 @@ const never = [
         </table>
       </div>
       <p class="mt-6 max-w-prose text-sm text-ink-faint">
-        Markdown viewers are deliberately absent: sitrep renders markdown at
-        full fidelity, but a viewer answers "show me this file" and sitrep
-        answers "where do my projects stand".
+        Markdown viewers are deliberately absent: <Sitrep /> renders markdown
+        at full fidelity, but a viewer answers "show me this file"
+        and <Sitrep /> answers "where do my projects stand".
       </p>
     </section>
 
@@ -293,7 +294,7 @@ const never = [
       <h2 id="measured" class="text-2xl font-semibold tracking-tight">Measured, not asserted</h2>
       <div class="mt-6 grid gap-8 sm:grid-cols-2">
         <p class="max-w-prose text-ink-muted">
-          sitrep is built over a real working corpus: roughly 54,900 markdown
+          <Sitrep /> is built over a real working corpus: roughly 54,900 markdown
           files across four workspaces, of which about 730 are actual project
           documents. Every extraction rule is measured against that corpus
           before it ships, and every UI claim is verified by driving the real
@@ -311,7 +312,7 @@ const never = [
           Security &amp; privacy, and how to verify it
         </a>
         <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          Who builds sitrep, and against what corpus
+          Who builds <Sitrep />, and against what corpus
         </a>
       </p>
     </section>
@@ -323,14 +324,14 @@ const never = [
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Do I need to change my files?</dt>
           <dd class="text-sm text-ink-muted">
-            No. No frontmatter, no format, no import. sitrep reads what your
+            No. No frontmatter, no format, no import. <Sitrep /> reads what your
             agents already write.
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Is my data uploaded anywhere?</dt>
           <dd class="text-sm text-ink-muted">
-            No. sitrep is local-first and fully functional with no account
+            No. <Sitrep /> is local-first and fully functional with no account
             and no network. No telemetry by default.
           </dd>
         </div>

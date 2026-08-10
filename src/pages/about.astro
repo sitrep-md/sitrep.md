@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -37,14 +38,14 @@ const pageSchema = [
         One person, four workspaces, too many projects
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        sitrep is built by one developer. This page says who, why, and what
+        <Sitrep /> is built by one developer. This page says who, why, and what
         that means for the product - because when an app asks to read your
         whole disk, "who made this" is a fair question.
       </p>
     </header>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="why">
-      <h2 id="why" class="text-xl font-semibold tracking-tight">Why sitrep exists</h2>
+      <h2 id="why" class="text-xl font-semibold tracking-tight">Why <Sitrep /> exists</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           Tuesday's plan can describe a dead end by Friday. That is the
@@ -89,7 +90,7 @@ const pageSchema = [
           weeks away and could not say what was decided, what was blocked,
           or which plan still held. The state existed. It was written down.
           It was scattered across hundreds of markdown files, and I was the
-          extraction layer. sitrep is that extraction layer as software: an
+          extraction layer. <Sitrep /> is that extraction layer as software: an
           AI project status dashboard - a state layer on top of the
           markdown your AI agents already generate.
         </p>
@@ -100,7 +101,7 @@ const pageSchema = [
       <h2 id="dogfood" class="text-xl font-semibold tracking-tight">Built against its own corpus</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          sitrep runs against my real working corpus every day: roughly
+          <Sitrep /> runs against my real working corpus every day: roughly
           54,900 markdown files across those four workspaces - most of it
           the machine-shaped bulk a working disk accumulates, exports and
           archives and vendored trees - of which about 730 are actual
@@ -110,10 +111,10 @@ const pageSchema = [
           everything, the measurement won and the threshold moved.
         </p>
         <p>
-          The dogfooding goes one level deeper than most: sitrep's own
+          The dogfooding goes one level deeper than most: <Sitrep />'s own
           strategy and decision documents live in the corpus it parses, so
           the product reads its own decision log. A regression in the
-          extractor shows up as a moved number in sitrep's own docs before
+          extractor shows up as a moved number in <Sitrep />'s own docs before
           any user could see it.
         </p>
       </div>
@@ -125,7 +126,7 @@ const pageSchema = [
         <p>
           No growth team, no roadmap by committee. The
           <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">product contract</a>
-          - eight promises and a binding list of things sitrep refuses to
+          - eight promises and a binding list of things <Sitrep /> refuses to
           become - holds precisely because there is nobody to please except
           the people using it. When you write support, you reach the person
           who wrote the code.
@@ -138,7 +139,7 @@ const pageSchema = [
           <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">verified, not believed</a>
           - cut the network and everything still works, read the sync
           protocol when it ships, bring your own storage. "Trust me" is not
-          an argument, and sitrep never asks you to accept it as one.
+          an argument, and <Sitrep /> never asks you to accept it as one.
         </p>
         <p class="text-ink">- Sander</p>
       </div>

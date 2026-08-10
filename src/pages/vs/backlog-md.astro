@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Sitrep from '../../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -80,13 +81,13 @@ const rows = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        sitrep vs Backlog.md
+        <Sitrep /> vs Backlog.md
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
         Backlog.md is one of the strongest tools in this space: free,
         open-source, local-first, markdown-native, with an MCP server - the
-        same values sitrep holds. The difference is the job. If you want a
-        task board, Backlog.md is better than sitrep, because sitrep is not a
+        same values <Sitrep /> holds. The difference is the job. If you want a
+        task board, Backlog.md is better than <Sitrep />, because <Sitrep /> is not a
         task manager and refuses to become one.
       </p>
       <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
@@ -102,15 +103,15 @@ const rows = [
         <p>
           Backlog.md gives you and your agents a structured task format to
           author into - tasks live as markdown files in the repo, move across
-          a kanban board, and travel through git. sitrep is an AI project
+          a kanban board, and travel through git. <Sitrep /> is an AI project
           status dashboard: a state layer on top of the markdown your AI
           agents already generate - it authors nothing and asks you to author
           nothing.
         </p>
         <p>
           Put differently: with Backlog.md, the source of truth is tasks you
-          created. With sitrep, the source of truth is the plans, decision
-          logs and progress notes your agents already wrote - sitrep parses
+          created. With <Sitrep />, the source of truth is the plans, decision
+          logs and progress notes your agents already wrote - <Sitrep /> parses
           status, phases, open decisions and due dates out of them, across
           every project at once.
         </p>
@@ -124,7 +125,7 @@ const rows = [
           <thead>
             <tr class="border-b border-line text-left">
               <th scope="col" class="py-3 pr-4 font-medium"></th>
-              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 pr-4 font-medium"><Sitrep /></th>
               <th scope="col" class="py-3 font-medium">Backlog.md</th>
             </tr>
           </thead>
@@ -168,14 +169,14 @@ const rows = [
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
-        A task manager with its own authored format is on sitrep's
+        A task manager with its own authored format is on <Sitrep />'s
         anti-roadmap permanently - that job is Backlog.md's, and it does it
         well.
       </p>
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
-      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose <Sitrep /></h2>
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -208,15 +209,15 @@ const rows = [
       <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
       <p class="mt-5 max-w-prose text-ink-muted">
         These tools are complementary, not substitutes. Backlog.md is an
-        authored task layer inside a repo; sitrep is a passive state layer
+        authored task layer inside a repo; <Sitrep /> is a passive state layer
         across repos. If your agents work Backlog.md tasks and also write
-        plans and decision docs, sitrep sits above both - it reads whatever
+        plans and decision docs, <Sitrep /> sits above both - it reads whatever
         markdown is there. Nothing about adopting one forecloses the other,
         and they share the same posture:
         <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">local-first, no account, no telemetry</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        sitrep is in development, launching first on macOS. Local-first -
+        <Sitrep /> is in development, launching first on macOS. Local-first -
         your files never leave your machine.
       </p>
     </section>

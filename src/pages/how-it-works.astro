@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
 ---
 
 <BaseLayout
@@ -17,7 +18,7 @@ import Footer from '../components/Footer.astro';
         Conventions, not configuration
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        sitrep is a state layer on top of the markdown your AI agents already
+        <Sitrep /> is a state layer on top of the markdown your AI agents already
         generate. It does not define a format - it recognizes the shapes that
         agents and humans already use, and turns them into cross-project
         state.
@@ -28,9 +29,9 @@ import Footer from '../components/Footer.astro';
       <h2 id="indexing" class="text-xl font-semibold tracking-tight">1. Indexing: from a disk to a corpus</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          You point sitrep at the folders where your projects live. That is
+          You point <Sitrep /> at the folders where your projects live. That is
           the whole setup. There is no import step, no vault, and nothing is
-          copied or moved - sitrep reads your files where they are.
+          copied or moved - <Sitrep /> reads your files where they are.
         </p>
         <p>
           Real workspaces are mostly noise, and not just node_modules and
@@ -38,7 +39,7 @@ import Footer from '../components/Footer.astro';
           accumulates - issue-tracker exports, archived records, vendored
           docs, files that are markdown only in extension. An exclusion
           engine separates project documents from all of that - in the
-          corpus sitrep is developed against, roughly 54,900 markdown files
+          corpus <Sitrep /> is developed against, roughly 54,900 markdown files
           narrow to about 730 real docs. What counts as a doc is visible and
           adjustable, not a black box.
         </p>
@@ -57,8 +58,9 @@ import Footer from '../components/Footer.astro';
       <h2 id="extraction" class="text-xl font-semibold tracking-tight">2. Extraction: the conventions it reads</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          Agent-written project docs converge on a handful of shapes. sitrep
-          parses those shapes - and only those - into structured state:
+          Agent-written project docs converge on a handful of
+          shapes. <Sitrep /> parses those shapes - and only those - into
+          structured state:
         </p>
       </div>
       <dl class="mt-6 grid max-w-3xl gap-6">
@@ -88,7 +90,7 @@ import Footer from '../components/Footer.astro';
             Each ruling is tracked as open, blocked, decided or superseded -
             so "what is still waiting on a decision" is a query, not a
             re-read. Scanning prose for decision-shaped sentences invents
-            findings, so sitrep deliberately does not.
+            findings, so <Sitrep /> deliberately does not.
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
@@ -106,7 +108,7 @@ import Footer from '../components/Footer.astro';
             healthy projects as abandoned. Git history is a tag, not the
             timeline - in a real corpus over a quarter of project docs are
             gitignored, untracked or dirty, and those are disproportionately
-            the in-progress work. sitrep classifies from the documents
+            the in-progress work. <Sitrep /> classifies from the documents
             themselves.
           </dd>
         </div>
@@ -127,7 +129,7 @@ import Footer from '../components/Footer.astro';
           Opening a document gives full reading fidelity - GitHub-flavored
           markdown, syntax-highlighted code with copy buttons, Mermaid
           diagrams rendered offline and theme-aware, KaTeX, callouts, fast on
-          multi-thousand-line files. Rendering is a floor sitrep meets, not
+          multi-thousand-line files. Rendering is a floor <Sitrep /> meets, not
           the product it sells.
         </p>
         <p>
@@ -146,14 +148,14 @@ import Footer from '../components/Footer.astro';
           patches code without updating the plan, and a confident document
           describes a reality that no longer exists. A stale plan looks
           exactly like a current one - until something compares the claim
-          against what actually moved. That comparison is what sitrep does.
+          against what actually moved. That comparison is what <Sitrep /> does.
         </p>
         <p>
           A document <em>claims</em> work is happening when it carries an
           active dated status (in progress, planned, blocked) or a phase
-          list that has started but not finished. For every claiming doc,
-          sitrep asks four questions, strongest first, and the first "yes"
-          wins:
+          list that has started but not finished. For every claiming
+          doc, <Sitrep /> asks four questions, strongest first, and the first
+          "yes" wins:
         </p>
       </div>
       <dl class="mt-6 grid max-w-3xl gap-6">
@@ -171,7 +173,7 @@ import Footer from '../components/Footer.astro';
             Is this a plan whose own step documents kept moving while the
             plan stood still? A session told to "update the docs" updates
             the six files it was pointed at and never revisits the master
-            plan that links them - sitrep follows those links and catches
+            plan that links them - <Sitrep /> follows those links and catches
             the master the moment its children move two weeks past it.
           </dd>
         </div>
@@ -203,7 +205,7 @@ import Footer from '../components/Footer.astro';
           against the real development corpus before the feature shipped,
           and the intuitive two-week drift threshold would have flagged half
           of everything - so it is thirty days, a line at which the reviewed
-          false-positive rate on the live corpus was zero. When sitrep is
+          false-positive rate on the live corpus was zero. When <Sitrep /> is
           not sure, it stays quiet: a missed stale doc is invisible, but a
           false "this doc lies" would poison the one promise the feature
           makes. And because projects have rhythms, the thresholds are
@@ -221,7 +223,7 @@ import Footer from '../components/Footer.astro';
       <h2 id="writeback" class="text-xl font-semibold tracking-tight">5. The one writing surface</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          sitrep is a reader with exactly one, narrow writing surface: three
+          <Sitrep /> is a reader with exactly one, narrow writing surface: three
           convention-shaped operations - set a status, set a due date, mark a
           ruling superseded - each writing a single line in the document's
           own convention, behind a server-side preview and a content-hash

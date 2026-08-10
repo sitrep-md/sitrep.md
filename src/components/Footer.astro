@@ -1,11 +1,13 @@
 ---
+import Sitrep from './Sitrep.astro';
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="mx-auto w-full max-w-5xl px-6 pt-20 pb-10">
   <div class="border-t border-line pt-8 text-xs text-ink-faint">
     <p class="max-w-prose">
-      sitrep is an AI project status dashboard: a state layer on top of the
+      <Sitrep /> is an AI project status dashboard: a state layer on top of the
       markdown your AI agents already generate. Local-first. Your files never
       leave your machine.
     </p>

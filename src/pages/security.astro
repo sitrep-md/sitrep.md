@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -70,9 +71,9 @@ const serverCannotSee = [
         Private by architecture, not by policy
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        sitrep is an AI project status dashboard that reads the markdown on
+        <Sitrep /> is an AI project status dashboard that reads the markdown on
         your disk - which means it deserves more scrutiny than most apps, not
-        less. This page states what sitrep does with your files, what any
+        less. This page states what <Sitrep /> does with your files, what any
         future server could and could not see, and how you can verify each
         claim instead of taking our word for it.
       </p>
@@ -82,10 +83,10 @@ const serverCannotSee = [
       <h2 id="today" class="text-xl font-semibold tracking-tight">What we hold today: nothing</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          sitrep is a local-first desktop app. There is no account, no server
+          <Sitrep /> is a local-first desktop app. There is no account, no server
           component, and no telemetry by default. Your files are indexed into
           a local database on your machine and never leave it. The complete
-          list of data we hold about sitrep users is: nothing.
+          list of data we hold about <Sitrep /> users is: nothing.
         </p>
         <p>
           That stays true after launch. The only network traffic the shipped
@@ -187,8 +188,8 @@ const serverCannotSee = [
       <h2 id="licensing" class="text-xl font-semibold tracking-tight">Trial and licensing, offline</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          sitrep will be a paid desktop app, and paid apps usually mean phone-home
-          license servers. sitrep's licensing is designed so that it never
+          <Sitrep /> will be a paid desktop app, and paid apps usually mean phone-home
+          license servers. <Sitrep />'s licensing is designed so that it never
           conflicts with the local-first promise - like sync, this is the
           design the app <strong class="font-medium text-ink">will ship with</strong>,
           stated before launch so it can be held against us.
@@ -229,13 +230,13 @@ const serverCannotSee = [
       <h2 id="verify" class="text-xl font-semibold tracking-tight">How to verify, instead of trusting</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
         "Private" and "encrypted" are claims every product makes. These are
-        the paths by which sitrep's can be checked.
+        the paths by which <Sitrep />'s can be checked.
       </p>
       <dl class="mt-8 grid max-w-3xl gap-7">
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Cut the network</dt>
           <dd class="text-sm text-ink-muted">
-            Run sitrep with Wi-Fi off, or deny it network access outright with
+            Run <Sitrep /> with Wi-Fi off, or deny it network access outright with
             an outbound firewall like Little Snitch or LuLu. Everything works:
             indexing, extraction, the overview, search, the reader. An app
             that is fully functional offline has no covert channel to lose

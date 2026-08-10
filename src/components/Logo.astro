@@ -1,0 +1,40 @@
+---
+// The lockup: bars mark + wordmark. The mark sits at cap height and is
+// optically centred on the word's ink extent - the 0.055em drop makes the
+// i-dot overhang above equal the p-tail overhang below (measured against
+// system-ui TextMetrics, not eyeballed). Size and weight inherit.
+import Sitrep from './Sitrep.astro';
+const { md = false } = Astro.props;
+---
+
+<span class="logo">
+  <svg viewBox="4 6 24 20" aria-hidden="true" fill="var(--accent)">
+    <rect x="4" y="6" width="24" height="5" rx="2.5" opacity=".25"></rect>
+    <rect x="4" y="6" width="20" height="5" rx="2.5"></rect>
+    <rect x="4" y="13.5" width="24" height="5" rx="2.5" opacity=".25"></rect>
+    <rect x="4" y="13.5" width="13" height="5" rx="2.5"></rect>
+    <rect x="4" y="21" width="24" height="5" rx="2.5" opacity=".25"></rect>
+    <rect x="4" y="21" width="7" height="5" rx="2.5"></rect>
+  </svg>
+  <span>
+    <Sitrep />{md && <span class="suffix">.md</span>}
+  </span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35em;
+    white-space: nowrap;
+  }
+  .logo svg {
+    width: 0.84em;
+    height: 0.7em;
+    transform: translateY(0.055em);
+  }
+  .suffix {
+    color: var(--ink-faint);
+    font-weight: 550;
+  }
+</style>

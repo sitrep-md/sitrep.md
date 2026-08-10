@@ -1,0 +1,47 @@
+---
+// The brand word with its green i-dot. The DOM text is the plain word; the
+// ink layer on top is a pseudo-element drawing the dotless "sıtrep", so only
+// the tittle shows through. Copy/paste, search and screen readers all see
+// just "sitrep" (the pseudo-element carries empty alt text).
+//
+// The under-layer is not painted flat accent green: at 1x every antialiased
+// edge pixel blends the ink overlay with what sits beneath it, and a green
+// underlay tints the whole word green (measured - the hero read as a green
+// word in a 1x screenshot). Instead the under-layer is a glyph-clipped
+// gradient: accent only in the tittle band above the x-height, ink below,
+// so edges blend ink-on-ink and only the dot region can show green.
+---
+
+<span class="sitrep-wm">sitrep</span>
+
+<style>
+  .sitrep-wm {
+    position: relative;
+    display: inline-block;
+    color: var(--accent);
+  }
+  .sitrep-wm::after {
+    content: 'sıtrep' / '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--ink);
+  }
+  /* The lh offset skips the half-leading above the glyphs, so the cut sits
+     just under the tittle regardless of the inherited line-height. Guarded
+     on both features it needs: without the guard, a browser lacking either
+     would drop only the background and paint transparent text - an
+     invisible brand word. Unsupported browsers keep the flat-green word. */
+  @supports (-webkit-background-clip: text) and (height: 1lh) {
+    .sitrep-wm {
+      color: transparent;
+      background: linear-gradient(
+        to bottom,
+        var(--accent) calc((1lh - 1em) / 2 + 0.42em),
+        var(--ink) calc((1lh - 1em) / 2 + 0.42em)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+</style>

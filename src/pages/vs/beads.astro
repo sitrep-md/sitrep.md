@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Sitrep from '../../components/Sitrep.astro';
 
 const pageSchema = [
   {
@@ -80,13 +81,13 @@ const rows = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Comparison</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        sitrep vs Beads
+        <Sitrep /> vs Beads
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
         Beads is the strongest agent-side state tool in this space: a
         dependency-aware issue tracker your coding agents plan, claim and
         close work in, synced through git. If the problem you are solving is
-        your agent's memory, Beads is better than sitrep, because sitrep does
+        your agent's memory, Beads is better than <Sitrep />, because <Sitrep /> does
         not manage agents at all. The two tools point in opposite directions
         - and compose.
       </p>
@@ -104,14 +105,14 @@ const rows = [
           Beads exists because markdown plans are a poor memory for agents:
           it replaces them with a structured issue graph - dependencies,
           blockers, epics, ready-work queues - that agents read and write
-          through the bd CLI, versioned and synced through git. sitrep points
+          through the bd CLI, versioned and synced through git. <Sitrep /> points
           the other way: it is an AI project status dashboard for the human,
           a state layer parsed out of the organic markdown your agents
           already produce, with no format for anyone to adopt.
         </p>
         <p>
           Put differently: Beads makes the agent smarter inside a repo that
-          adopted it. sitrep makes you oriented across every repo, including
+          adopted it. <Sitrep /> makes you oriented across every repo, including
           the ones nobody instrumented - because the plans, decision logs and
           progress notes are already lying there.
         </p>
@@ -125,7 +126,7 @@ const rows = [
           <thead>
             <tr class="border-b border-line text-left">
               <th scope="col" class="py-3 pr-4 font-medium"></th>
-              <th scope="col" class="py-3 pr-4 font-medium">sitrep</th>
+              <th scope="col" class="py-3 pr-4 font-medium"><Sitrep /></th>
               <th scope="col" class="py-3 font-medium">Beads</th>
             </tr>
           </thead>
@@ -170,14 +171,14 @@ const rows = [
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
-        Agent-side state infrastructure is on sitrep's anti-roadmap
+        Agent-side state infrastructure is on <Sitrep />'s anti-roadmap
         permanently - that job is Beads', and it does it better than
         anything else right now.
       </p>
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="choose-sitrep">
-      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose sitrep</h2>
+      <h2 id="choose-sitrep" class="text-xl font-semibold tracking-tight">When to choose <Sitrep /></h2>
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -208,7 +209,7 @@ const rows = [
       <p class="mt-5 max-w-prose text-ink-muted">
         These tools compose unusually well, because they never touch the same
         files. Beads structures the agent's working memory inside the repos
-        that adopted it; sitrep reads the plans, analyses and decision docs
+        that adopted it; <Sitrep /> reads the plans, analyses and decision docs
         those same agents keep writing anyway - across every repo, Beads or
         not. One is the agent's notebook, the other is your situation room.
         Both are
@@ -216,7 +217,7 @@ const rows = [
         git-friendly, and account-free.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        sitrep is in development, launching first on macOS. Local-first -
+        <Sitrep /> is in development, launching first on macOS. Local-first -
         your files never leave your machine.
       </p>
     </section>
