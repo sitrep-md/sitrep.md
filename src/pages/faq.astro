@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: 'How does sitrep know the status of a project?',
-    a: 'It extracts the conventions already common in agent-written docs: dated status lines like "**Status (2026-08-08):** waiting on review", phase headings like "## Phase 2 (SHIPPED)", decision tables with a verdict column, and due-date lines. It deliberately ignores misleading signals - checkboxes (QA sign-off, not progress) and git history alone (in real corpora much of the in-progress work is gitignored or untracked).',
+    a: 'It extracts the conventions already common in agent-written docs: dated status lines like "**Status (2026-08-08):** waiting on review", phase headings like "## Phase 2 (SHIPPED)", decision tables with a verdict column, checklists, and due-date lines. It reads them carefully rather than naively: an all-unticked checklist is an unstarted plan, not abandonment - only a part-ticked one claims work in flight - and git history alone is never trusted (in real corpora much of the in-progress work is gitignored or untracked).',
   },
   {
     q: 'Is sitrep a markdown viewer or editor?',

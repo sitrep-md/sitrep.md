@@ -39,8 +39,8 @@ import Sitrep from '../components/Sitrep.astro';
           accumulates - issue-tracker exports, archived records, vendored
           docs, files that are markdown only in extension. An exclusion
           engine separates project documents from all of that - in the
-          corpus <Sitrep /> is developed against, roughly 54,900 markdown files
-          narrow to about 730 real docs. What counts as a doc is visible and
+          corpus <Sitrep /> is developed against, roughly 69,200 markdown files
+          narrow to about 806 real docs. What counts as a doc is visible and
           adjustable, not a black box.
         </p>
         <p>
@@ -101,11 +101,13 @@ import Sitrep from '../components/Sitrep.astro';
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
-          <dt class="font-medium">What it deliberately ignores</dt>
+          <dt class="font-medium">What it refuses to read naively</dt>
           <dd class="max-w-prose text-sm text-ink-muted">
-            Checkboxes are QA sign-off in real corpora, not progress - nearly
-            every checklist reads zero ticked, and counting them reports
-            healthy projects as abandoned. Git history is a tag, not the
+            A checklist is a signal, and the ticks are what make it a claim:
+            an all-unticked list is an unrun QA pass or a plan nobody
+            started, so only a part-ticked checklist reads as work in
+            flight - counting every checklist as progress reports healthy
+            projects as abandoned. Git history is a tag, not the
             timeline - in a real corpus over a quarter of project docs are
             gitignored, untracked or dirty, and those are disproportionately
             the in-progress work. <Sitrep /> classifies from the documents
