@@ -27,11 +27,11 @@ const principles = [
   },
   {
     title: 'One narrow write path',
-    body: 'Exactly three convention-shaped operations - set a status, set a due date, mark a decision superseded - can write to your documents, each behind a preview and a content-hash guard. No other code path writes to your files, ever. A tool you point at your whole disk has to be able to say that.',
+    body: 'Exactly three convention-shaped operations - set a status, set a due date, mark a decision superseded - can write to your documents, each behind a preview and a content-hash guard. No other code path writes to your files, ever.',
   },
   {
     title: 'We cannot read what we relay',
-    body: 'The planned sync layer is end-to-end encrypted with keys generated on your device and never sent to us. The server stores ciphertext. This is a property of the design, not a promise in a policy - the protocol is published so the claim can be checked.',
+    body: 'The planned sync layer is end-to-end encrypted with keys generated on your device and never sent to us; the server stores ciphertext. The protocol is published so the claim can be checked against a document rather than our sincerity.',
   },
   {
     title: 'No key escrow, no reset backdoor',
@@ -39,7 +39,7 @@ const principles = [
   },
   {
     title: 'Claims are checkable',
-    body: 'Every claim on this page maps to a verification path below: cut the network, read the protocol, bring your own storage. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
+    body: 'Every claim on this page maps to a verification path above: cut the network, read the protocol, bring your own storage. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
   },
 ];
 
@@ -89,9 +89,9 @@ const serverCannotSee = [
           list of data we hold about you is: nothing.
         </p>
         <p>
-          That stays true after launch. The only network traffic the shipped
-          app will produce is a static update-manifest check - and sync, if
-          you explicitly enable it, under the design below.
+          The only network traffic the shipped app produces is a static
+          update-manifest check - and sync, if you one day explicitly enable
+          it, under the design at the bottom of this page.
         </p>
       </div>
     </section>
@@ -128,136 +128,6 @@ const serverCannotSee = [
           Setting <code class="rounded bg-fill px-1 py-0.5 text-[0.9em]"
             >sessionEvidence.enabled</code
           > to false turns the whole thing off.
-        </p>
-      </div>
-    </section>
-
-    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="principles">
-      <h2 id="principles" class="text-xl font-semibold tracking-tight">The principles</h2>
-      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
-        {
-          principles.map(({ title, body }) => (
-            <li class="flex max-w-prose flex-col gap-1.5">
-              <h3 class="font-medium">{title}</h3>
-              <p class="text-sm text-ink-muted">{body}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="sync-design">
-      <h2 id="sync-design" class="text-xl font-semibold tracking-tight">The sync design</h2>
-      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
-        <p>
-          Sync - a read-only, encrypted mirror of parsed state and docs on a
-          phone or second machine - is <strong class="font-medium text-ink">not built yet</strong>.
-          The design is decided and published now, before any backend exists,
-          so it can be judged before you are asked to trust it.
-        </p>
-        <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
-          <li>
-            One symmetric account key, generated on your first device and
-            never sent to the server. All content is encrypted on your device
-            (XChaCha20-Poly1305 via libsodium) before anything is uploaded;
-            the server stores ciphertext.
-          </li>
-          <li>
-            New devices pair over a QR / short code: the existing device
-            approves and hands over the wrapped key directly. No passphrase
-            ceremony required at onboarding.
-          </li>
-          <li>
-            Optional hardening for the security-conscious: a user passphrase
-            (Argon2id-wrapped key) and a printable recovery key - offered
-            once, skippable, with a plain warning that we cannot reset it.
-          </li>
-          <li>
-            Metadata is minimized, not just content: blob names are HMAC-keyed
-            ids and the sync manifest itself is encrypted, so the server
-            cannot infer your project structure from the shapes it stores.
-          </li>
-          <li>
-            A read-only share link encrypts the shared subset with a per-link
-            key that travels in the URL fragment - which never reaches the
-            server. Revoking the link deletes the blobs.
-          </li>
-        </ul>
-      </div>
-
-      <div class="mt-10 grid max-w-3xl gap-8 sm:grid-cols-2">
-        <div class="flex flex-col gap-3">
-          <h3 class="font-medium">What the server can see</h3>
-          <ul class="flex flex-col gap-2 text-sm text-ink-muted">
-            {
-              serverSees.map((item) => (
-                <li class="flex gap-3">
-                  <span aria-hidden="true" class="text-ink-faint select-none">&bull;</span>
-                  {item}
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-        <div class="flex flex-col gap-3">
-          <h3 class="font-medium">What the server cannot see</h3>
-          <ul class="flex flex-col gap-2 text-sm text-ink-muted">
-            {
-              serverCannotSee.map((item) => (
-                <li class="flex gap-3">
-                  <span aria-hidden="true" class="text-ink-faint select-none">&times;</span>
-                  {item}
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
-      <p class="mt-8 max-w-prose text-sm text-ink-muted">
-        When sync ships, this page will restate that list against the actual
-        implementation. If the two ever disagree, the page is wrong or the
-        product is - either one is treated as a bug.
-      </p>
-    </section>
-
-    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="licensing">
-      <h2 id="licensing" class="text-xl font-semibold tracking-tight">Trial and licensing, offline</h2>
-      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
-        <p>
-          <Sitrep /> will be a paid desktop app, and paid apps usually mean phone-home
-          license servers. The licensing is designed so that it never
-          conflicts with the local-first promise - like sync, this is the
-          design the app <strong class="font-medium text-ink">will ship with</strong>,
-          stated before launch so it can be held against us.
-        </p>
-        <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
-          <li>
-            The trial is the full app, locally: no account, no sign-up, no
-            network required to start reading your own files.
-          </li>
-          <li>
-            A license key is a cryptographically signed file (ed25519),
-            verified on your machine. The app can check that your license is
-            valid with the network cable unplugged - forever.
-          </li>
-          <li>
-            Activation pings are optional and fail open, with a long offline
-            grace period. The app never bricks because our server is down,
-            your network is down, or we have a bad week.
-          </li>
-          <li>
-            Local features never check entitlements at all. Only sync - the
-            part that uses our infrastructure - carries a subscription
-            entitlement, and cancelling it stops sync and nothing else.
-          </li>
-          <li>
-            Payment runs through a merchant of record: we never see or store
-            your card details.
-          </li>
-        </ul>
-        <p class="text-sm">
-          This one you will be able to verify the same way as the rest:
-          activate a license, then cut the network. Nothing degrades.
         </p>
       </div>
     </section>
@@ -318,28 +188,144 @@ const serverCannotSee = [
       </dl>
     </section>
 
-    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="this-site">
-      <h2 id="this-site" class="text-xl font-semibold tracking-tight">This website</h2>
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="principles">
+      <h2 id="principles" class="text-xl font-semibold tracking-tight">The principles</h2>
+      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {
+          principles.map(({ title, body }) => (
+            <li class="flex max-w-prose flex-col gap-1.5">
+              <h3 class="font-medium">{title}</h3>
+              <p class="text-sm text-ink-muted">{body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="licensing">
+      <h2 id="licensing" class="text-xl font-semibold tracking-tight">Trial and licensing, offline</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          Noticed there is no cookie banner? That is not an oversight, and it
-          is not non-compliance. Consent banners exist to ask permission for
-          tracking; sitrep.md sets no cookies and tracks no individuals, so
-          there is nothing to ask your consent for. The page you are reading
-          is static HTML.
+          <Sitrep /> is a paid desktop app, and paid apps usually mean phone-home
+          license servers. <Sitrep />'s licensing ships the other way, and it is
+          verifiable the same way as the rest: activate a license, then cut
+          the network. Nothing degrades.
         </p>
+        <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
+          <li>
+            The 14-day trial is the full app, locally: no account, no
+            sign-up, no network required to start reading your own files.
+          </li>
+          <li>
+            A license key is a cryptographically signed file (ed25519),
+            verified on your machine. The app can check that your license is
+            valid with the network cable unplugged - forever.
+          </li>
+          <li>
+            Activation pings are optional and fail open, with a long offline
+            grace period. The app never bricks because our server is down,
+            your network is down, or we have a bad week.
+          </li>
+          <li>
+            Local features never check entitlements at all, and payment runs
+            through a merchant of record: we never see or store your card
+            details.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="sync-design">
+      <h2 id="sync-design" class="text-xl font-semibold tracking-tight">The sync design</h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          The only measurement on this site is Cloudflare's cookieless,
-          aggregate Web Analytics - there to learn whether search engines
-          and AI assistants actually send people here. It counts page views
-          and referrers in aggregate: no cookies, no fingerprinting, no
-          cross-site anything, no individual profiles, and still no banner,
-          because there is still nothing to consent to. The one script it
-          uses is added at the edge by Cloudflare, which already serves
-          every page you see. If measurement here ever grows beyond that,
-          this page changes first.
+          Sync - a read-only, encrypted mirror of parsed state and docs on a
+          phone or second machine - is <strong class="font-medium text-ink">not built yet</strong>.
+          The design is decided and published now, before any backend exists,
+          so it can be judged before you are asked to trust it. The short
+          version: keys are generated on your device and never sent to us,
+          and the server stores ciphertext.
         </p>
       </div>
+      <details class="group mt-6 max-w-prose">
+        <summary class="cursor-pointer list-none text-sm font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          <span class="group-open:hidden">Read the full sync design - keys, pairing, metadata, share links</span>
+          <span class="hidden group-open:inline">The full sync design</span>
+        </summary>
+        <div class="mt-5 flex flex-col gap-4 text-ink-muted">
+          <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
+            <li>
+              One symmetric account key, generated on your first device and
+              never sent to the server. All content is encrypted on your device
+              (XChaCha20-Poly1305 via libsodium) before anything is uploaded;
+              the server stores ciphertext.
+            </li>
+            <li>
+              New devices pair over a QR / short code: the existing device
+              approves and hands over the wrapped key directly. No passphrase
+              ceremony required at onboarding.
+            </li>
+            <li>
+              Optional hardening for the security-conscious: a user passphrase
+              (Argon2id-wrapped key) and a printable recovery key - offered
+              once, skippable, with a plain warning that we cannot reset it.
+            </li>
+            <li>
+              Metadata is minimized, not just content: blob names are HMAC-keyed
+              ids and the sync manifest itself is encrypted, so the server
+              cannot infer your project structure from the shapes it stores.
+            </li>
+            <li>
+              A read-only share link encrypts the shared subset with a per-link
+              key that travels in the URL fragment - which never reaches the
+              server. Revoking the link deletes the blobs.
+            </li>
+          </ul>
+          <div class="mt-4 grid gap-8 sm:grid-cols-2">
+            <div class="flex flex-col gap-3">
+              <h3 class="font-medium text-ink">What the server can see</h3>
+              <ul class="flex flex-col gap-2 text-sm">
+                {
+                  serverSees.map((item) => (
+                    <li class="flex gap-3">
+                      <span aria-hidden="true" class="text-ink-faint select-none">&bull;</span>
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h3 class="font-medium text-ink">What the server cannot see</h3>
+              <ul class="flex flex-col gap-2 text-sm">
+                {
+                  serverCannotSee.map((item) => (
+                    <li class="flex gap-3">
+                      <span aria-hidden="true" class="text-ink-faint select-none">&times;</span>
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+          <p class="text-sm">
+            When sync ships, this page will restate that list against the
+            actual implementation. If the two ever disagree, the page is wrong
+            or the product is - either one is treated as a bug.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="this-site">
+      <h2 id="this-site" class="text-xl font-semibold tracking-tight">This website</h2>
+      <p class="mt-5 max-w-prose text-ink-muted">
+        sitrep.md sets no cookies and tracks no individuals - the only
+        measurement is Cloudflare's cookieless, aggregate Web Analytics (page
+        views and referrers) - which is why there is no consent banner: there
+        is nothing to consent to.
+      </p>
     </section>
   </main>
 
