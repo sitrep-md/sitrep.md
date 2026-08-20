@@ -16,9 +16,13 @@ Pages: `/` (landing), `/how-it-works/`, `/principles/`, `/security/`,
 `/about/`, `/faq/` (carries FAQPage JSON-LD), the `/vs/` comparison pages,
 plus `public/llms.txt`, an AI-crawler-welcoming `public/robots.txt`, and an
 IndexNow key file. Every page emits a JSON-LD @graph through `BaseLayout`
-(`WebSite` always; pass extra nodes via the `schema` prop). Pricing is
-undecided and appears nowhere on the site - do not add numbers until the
-product's decision log closes that ruling.
+(`WebSite` always; pass extra nodes via the `schema` prop). Pricing (ruled
+2026-08-20 in the product decision log): **€49 / $49 one-time, a year of
+app updates included, the license is perpetual - the app keeps working
+forever; the 14-day trial is the full product.** Those are the only numbers
+that may appear on the site. Anything beyond them (update-renewal pricing,
+sync pricing) is deliberately unannounced - keep it off every page until
+the decision log closes its ruling.
 
 ## Product identity - the copy contract
 
