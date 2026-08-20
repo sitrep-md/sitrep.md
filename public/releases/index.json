@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.3.0",
+    "date": "2026-08-20",
+    "channel": "stable",
+    "notes": "- The app updates itself: it checks sitrep.md shortly after launch and\n  daily, downloads a new version in the background (a setting turns that\n  off), and installs only when you click \"Restart to update\" or on your way\n  out of a quit - never behind your back. Downgrades are refused. (The\n  0.3.0-beta.1 updater line, promoted to stable after a beta-to-stable\n  round-trip on a real install.)\n- Settings gains an About section: version, the update channel\n  (stable/beta), the update's state and notes, and the third-party licenses\n  of everything that ships in the app.\n- \"Check for Updates…\" in the sitrep menu answers honestly: \"You're on\n  X, the latest\", or the offer - and becomes \"Restart to update to X\" once\n  a new version is downloaded."
+  },
+  {
     "version": "0.3.0-beta.1",
     "date": "2026-08-20",
     "channel": "beta",

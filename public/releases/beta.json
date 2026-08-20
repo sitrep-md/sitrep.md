@@ -1,15 +1,15 @@
 {
-  "version": "0.3.0-beta.1",
-  "notes": "- The app updates itself: it checks sitrep.md shortly after launch and\n  daily, downloads a new version in the background (a setting turns that\n  off), and installs only when you click \"Restart to update\" or on your way\n  out of a quit - never behind your back. Downgrades are refused.\n- Settings gains an About section: version, the update channel\n  (stable/beta), the update's state and notes, and the third-party licenses\n  of everything that ships in the app.\n- \"Check for Updates…\" in the sitrep menu answers honestly: \"You're on\n  X, the latest\", or the offer - and becomes \"Restart to update to X\" once\n  a new version is downloaded.",
-  "pub_date": "2026-08-20T09:53:32.592Z",
+  "version": "0.3.0",
+  "notes": "- The app updates itself: it checks sitrep.md shortly after launch and\n  daily, downloads a new version in the background (a setting turns that\n  off), and installs only when you click \"Restart to update\" or on your way\n  out of a quit - never behind your back. Downgrades are refused. (The\n  0.3.0-beta.1 updater line, promoted to stable after a beta-to-stable\n  round-trip on a real install.)\n- Settings gains an About section: version, the update channel\n  (stable/beta), the update's state and notes, and the third-party licenses\n  of everything that ships in the app.\n- \"Check for Updates…\" in the sitrep menu answers honestly: \"You're on\n  X, the latest\", or the offer - and becomes \"Restart to update to X\" once\n  a new version is downloaded.",
+  "pub_date": "2026-08-20T10:08:30.384Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWQ0eHpmbEtMUktVaDgxU0R5aEZtRE45NzBHNm1WREFKZXk2MW5PSjJvejRUWHZVRU02cDdRSlZvcU9ydnUwVzByM1A2RTdYU1lYcmd0NlZIeTdkNXdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjE5MzI1CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKbFZZbFJGdUx3NEF1Z1dEc2dpNkRDZUtibm9xb0dXYkkwY1VQNGZFNG0yL3NQckg1eFJUUHcwb3phWVliMzhmQ29aTEwzV3hQZTBERGc3ZU9DaDVuQ1E9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.3.0-beta.1/sitrep_0.3.0-beta.1_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVNQa1lEejJEVHp4TDFnWDlSRm8zWEJuWXA2TGkwU0g1Ukk3Q2lSWDdvUGNqNUFLTXZBNldlaENwVGhlMkN4U2l3NEI3eXlORnVSaHFuR0szNVNVUUFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjIwMTQxCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKU0ZPTHNhbjd1ZFVDZDhlSklFOXBJdlZGcEU3ZUx3OTlGYnJtU2oxZlNNbUI0UlZpWlhkNDRrOTBqdmJvSWtKa0V3cUFVQXl3ZytWVUtzNXVPaUZUQlE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.3.0/sitrep_0.3.0_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVhCcEZOQVhTSEs1RjVveGhHb3lPRFNsQ0tZN21meFcvWHVHRWpxUDNQQjAwd0dBaGcxTHl0Nk93RDFXMEtXWVRPRzZ0MjdNYnBlKzBLdU1ZMDFyaEF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjE5NTYwCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKcGw2ZlpNVVZqNVJFbmJFSzVDNDRxWnA4ZnpkSlE2M3BaUGRvS0NhTFVwUk83ZHFIYnR6cTR5MDAxV0lOM25MWDMyTko5NkxkdDdYUGNvVWFHb25MQUE9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.3.0-beta.1/sitrep_0.3.0-beta.1_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWNuVG9IUlAwT0Rib2syVzBwT1JXNlk3NlJYaWJUdGlKZFB0eCtsd3RuaFNiWGl4c01KYXo4WnBYeVg0cmNSQ0dnQ1MxU29IanhxRXZRdnhnWm9DVVF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjIwNDUxCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKblF2ZEF5WEhFL1RZKzFPaEVLS05LczZMQmgxdlZ4TW1DcGM3cTJBRFMxVStLWXYySkc3K284UWVmRmtHNTd0bWFobWVVTFI2TXdaSUs4NmQyYmlFQkE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.3.0/sitrep_0.3.0_x64.app.tar.gz"
     }
   }
 }
