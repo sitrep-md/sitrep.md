@@ -17,7 +17,7 @@ while (roots.length) {
 let bad = 0;
 for (const f of files) {
   const html = readFileSync(f, 'utf8');
-  for (const m of html.matchAll(/[A-Za-z0-9]<a[ >]|<\/a>[A-Za-z0-9]/g)) {
+  for (const m of html.matchAll(/[A-Za-z0-9]<(?:a|strong|em|code)[ >]|<\/(?:a|strong|em|code)>[A-Za-z0-9]/g)) {
     const start = Math.max(0, m.index - 60);
     console.log(`${f}: ...${html.slice(start, m.index + 70).replace(/\s+/g, ' ')}...`);
     bad++;
