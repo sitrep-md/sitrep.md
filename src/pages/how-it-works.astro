@@ -82,12 +82,13 @@ import Sitrep from '../components/Sitrep.astro';
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
-          <dt class="font-medium">Decisions and rulings</dt>
+          <dt class="font-medium">Decisions</dt>
           <dd class="max-w-prose text-sm text-ink-muted">
-            Two shapes only: a list item under a decision/ruling/ADR heading,
+            Two shapes only: a list item under a decision heading - whether
+            your files say "decision", "ruling" or "ADR" -
             or a row of a table with a verdict column
             (<code class="rounded bg-surface-raised px-1.5 py-0.5 text-[0.8em] border border-line">Question | Verdict | Why</code>).
-            Each ruling is tracked as open, blocked, decided or superseded -
+            Each decision is tracked as open, blocked, decided or superseded -
             so "what is still waiting on a decision" is a query, not a
             re-read. Scanning prose for decision-shaped sentences invents
             findings, so <Sitrep /> deliberately does not.
@@ -207,16 +208,20 @@ import Sitrep from '../components/Sitrep.astro';
           against the real development corpus before the feature shipped,
           and the intuitive two-week drift threshold would have flagged half
           of everything - so it is thirty days, a line at which the reviewed
-          false-positive rate on the live corpus was zero. When <Sitrep /> is
-          not sure, it stays quiet: a missed stale doc is invisible, but a
-          false "this doc lies" would poison the one promise the feature
-          makes. And because projects have rhythms, the thresholds are
-          settings, not constants: global, per-workspace and per-project
-          granularity, the most specific value winning, your deviations
-          stored as data while the measured defaults stay in code. A
-          fast-moving project can call three days stale while a quarterly
-          one is fine at ninety - and since staleness is computed at read
-          time, a changed threshold is true on the next view, no reindex.
+          false-positive rate on the live corpus was zero.
+        </p>
+        <p>
+          When <Sitrep /> is not sure, it stays quiet. A missed stale doc is
+          invisible; a false "this doc lies" would poison the one promise
+          the feature makes.
+        </p>
+        <p>
+          And because projects have rhythms, the thresholds are settings,
+          not constants: global, per-workspace and per-project, the most
+          specific value winning. A fast-moving project can call three days
+          stale while a quarterly one is fine at ninety - and since
+          staleness is computed at read time, a changed threshold is true on
+          the next view, no reindex.
         </p>
       </div>
     </section>
@@ -227,7 +232,7 @@ import Sitrep from '../components/Sitrep.astro';
         <p>
           <Sitrep /> is a reader with exactly one, narrow writing surface: three
           convention-shaped operations - set a status, set a due date, mark a
-          ruling superseded - each writing a single line in the document's
+          decision superseded - each writing a single line in the document's
           own convention, behind a server-side preview and a content-hash
           guard that refuses to touch a file that changed since you looked at
           it.
@@ -235,8 +240,7 @@ import Sitrep from '../components/Sitrep.astro';
         <p>
           No other code path writes to your documents. Sorting, filtering,
           hidden columns and saved views are local view state with export -
-          they never touch the file. This is a product-level covenant, not an
-          implementation detail.
+          they never touch the file.
         </p>
       </div>
     </section>
