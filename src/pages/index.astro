@@ -12,6 +12,11 @@ const appSchema = [
     url: 'https://sitrep.md/',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'macOS',
+    downloadUrl: 'https://sitrep.md/download/',
+    offers: [
+      { '@type': 'Offer', price: '49', priceCurrency: 'EUR', url: 'https://sitrep.md/pricing/' },
+      { '@type': 'Offer', price: '49', priceCurrency: 'USD', url: 'https://sitrep.md/pricing/' },
+    ],
     description:
       'sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. It reads the plans, decisions and progress your AI agents already write - no new format, no import - and shows status, phases, open decisions and staleness across every project.',
     featureList: [
@@ -92,8 +97,22 @@ const never = [
         and across every project: what moved, what is stalled, and what is
         waiting on you.
       </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href="/download/"
+          class="rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Download for macOS
+        </a>
+        <a
+          href="/pricing/"
+          class="rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Pricing
+        </a>
+      </div>
       <p class="text-sm text-ink-faint">
-        In development. Launching first on macOS. Local-first - your files never leave your machine.
+        Free 14-day trial, full product, no account. Local-first - your files never leave your machine.
       </p>
     </section>
 
@@ -305,9 +324,7 @@ const never = [
           and checkable - which agents it reads, what it extracts, what it
           refuses to do - and the comparison pages are honest about when you
           should pick the other tool. When a public claim turns out wrong, it
-          gets a dated entry in the
-          <a href="https://github.com/sitrep-md/sitrep.md/blob/main/CORRECTIONS.md" rel="noopener" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">public corrections ledger</a>
-          - what was claimed, who caught it, and what changed.
+          gets a dated entry in the <a href="https://github.com/sitrep-md/sitrep.md/blob/main/CORRECTIONS.md" rel="noopener" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">public corrections ledger</a> - what was claimed, who caught it, and what changed.
         </p>
       </div>
       <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">

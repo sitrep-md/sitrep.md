@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
+import stable from '../../public/releases/stable.json';
+
+const version = stable.version;
+const date = (stable.pub_date ?? '').slice(0, 10);
+const base = `https://github.com/sitrep-md/sitrep.md/releases/download/v${version}`;
+const dmgArm = `${base}/sitrep_${version}_aarch64.dmg`;
+const dmgIntel = `${base}/sitrep_${version}_x64.dmg`;
+
+const downloadSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': 'https://sitrep.md/#app',
+    name: 'sitrep',
+    url: 'https://sitrep.md/',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'macOS',
+    softwareVersion: version,
+    downloadUrl: 'https://sitrep.md/download/',
+    offers: [
+      { '@type': 'Offer', price: '49', priceCurrency: 'EUR', url: 'https://sitrep.md/pricing/' },
+      { '@type': 'Offer', price: '49', priceCurrency: 'USD', url: 'https://sitrep.md/pricing/' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Download sitrep for macOS"
+  description="Download sitrep, the AI project status dashboard, for macOS - a signed and notarized build for Apple silicon and Intel. The 14-day trial is the full product: no account, no card."
+  schema={downloadSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Download</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        <Sitrep /> for macOS
+      </h1>
+      <p class="max-w-prose text-ink-muted">
+        Version {version}, released {date}. Signed and notarized - Gatekeeper
+        opens it first try, no right-click ceremony. The 14-day trial is the
+        full product: no account, no card, and your files never leave your
+        machine.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-label="Downloads">
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href={dmgArm}
+          class="rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Download for Apple silicon
+        </a>
+        <a
+          href={dmgIntel}
+          class="rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Download for Intel
+        </a>
+      </div>
+      <p class="mt-4 max-w-prose text-sm text-ink-faint">
+        Not sure which? Apple menu &rsaquo; About This Mac: "Chip" starting
+        with Apple means Apple silicon; "Processor" naming Intel means Intel.
+      </p>
+      <div class="mt-10 flex max-w-prose flex-col gap-4 text-sm text-ink-muted">
+        <p>
+          Drag <Sitrep /> to Applications, open it, and point it at the
+          folders your projects live in - no import, no new format. The app
+          keeps itself current through its built-in updater; releases are
+          listed on the <a href="/changelog/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">changelog</a> and published on <a href="https://github.com/sitrep-md/sitrep.md/releases" rel="noopener" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">GitHub</a>.
+        </p>
+        <p>
+          After the trial, <Sitrep /> is a one-time purchase - see <a href="/pricing/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">pricing</a>. How the local-first posture is verifiable, including
+          the offline licensing, is on the <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">security page</a>.
+        </p>
+        <p class="text-ink-faint">
+          Windows second, Linux best-effort - macOS is first, and this page is
+          where the other platforms will appear.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

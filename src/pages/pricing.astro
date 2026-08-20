@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
+
+const included = [
+  'The full app - every feature, no tiers',
+  'A year of app updates included',
+  'A perpetual license: the app keeps working forever, offline, with no account',
+  'Use it on your own machines (per-person license)',
+  'Refunds and license transfer are one support email',
+];
+
+const questions = [
+  {
+    q: 'What happens after the first year?',
+    a: 'Nothing changes on your machine: the app and every version released in your update year keep working forever. Picking up newer versions later is an optional, discounted renewal - never a subscription, never a deadline.',
+  },
+  {
+    q: 'Is the trial limited?',
+    a: 'No. The 14-day trial is the full product - no account, no card, no feature gates. Your files and index are untouched either way.',
+  },
+  {
+    q: 'Is there a subscription?',
+    a: 'Not for the app. An optional sync service is planned as a separate subscription, priced when it ships; cancelling it would stop sync and nothing else.',
+  },
+  {
+    q: 'Does the license phone home?',
+    a: 'Never. The key is verified on your machine (ed25519, offline), and local features never check entitlements. Cut the network and everything still works.',
+  },
+];
+
+const pricingSchema = [
+  {
+    '@type': 'Product',
+    '@id': 'https://sitrep.md/#product',
+    name: 'sitrep',
+    description:
+      'AI project status dashboard for macOS - a state layer on top of the markdown your AI agents already generate. One-time purchase with a year of updates and a perpetual license.',
+    brand: { '@type': 'Brand', name: 'sitrep.md' },
+    offers: [
+      { '@type': 'Offer', price: '49', priceCurrency: 'EUR', url: 'https://sitrep.md/pricing/' },
+      { '@type': 'Offer', price: '49', priceCurrency: 'USD', url: 'https://sitrep.md/pricing/' },
+    ],
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://sitrep.md/pricing/#faq',
+    mainEntity: questions.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="sitrep pricing - pay once, keep it forever"
+  description="sitrep is a one-time purchase: 49 EUR / 49 USD with a year of app updates included and a perpetual license. The 14-day trial is the full product - no account, no card."
+  schema={pricingSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Pricing</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        Pay once. Keep it forever.
+      </h1>
+      <p class="max-w-prose text-ink-muted">
+        <Sitrep /> is local software, priced like local software: a one-time
+        purchase, not a subscription. No account, no metering, no entitlement
+        checks.
+      </p>
+    </header>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-label="Price">
+      <div class="max-w-md rounded-xl border border-line bg-surface-raised p-6 sm:p-8">
+        <p class="flex items-baseline gap-2">
+          <span class="text-4xl font-semibold tracking-tight">&euro;49</span>
+          <span class="text-ink-faint">/ $49 &middot; one-time</span>
+        </p>
+        <ul class="mt-6 flex flex-col gap-3 text-sm text-ink-muted">
+          {included.map((item) => (
+            <li class="flex gap-2.5">
+              <span class="mt-0.5 text-accent" aria-hidden="true">&#10003;</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8 flex flex-col gap-3">
+          <a
+            href="/download/"
+            class="rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Download the free trial
+          </a>
+          <p class="text-xs text-ink-faint">
+            14 days, full product, no card up front. Purchasing opens here
+            shortly - the trial does not wait for it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="pricing-questions">
+      <h2 id="pricing-questions" class="text-2xl font-semibold tracking-tight">The fine print, plainly</h2>
+      <dl class="mt-8 grid gap-8 sm:grid-cols-2">
+        {questions.map(({ q, a }) => (
+          <div class="flex flex-col gap-1.5">
+            <dt class="font-medium">{q}</dt>
+            <dd class="max-w-prose text-sm text-ink-muted">{a}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="mt-8 text-sm">
+        <a href="/faq/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          More questions, answered concretely
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

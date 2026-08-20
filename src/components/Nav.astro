@@ -6,23 +6,64 @@ const links = [
   { href: '/how-it-works/', label: 'How it works' },
   { href: '/principles/', label: 'Principles' },
   { href: '/security/', label: 'Security' },
+  { href: '/pricing/', label: 'Pricing' },
   { href: '/faq/', label: 'FAQ' },
 ];
 const current = Astro.url.pathname;
 ---
 
-<header class="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4">
-  <a href="/" class="text-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-    <Logo md />
-  </a>
-  <nav class="flex items-center gap-1 sm:gap-2" aria-label="Main">
+<header class="mx-auto w-full max-w-5xl px-6">
+  <div class="flex items-center justify-between gap-3 py-4">
+    <a href="/" class="text-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+      <Logo md />
+    </a>
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <nav class="hidden items-center gap-1 md:flex md:gap-2" aria-label="Main">
+        {
+          links.map(({ href, label }) => (
+            <a
+              href={href}
+              aria-current={current === href ? 'page' : undefined}
+              class:list={[
+                'rounded-md px-2.5 py-1.5 text-[0.8125rem] transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
+                current === href ? 'text-ink' : 'text-ink-muted',
+              ]}
+            >
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+      <ThemeToggle />
+      <a
+        href="/download/"
+        class="rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-[0.8125rem]"
+      >
+        Download
+      </a>
+      <button
+        id="nav-menu-button"
+        type="button"
+        class="-mr-2 flex h-11 w-11 items-center justify-center rounded-md text-ink-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <g data-icon="open"><path d="M3 6h14M3 10h14M3 14h14"></path></g>
+          <g data-icon="close" class="hidden"><path d="M5 5l10 10M15 5L5 15"></path></g>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav id="nav-menu" hidden class="border-t border-line py-2 md:hidden" aria-label="Main menu">
     {
       links.map(({ href, label }) => (
         <a
           href={href}
           aria-current={current === href ? 'page' : undefined}
           class:list={[
-            'rounded-md px-2 py-1.5 text-xs transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-2.5 sm:text-[0.8125rem]',
+            'flex min-h-11 items-center rounded-md px-2 text-sm transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
             current === href ? 'text-ink' : 'text-ink-muted',
           ]}
         >
@@ -30,6 +71,26 @@ const current = Astro.url.pathname;
         </a>
       ))
     }
-    <span class="ml-1 sm:ml-2"><ThemeToggle /></span>
   </nav>
 </header>
+
+<script>
+  const btn = document.getElementById('nav-menu-button');
+  const menu = document.getElementById('nav-menu');
+  if (btn && menu) {
+    const svg = btn.querySelector('svg');
+    const setOpen = (open) => {
+      menu.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      svg?.querySelector('[data-icon="open"]')?.classList.toggle('hidden', open);
+      svg?.querySelector('[data-icon="close"]')?.classList.toggle('hidden', !open);
+    };
+    btn.addEventListener('click', () => setOpen(menu.hidden));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+  }
+</script>
