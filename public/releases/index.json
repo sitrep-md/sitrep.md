@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.5.0",
+    "date": "2026-08-20",
+    "channel": "stable",
+    "notes": "- Settings › About can make sitrep your default Markdown app: one click and\n  double-clicking .md, .markdown and .mdown files in Finder opens them here.\n  Per-user, no admin prompt, undoable anytime via Finder's Get Info › Open\n  With - and the choice survives updates, since macOS keys it on the app's\n  identity rather than its version.\n- Installing got the standard Mac treatment: the download opens as a window\n  where you drag sitrep into Applications, with the layout and background\n  to match.\n- The 14-day trial clock now heals itself: deleting individual files in\n  sitrep's app data no longer restarts the trial."
+  },
+  {
     "version": "0.4.0",
     "date": "2026-08-20",
     "channel": "stable",

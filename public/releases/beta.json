@@ -1,15 +1,15 @@
 {
-  "version": "0.4.0",
-  "notes": "- sitrep now has a license: a 14-day full trial starts on first launch of\n  the packaged app, a key entered in Settings › License (or on the gate\n  screen after the trial) is verified offline - no account, no activation\n  server - and a licensed app never phones home about it.\n- First launch no longer trips the \"Apple Music, your music and video\n  activity, and your media library\" permission prompt: the folder walk\n  behind the getting-started page skips ~/Music, ~/Movies and ~/Pictures\n  until you deliberately browse into one.\n- The Desktop/Documents/Downloads permission prompts on first launch now\n  say why sitrep is asking (it counts markdown so you can choose what to\n  index) instead of appearing as bare system dialogs.",
-  "pub_date": "2026-08-20T15:09:26.948Z",
+  "version": "0.5.0",
+  "notes": "- Settings › About can make sitrep your default Markdown app: one click and\n  double-clicking .md, .markdown and .mdown files in Finder opens them here.\n  Per-user, no admin prompt, undoable anytime via Finder's Get Info › Open\n  With - and the choice survives updates, since macOS keys it on the app's\n  identity rather than its version.\n- Installing got the standard Mac treatment: the download opens as a window\n  where you drag sitrep into Applications, with the layout and background\n  to match.\n- The 14-day trial clock now heals itself: deleting individual files in\n  sitrep's app data no longer restarts the trial.",
+  "pub_date": "2026-08-20T21:04:53.136Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVJabUVVOURkNVpzcmxucFNTcklYakhCVDUwU1IyQ0MxWU45bUl5QWZKV0lFcDlWcm50ZmxRcGhBUlBKMC9HeGpwOFZNWUN5aTBOd3h6Rkc2TkZ2ckFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjM4MjYyCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKbk82VUEyejFwRVJSKzFsRTVWRGI3WjBXNENkWUpNSElqNG9CQlNZcXNUdzhXRUlmemo5Ly9NWUw2TGlTK3RJVHpFZW55ZXZGZTg2MGxWWkNxNXNHQlE9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.4.0/sitrep_0.4.0_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVlVWTFzSGVBcHVIaTB4MFl6SXBOcFZ2WW5zK1J0dFBDM0doc0ZSbGZzSXYxdC84ZURqOXFjcXUyaXlDRXgvUVlFbjJVTG03YyttOE5SSG5VZnU5T1FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjU5NTMxCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKYkplSUptell4N3B5REdGM1hQNHFBenIvTHJPaVhMKzFWZ3F0c0FJbVFtUjMvNTJJaEFydnlLcjg4LzVTLzNENkdtdEVFUzFMNmdQclV3VGMzV25iQ0E9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.5.0/sitrep_0.5.0_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWZvK1phMEFhMTdMbGtUdVFvbGhkdHQ3R2xzbG5kaXFLSDFiSzd0akxYakNtdGo5ZTNsWmZpRzFiQmdvWFZzc2Jndk9UQmNSdkFQMGkra2FBT1dWSndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjM4NTA3CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKemRackxUOWp2UWtFS01ka09EMzRrTTF3QWwyaVhrZ2ZaT092dlNDd3kzQk96S0paSGlrMFZQVlRPN0xQUWExSWZOUjFTTHNzTDZPWk1xK0xLVFNxQkE9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.4.0/sitrep_0.4.0_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWNrTTlHSU9IOFdFNmtnSzVLTktZMThraGZ6YWFmbGtoTFZ3cXh1eUNianhjQktIUU5STTdhYWlRWXhCakVhZExFMldDNGJRR0hacW1idjErYzdYQmdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjU5ODI0CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKNDR5MDlaOElYNW41b21tenB6bXFIS0o2dk1IYTlWaGkxYmQwUmpmbEtiei9zRkpxU09pcEU2cE84SGRnUzYxbG9Fa2g0aElnQmRhZ2FhT1ZWNFdYQlE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.5.0/sitrep_0.5.0_x64.app.tar.gz"
     }
   }
 }
