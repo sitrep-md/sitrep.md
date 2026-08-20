@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "notes": "- sitrep runs as a self-contained Mac app: the server ships inside\n  sitrep.app as a compiled sidecar, so it needs no runtime, no checkout and\n  no setup on the machine it lands on.\n- Double-clicking a markdown file (or \"Open with sitrep\") lands in the\n  running app on that file, and on the exact line when a terminal hands one\n  over.\n- The app is signed and notarized: Gatekeeper opens it first try, offline,\n  with no right-click ceremony.\n- The app owns the server's lifecycle: it starts it on a free port,\n  restarts it if it dies, and leaves nothing running on either quit path.",
+  "pub_date": "2026-08-20T05:56:25.093Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVRhNU9zaTNQZWlwTmNDTXpYdGtoTGd0aGNCQlowRW1ZWnlObnZCcEZXYWZ4QkFLdldCWGRvQWp6dWQxNnRBOXdDL1M4dVM2K214dDhnK20rOEE5T3cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjA1MDczCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKaGJidy9PdWtZMFFzdjA1Qk14MEFyR0FEZTA3UlZSMUFUR25zWDNVb1pvOWtMZFh4dEVNV0hRamdmY3B0aWtERHUxL1Uvemh3S014WFBwZU5SNGJYRFE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.2.0/sitrep_0.2.0_aarch64.app.tar.gz"
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVN0Q0Y4QjFyUDRiQmZyQ3dwdmN1OStaUmZ5cnlGNHowUkp5THg0UzNoZHk1V0NIVzkvVUJaeTJBUysxMlYxeXg3QnpDNXJ4Ymk2dFFrZkdVbSsvY1FZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjA1MzI1CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKdisxQlZibGUyMTBxWnIzRWUydmgrNTZGSldXQXVLNDBJZ1huN3ZSQkhVL1NzWU8zUHpPN1NQaVpIU2tpYStzdUhFMkEyanNCN25QQ1l0SE54SENtRFE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.2.0/sitrep_0.2.0_x64.app.tar.gz"
+    }
+  }
+}

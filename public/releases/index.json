@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "version": "0.2.0",
+    "date": "2026-08-20",
+    "channel": "stable",
+    "notes": "- sitrep runs as a self-contained Mac app: the server ships inside\n  sitrep.app as a compiled sidecar, so it needs no runtime, no checkout and\n  no setup on the machine it lands on.\n- Double-clicking a markdown file (or \"Open with sitrep\") lands in the\n  running app on that file, and on the exact line when a terminal hands one\n  over.\n- The app is signed and notarized: Gatekeeper opens it first try, offline,\n  with no right-click ceremony.\n- The app owns the server's lifecycle: it starts it on a free port,\n  restarts it if it dies, and leaves nothing running on either quit path."
+  }
+]
