@@ -96,6 +96,42 @@ const serverCannotSee = [
       </div>
     </section>
 
+    <section class="border-t border-line py-12 sm:py-16" aria-labelledby="reads">
+      <h2 id="reads" class="text-xl font-semibold tracking-tight">
+        What it reads, including outside your folders
+      </h2>
+      <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
+        <p>
+          Almost everything <Sitrep /> knows comes from the folders you point
+          it at: the markdown inside them, and each file's position in git.
+          There is one read outside those folders, and it is worth stating
+          plainly rather than letting you discover it.
+        </p>
+        <p>
+          To tell "nobody has touched this project in months" apart from "the
+          docs are old but the work is live", <Sitrep /> needs to know when a
+          project last moved - and git is a poor proxy, because the
+          in-progress work is disproportionately untracked or gitignored. So
+          it reads two things under <code
+            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">~/.claude</code
+          >: the timestamps in <code
+            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">history.jsonl</code
+          >, and the modification times of the session transcript files.
+        </p>
+        <p>
+          What it keeps from that is four columns: a workspace, a project, one
+          timestamp, and which of the two sources it came from. The transcripts
+          themselves are never opened. The prompt text in the history file is
+          parsed and thrown away. None of it is served on any screen, exported,
+          or sent anywhere - it feeds the staleness signals and nothing else,
+          and per-session scratch directories are deliberately not read at all.
+          Setting <code class="rounded bg-fill px-1 py-0.5 text-[0.9em]"
+            >sessionEvidence.enabled</code
+          > to false turns the whole thing off.
+        </p>
+      </div>
+    </section>
+
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="principles">
       <h2 id="principles" class="text-xl font-semibold tracking-tight">The principles</h2>
       <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
