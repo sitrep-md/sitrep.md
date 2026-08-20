@@ -86,16 +86,15 @@ const never = [
   <main class="mx-auto w-full max-w-5xl px-6">
     <!-- Hero -->
     <section class="flex flex-col items-start gap-6 pt-[12vh] pb-20 sm:pb-24">
-      <p class="text-xs font-medium tracking-widest text-accent uppercase">AI project status dashboard</p>
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">For Claude Code, Cursor and Codex workflows</p>
       <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
         Never open a cold project again.
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        <Sitrep /> is a state layer on top of the markdown your AI agents already
-        generate. It reads the plans, decisions and progress your agents
-        already write - no new format, no import - and answers, at a glance
-        and across every project: what moved, what is stalled, and what is
-        waiting on you.
+        Your agents already wrote down what happened - plans, decisions and
+        progress notes scattered across your repos. <Sitrep /> turns that
+        markdown into a live view of where every project stands: what moved,
+        what is stalled, what is waiting on you.
       </p>
       <div class="flex flex-wrap items-center gap-3">
         <a
@@ -112,7 +111,8 @@ const never = [
         </a>
       </div>
       <p class="text-sm text-ink-faint">
-        Free 14-day trial - the full product, no card, no account, no import.
+        Free 14-day trial - the full product, no card, no account. Then
+        &euro;49, once - keep it forever.
       </p>
     </section>
 
@@ -136,8 +136,14 @@ const never = [
           decoding="async"
         />
       </div>
+      <p class="mt-6 max-w-prose text-ink-muted">
+        Point it at folders. <Sitrep /> extracts the state your agents already
+        wrote. You triage across every project - no import, no new format,
+        local-first.
+      </p>
       <p class="mt-3 text-xs text-ink-faint">
-        A demo corpus of fictional projects; the app and layout are real.
+        <Sitrep /> is an AI project status dashboard, shown here over a demo
+        corpus of fictional projects - the app and layout are real.
       </p>
     </section>
 
@@ -202,6 +208,34 @@ const never = [
           The conventions it reads, in detail
         </a>
       </p>
+    </section>
+
+    <!-- Price -->
+    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="price">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 id="price" class="text-2xl font-semibold tracking-tight">&euro;49. Once.</h2>
+          <p class="mt-3 max-w-prose text-ink-muted">
+            A year of updates included, and the license is perpetual - the app
+            keeps working forever, offline, with no account. The 14-day trial
+            is the full product.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="/download/"
+            class="rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Download for macOS
+          </a>
+          <a
+            href="/pricing/"
+            class="rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Pricing details
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Promises -->

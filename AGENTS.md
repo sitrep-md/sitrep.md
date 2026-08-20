@@ -32,6 +32,13 @@ this site:
 
 - Category phrase: **"AI project status dashboard"**. Use it verbatim and
   consistently - category discipline is a ground rule, not a style choice.
+  Where it lives (ratified 2026-08-21): retrieval surfaces - page titles,
+  meta descriptions, JSON-LD, FAQ, footer, llms.txt - plus at least one
+  visible on-page use per page. The homepage hero deliberately does NOT
+  lead with it: the hero leads with the pain ("Never open a cold project
+  again") and the differentiated line ("your agents already wrote down
+  what happened"), because the category reads generic as a pitch while
+  staying essential as a classification.
 - Tagline: **"Never open a cold project again."**
 - Positioning: a **state layer** on top of the markdown AI agents already
   generate - not a viewer, not an editor, not agent orchestration.
