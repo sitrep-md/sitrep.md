@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Sitrep from '../components/Sitrep.astro';
+// The release pipeline appends to public/releases/index.json (the same file
+// the update manifests ride beside); this page is its human-readable record.
+import releases from '../../public/releases/index.json';
+
+interface Release {
+  version: string;
+  date: string;
+  channel: 'stable' | 'beta';
+  notes: string;
+}
+const entries = releases as Release[];
+
+/** Notes arrive as markdown bullets; render one <li> per "- " item. */
+const items = (notes: string): string[] =>
+  notes
+    .split(/\n(?=- )/)
+    .map((s) => s.replace(/^- /, '').replace(/\s*\n\s*/g, ' ').trim())
+    .filter(Boolean);
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://sitrep.md/changelog/#page',
+    url: 'https://sitrep.md/changelog/',
+    name: 'sitrep changelog - every release, what it lets you do',
+    description:
+      'Every sitrep release with its notes: what each version of the AI project status dashboard lets you do that the one before it did not.',
+    isPartOf: { '@id': 'https://sitrep.md/#website' },
+  },
+];
+---
+
+<BaseLayout
+  title="Changelog - what each sitrep release can do"
+  description="Every sitrep release with its notes. Entries name capabilities: what each version of the AI project status dashboard lets you do that the one before it did not."
+  schema={pageSchema}
+>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-5xl px-6">
+    <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
+      <p class="text-xs font-medium tracking-widest text-accent uppercase">Changelog</p>
+      <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        What each release lets you do
+      </h1>
+      <p class="max-w-prose text-lg text-ink-muted">
+        Every <Sitrep /> release, newest first. Notes name capabilities - what
+        the version can do that the one before it could not. The same record
+        drives the app's update manifests, so this page and the updater can
+        never disagree.
+      </p>
+    </header>
+
+    {
+      entries.length === 0 ? (
+        <section class="border-t border-line py-12 sm:py-16">
+          <p class="max-w-prose text-ink-muted">
+            No releases yet - the first published build lands here, with its
+            notes, the day it ships.
+          </p>
+        </section>
+      ) : (
+        entries.map((r) => (
+          <section class="border-t border-line py-10 sm:py-12" aria-labelledby={`v${r.version}`}>
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h2 id={`v${r.version}`} class="text-xl font-semibold tracking-tight">
+                {r.version}
+              </h2>
+              {r.channel === 'beta' && (
+                <span class="rounded-full border border-line px-2 py-0.5 text-[0.6875rem] font-medium text-ink-muted">
+                  beta
+                </span>
+              )}
+              <time datetime={r.date} class="text-xs text-ink-faint">
+                {r.date}
+              </time>
+            </div>
+            <ul class="mt-4 flex max-w-prose list-disc flex-col gap-2 pl-5 text-ink-muted">
+              {items(r.notes).map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ))
+      )
+    }
+  </main>
+
+  <Footer />
+</BaseLayout>
