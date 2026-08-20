@@ -32,48 +32,16 @@ const appSchema = [
 ];
 
 const promises = [
-  {
-    title: 'Zero adoption cost',
-    body: 'sitrep reads what agents already write. No new format, no frontmatter, no import, no restructuring. Point it at folders.',
-  },
-  {
-    title: 'State first',
-    body: 'Status, phases, decisions and staleness, glanceable across projects - an email client for project state, not a file tree.',
-  },
-  {
-    title: 'Reading parity',
-    body: 'Full GFM, highlighted code, Mermaid, KaTeX, callouts. Rendering is the floor, not the product - and never the excuse.',
-  },
-  {
-    title: 'Nothing takes the page away',
-    body: 'Live refresh lands in place, scroll re-anchors, reload restores your position. Esc peels one layer at a time.',
-  },
-  {
-    title: 'One writing surface',
-    body: 'Three convention-shaped ops - status, due, supersede - behind a preview and a content-hash guard. No other code path ever writes to your files.',
-  },
-  {
-    title: 'Local-first and private',
-    body: 'Fully functional forever with no account and no network. No telemetry by default. Your files never leave your machine.',
-  },
-  {
-    title: 'Fast',
-    body: 'Instant startup on kernel file events - never a tree walk. Instant search. Work stays proportional to what changed, never to corpus size.',
-  },
-  {
-    title: 'Honest',
-    body: 'Claims are measured before they are made - in the UI, in comparisons, and in community participation. Concrete and checkable beats superlatives.',
-  },
+  { title: 'Zero adoption cost', body: 'reads what agents already write - no format, no import, no restructuring.' },
+  { title: 'State first', body: 'an email client for project state, not a file tree.' },
+  { title: 'Reading parity', body: 'full GFM, code, Mermaid, KaTeX - rendering is the floor, not the product.' },
+  { title: 'Nothing takes the page away', body: 'live refresh lands in place; reload restores your position.' },
+  { title: 'One writing surface', body: 'three guarded ops; no other code path ever writes to your files.' },
+  { title: 'Local-first and private', body: 'fully functional with no account and no network, no telemetry by default.' },
+  { title: 'Fast', body: 'kernel file events, instant search - work scales with what changed.' },
+  { title: 'Honest', body: 'claims are measured before they are made.' },
 ];
 
-const never = [
-  'a general markdown editor, or one more pretty viewer',
-  'an agent orchestrator or parallel-session runner',
-  'a task manager with a format of its own',
-  'a second brain, vault or knowledge base',
-  'live agent control from your phone',
-  'a cloud-only or account-required product',
-];
 ---
 
 <BaseLayout
@@ -120,18 +88,18 @@ const never = [
     <section class="pb-16 sm:pb-20" aria-label="The sitrep overview">
       <div class="overflow-hidden rounded-xl border border-line bg-surface-raised">
         <img
-          src="/screenshots/hero-light.webp"
-          width="1600"
-          height="1000"
-          alt="The sitrep overview: fictional projects across two workspaces with statuses, phase meters and open-decision chips in the list, and an implementation plan open in the reader showing phases and a decision table."
+          src="/screenshots/overview-light.webp"
+          width="1280"
+          height="800"
+          alt="The sitrep overview: an email-client-style list of fictional projects - a blocked deploy note, a plan in progress with a due date, an open-decision chip and a phase meter, newest activity first."
           class="w-full dark:hidden"
           decoding="async"
         />
         <img
-          src="/screenshots/hero-dark.webp"
-          width="1600"
-          height="1000"
-          alt="The sitrep overview in dark theme: fictional projects across two workspaces with statuses, phase meters and open-decision chips in the list, and an implementation plan open in the reader showing phases and a decision table."
+          src="/screenshots/overview-dark.webp"
+          width="1280"
+          height="800"
+          alt="The sitrep overview in dark theme: an email-client-style list of fictional projects - a blocked deploy note, a plan in progress with a due date, an open-decision chip and a phase meter, newest activity first."
           class="hidden w-full dark:block"
           decoding="async"
         />
@@ -242,55 +210,38 @@ const never = [
     <section class="border-t border-line py-16 sm:py-20" aria-labelledby="promises">
       <h2 id="promises" class="text-2xl font-semibold tracking-tight">The product contract</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
-        Eight promises every feature is tested against. A feature that breaks
-        one is wrong even if it is useful.
+        Eight promises every feature is tested against:
       </p>
-      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+      <ul class="mt-6 grid max-w-4xl gap-x-10 gap-y-3 sm:grid-cols-2">
         {
           promises.map(({ title, body }) => (
-            <li class="flex max-w-prose flex-col gap-1.5">
-              <h3 class="font-medium">{title}</h3>
-              <p class="text-sm text-ink-muted">{body}</p>
+            <li class="text-sm">
+              <span class="font-medium">{title}</span>
+              <span class="text-ink-muted"> - {body}</span>
             </li>
           ))
         }
       </ul>
-      <p class="mt-8 text-sm">
+      <p class="mt-6 max-w-prose text-ink-muted">
+        And a binding list of nevers: not an editor, not a task manager, not
+        an agent orchestrator, not a second brain, not a cloud-only account.
+      </p>
+      <p class="mt-6 text-sm">
         <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          All eight promises, and the rules that hold them
+          All eight promises and the full anti-roadmap
         </a>
       </p>
-    </section>
-
-    <!-- Anti-roadmap -->
-    <section class="border-t border-line py-16 sm:py-20" aria-labelledby="never">
-      <h2 id="never" class="text-2xl font-semibold tracking-tight">What <Sitrep /> will never be</h2>
-      <p class="mt-3 max-w-prose text-ink-muted">
-        Not a viewer, not an editor, not a Notion/Obsidian replacement. The
-        anti-roadmap is written down and binding - <Sitrep /> will never be:
-      </p>
-      <ul class="mt-6 grid max-w-2xl gap-2.5 text-ink-muted">
-        {
-          never.map((item) => (
-            <li class="flex gap-3 text-sm">
-              <span aria-hidden="true" class="text-ink-faint select-none">&times;</span>
-              {item}
-            </li>
-          ))
-        }
-      </ul>
     </section>
 
     <!-- Comparison -->
     <section class="border-t border-line py-16 sm:py-20" aria-labelledby="fits">
       <h2 id="fits" class="text-2xl font-semibold tracking-tight">Where <Sitrep /> fits</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
-        Every adjacent tool gets project state another way: you author it in
-        the tool's shape, you work inside the tool, it reads the session
-        trail instead, you ask an agent to re-derive it every time - or it
-        stays in your head. <Sitrep /> parses the state your files already
-        contain. Each comparison below is honest about when the other
-        approach is the better choice.
+        Every adjacent tool asks you to author project state - in its format,
+        inside its walls, or by asking an agent to re-derive it every
+        time. <Sitrep /> discovers the state your files already contain. Each
+        comparison below is honest about when the other approach is the
+        better choice.
       </p>
       <div class="mt-8 overflow-x-auto">
         <table class="w-full min-w-[44rem] border-collapse text-sm">
