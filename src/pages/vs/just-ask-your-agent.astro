@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/vs/just-ask-your-agent/',
     name: 'sitrep vs just asking your agent - re-derived answers or held state',
     description:
-      'The most honest comparison on this site: "what is the status of this project?" typed into Claude Code, Cursor or Codex is free, needs no install, and often works. When the prompt is enough, where it stops scaling, and why the two are better together.',
+      'The simplest and easiest alternative to sitrep: "what is the status of this project?" typed into Claude Code, Cursor or Codex is free, needs no install, and often works. When the prompt is enough, where it stops scaling, and why the two are better together.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -44,23 +44,23 @@ const rows = [
   },
   {
     dim: 'When the docs lie',
-    sitrep: 'Staleness is measured - an “active” claim nothing has touched in weeks gets flagged against the repo’s real activity',
+    sitrep: 'Staleness is measured - an "active" claim nothing has touched in weeks gets flagged against the repo\'s real activity',
     other: 'The agent believes what the doc says unless told to cross-check dates, per doc, per ask',
   },
   {
     dim: 'Scope per ask',
     sitrep: 'Every project at once, newest activity first',
-    other: 'In practice the repo the session is open in; “all my projects” means many asks',
+    other: 'In practice the repo the session is open in; "all my projects" means many asks',
   },
   {
     dim: 'Reads meaning',
     sitrep: 'No - it extracts what the docs state, it does not interpret prose',
-    other: 'Yes - weighs contradictions, reads intent, answers follow-ups. Genuinely better at this',
+    other: 'Yes - weighs contradictions, reads intent, answers follow-ups. Better at this',
   },
   {
     dim: 'Writes to your files',
-    sitrep: 'Three guarded state operations in the document’s own convention; nothing else, ever',
-    other: '“Make sure the docs are up to date” hands the whole record to free-form edits',
+    sitrep: 'Three guarded state operations in the document\'s own convention; nothing else, ever',
+    other: '"Make sure the docs are up to date" hands the whole record to free-form edits',
   },
   {
     dim: 'Cost per glance',
@@ -72,7 +72,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs just asking your agent - re-derived answers or held state"
-  description="The realest alternative to sitrep is not another tool - it is typing 'what is the status?' into Claude Code, Cursor or Codex. This page is honest about when that prompt is enough, where it stops scaling, and why the prompt gets better with sitrep underneath it."
+  description="The realest alternative to sitrep is not another tool - it is typing 'what is the status?' into Claude Code, Cursor or Codex. This page says when that prompt is enough, where it stops scaling, and why the prompt gets better with sitrep underneath it."
   schema={pageSchema}
 >
   <Nav />
@@ -250,8 +250,8 @@ const rows = [
           analyst's work.
         </p>
         <p class="text-sm text-ink-faint">
-          <Sitrep /> is in development, launching first on macOS. Local-first -
-          your files never leave your machine.
+          <Sitrep /> is available now on macOS; the 14-day trial is the full
+          product. Local-first - your files never leave your machine.
         </p>
       </div>
     </section>

@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/vs/beads/',
     name: 'sitrep vs Beads - agent memory or human overview',
     description:
-      'An honest comparison of sitrep and Beads: a dependency-aware issue tracker that upgrades your coding agent by replacing organic markdown with its own git-synced database, versus a passive state layer parsed from the markdown your agents already wrote.',
+      'A dependency-aware issue tracker that upgrades your coding agent by replacing organic markdown with its own git-synced database, versus a passive state layer parsed from the markdown your agents already wrote.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -49,7 +49,7 @@ const rows = [
   },
   {
     dim: 'Writes to your files',
-    sitrep: 'Three guarded state operations in the document’s own convention; nothing else, ever',
+    sitrep: 'Three guarded state operations in the document\'s own convention; nothing else, ever',
     other: 'Read-write by design - agents continuously update its issue database',
   },
   {
@@ -72,7 +72,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs Beads - agent memory or human overview"
-  description="Beads upgrades your coding agent's memory by replacing markdown plans with a dependency-aware, git-synced issue tracker; sitrep is a status dashboard parsed from the markdown your agents already wrote. When to choose each, honestly - including when Beads is the better pick."
+  description="Beads upgrades your coding agent's memory by replacing markdown plans with a dependency-aware, git-synced issue tracker; sitrep is a status dashboard parsed from the markdown your agents already wrote. When to choose each, including when Beads is the better pick."
   schema={pageSchema}
 >
   <Nav />
@@ -84,9 +84,8 @@ const rows = [
         <Sitrep /> vs Beads
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        Beads is the strongest agent-side state tool in this space: a
-        dependency-aware issue tracker your coding agents plan, claim and
-        close work in, synced through git. If the problem you are solving is
+        Beads is a dependency-aware issue tracker your coding agents plan,
+        claim and close work in, synced through git. If the problem you are solving is
         your agent's memory, Beads is the better pick, because <Sitrep />
         does not manage agents at all. The two tools point in opposite directions
         - and compose.
@@ -172,8 +171,7 @@ const rows = [
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
         Agent-side state infrastructure is on <Sitrep />'s anti-roadmap
-        permanently - that job is Beads', and it does it better than
-        anything else right now.
+        permanently - that job is Beads', and it does it well.
       </p>
     </section>
 
@@ -183,8 +181,8 @@ const rows = [
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
           Months of project state already live in organic markdown - plans,
-          analyses, decision docs - and migrating it into any tracker is
-          exactly the work you do not want.
+          analyses, decision docs - and nobody goes back to re-enter that
+          into a tracker.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -216,8 +214,8 @@ const rows = [
         git-friendly, and account-free.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        <Sitrep /> is in development, launching first on macOS. Local-first -
-        your files never leave your machine.
+        <Sitrep /> is available now on macOS; the 14-day trial is the full
+        product. Local-first - your files never leave your machine.
       </p>
     </section>
   </main>

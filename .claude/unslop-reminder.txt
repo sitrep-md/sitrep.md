@@ -1,0 +1,20 @@
+[unslop: mandatory] All prose you emit: chat replies, plans, summaries,
+commit messages, docs, code comments, UI and marketing copy. Full rules
+(31 patterns): .claude/skills/unslop/SKILL.md.
+
+No em dashes or en dashes. Comma or full stop; parentheses are not a substitute.
+Banned words: additionally, crucial, delve, enduring, enhance, foster, garner,
+interplay, intricate, landscape, pivotal, showcase, tapestry, testament,
+underscore, vibrant, leverage, utilize, facilitate, numerous.
+Banned metaphor nouns: substrate, wedge, vector, locus, nexus, surface,
+primitive, harness, scaffolding, modality, paradigm, flywheel, north star,
+endgame. Use the concrete word.
+Say "is" or "has", not "serves as", "stands as", "boasts", "features".
+No "not just X, but Y". No forced threes. No "from X to Y" non-ranges.
+Sentence case headings, straight quotes, no emoji, no bold on every noun,
+no "**Label:** label restated" bullets.
+Active voice with a named actor. One idea per sentence. Cut adverbs, hedges,
+filler. No "Great question", "You're absolutely right", "I hope this helps".
+Name the mechanism, the file or the number, never the feeling. If a sentence
+would read the same in another project's docs, cut it.
+Self-audit: what makes this obviously AI generated? Fix that.

@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/vs/task-master/',
     name: 'sitrep vs Task Master - directing work or observing state',
     description:
-      'An honest comparison of sitrep and Task Master (claude-task-master): a PRD-to-tasks system your agent executes, versus a passive state layer parsed from the markdown your agents already wrote.',
+      'Task Master (claude-task-master) is a PRD-to-tasks system your agent executes; sitrep is a passive state layer parsed from the markdown your agents already wrote.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -72,7 +72,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs Task Master - directing work or observing state"
-  description="Task Master turns a PRD into dependency-ordered tasks your agent executes; sitrep is a status dashboard parsed from the markdown your agents already wrote. One directs the work, the other observes it - when to choose each, honestly."
+  description="Task Master turns a PRD into dependency-ordered tasks your agent executes; sitrep is a status dashboard parsed from the markdown your agents already wrote. One directs the work, the other observes it - when to choose each."
   schema={pageSchema}
 >
   <Nav />
@@ -149,8 +149,7 @@ const rows = [
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
           You are starting a well-specified build and can write the PRD -
-          decomposing it into an ordered task graph is exactly the help you
-          want.
+          decomposing it into an ordered task graph is the help you want.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -164,9 +163,9 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          Free, source-available code matters more than a maintained pace -
-          be aware, honestly, that as of mid-2026 its team's energy has
-          visibly shifted to their hosted planning platform.
+          Free, source-available code matters more to you than pace of
+          maintenance - as of mid-2026 the team's energy has visibly
+          shifted to their hosted planning platform.
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
@@ -214,8 +213,8 @@ const rows = [
         migration in either direction - <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">no file ever has to move</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        <Sitrep /> is in development, launching first on macOS. Local-first -
-        your files never leave your machine.
+        <Sitrep /> is available now on macOS; the 14-day trial is the full
+        product. Local-first - your files never leave your machine.
       </p>
     </section>
   </main>

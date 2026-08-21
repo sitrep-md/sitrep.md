@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/vs/backlog-md/',
     name: 'sitrep vs Backlog.md - task board or state layer',
     description:
-      'An honest comparison of sitrep and Backlog.md: a git-native task board you and your agents author structured tasks into, versus a passive state layer parsed from the organic markdown your agents already wrote.',
+      'A git-native task board you and your agents author structured tasks into, versus a passive state layer parsed from the organic markdown your agents already wrote.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -44,7 +44,7 @@ const rows = [
   },
   {
     dim: 'Writes to your files',
-    sitrep: 'Three guarded state operations in the document’s own convention; nothing else, ever',
+    sitrep: 'Three guarded state operations in the document\'s own convention; nothing else, ever',
     other: 'Creates and updates its own task files',
   },
   {
@@ -72,7 +72,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs Backlog.md - task board or state layer"
-  description="Backlog.md is a git-native task board you author structured tasks into; sitrep is an AI project status dashboard parsed from the markdown your agents already wrote. When to choose each, honestly - including when Backlog.md is the better pick."
+  description="Backlog.md is a git-native task board you author structured tasks into; sitrep is an AI project status dashboard parsed from the markdown your agents already wrote. When to choose each, including when Backlog.md is the better pick."
   schema={pageSchema}
 >
   <Nav />
@@ -84,9 +84,9 @@ const rows = [
         <Sitrep /> vs Backlog.md
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        Backlog.md is one of the strongest tools in this space: free,
-        open-source, local-first, markdown-native, with an MCP server - the
-        same values <Sitrep /> holds. The difference is the job. If you want a
+        Backlog.md is free, open-source, local-first and markdown-native,
+        with an MCP server - the same values <Sitrep /> holds. The
+        difference is the job. If you want a
         task board, Backlog.md is the better pick - a task manager is
         exactly what <Sitrep /> refuses to become.
       </p>
@@ -217,8 +217,8 @@ const rows = [
         <a href="/security/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">local-first, no account, no telemetry</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">
-        <Sitrep /> is in development, launching first on macOS. Local-first -
-        your files never leave your machine.
+        <Sitrep /> is available now on macOS; the 14-day trial is the full
+        product. Local-first - your files never leave your machine.
       </p>
     </section>
   </main>

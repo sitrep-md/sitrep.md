@@ -51,6 +51,33 @@ this site:
   claim that turns out wrong, stale, or unbacked gets a dated entry in
   `CORRECTIONS.md` with the fix - regardless of how it looks.
 
+## Writing style - unslop is mandatory
+
+Every session in this repo loads the **`unslop`** skill
+(`.claude/skills/unslop/SKILL.md`, 31 numbered patterns) and applies it to all
+prose it emits: page copy, meta descriptions, FAQ answers, `llms.txt`,
+`CORRECTIONS.md` entries, commit messages, this file, and chat replies. A
+`UserPromptSubmit` hook in `.claude/settings.json` restates the short version
+each turn from `.claude/unslop-reminder.txt`, so a long session cannot drift
+out of it.
+
+This site is where the tells would be public, so three rules bind hardest. No
+em dashes, ever - a comma or a full stop, and parentheses are not a substitute.
+No promotional adjective where a checkable claim fits, which is the same rule
+the copy contract above already states as "concrete and checkable, never
+superlative". No sentence that names a feeling ("stays close at hand") where it
+could name the mechanism or the number.
+
+The category phrase, the tagline and the pricing sentence in the copy contract
+are fixed strings. Unslop never rewrites them. One exemption from the skill's
+banned-metaphor list: "surface" in "one writing surface" (and the product's
+"writing surface" language generally) is product-contract vocabulary, ruled
+2026-08-21 - keep it, do not rewrite it away.
+
+The skill is a verbatim copy of `pstack/skills/unslop/SKILL.md` from
+https://github.com/cursor/plugins. Keep it byte-identical so it can be diffed
+against upstream; local additions go here instead.
+
 ## Design
 
 Same contract as the product app:
