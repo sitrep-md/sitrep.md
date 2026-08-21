@@ -84,67 +84,152 @@ const promises = [
       </p>
     </section>
 
-    <!-- Product shot: the live view -->
-    <section class="pb-16 sm:pb-20" aria-label="The sitrep shell">
-      <div class="overflow-hidden rounded-xl border border-line bg-surface-raised">
-        <img
-          src="/screenshots/hero-light.webp"
-          width="1600"
-          height="1000"
-          alt="The sitrep shell: an email-client-style project list - a plan edited minutes ago above work from hours and days back, a blocked deploy note with uncommitted edits, a gitignored scratch file, an untracked status doc - beside an open implementation plan with its phase meter, decision table and due date."
-          class="w-full dark:hidden"
-          decoding="async"
-        />
-        <img
-          src="/screenshots/hero-dark.webp"
-          width="1600"
-          height="1000"
-          alt="The sitrep shell in dark theme: an email-client-style project list - a plan edited minutes ago above work from hours and days back, a blocked deploy note with uncommitted edits, a gitignored scratch file, an untracked status doc - beside an open implementation plan with its phase meter, decision table and due date."
-          class="hidden w-full dark:block"
-          decoding="async"
-        />
+    <!-- Product shots: the live view and the attention lens, one carousel.
+         The breakout margins let the shots render wider than the prose
+         column - the captures are 1536px (the app's narrowest split view),
+         and every pixel of display width is legibility. -->
+    <section class="pb-16 sm:pb-20 xl:-mx-20 2xl:-mx-44" aria-label="Product screenshots">
+      <div data-carousel>
+        <div class="relative">
+          <div
+            class="overflow-hidden"
+            data-carousel-viewport
+            tabindex="0"
+            role="group"
+            aria-roledescription="carousel"
+            aria-label="Product screenshots"
+          >
+            <div class="flex" style="touch-action: pan-y pinch-zoom">
+              <figure class="m-0 w-full min-w-0 flex-shrink-0" role="group" aria-roledescription="slide" aria-label="1 of 2">
+                <div class="overflow-hidden rounded-xl border border-line bg-surface-raised">
+                  <img
+                    src="/screenshots/hero-light.webp"
+                    width="1536"
+                    height="920"
+                    alt="The sitrep shell: an email-client-style project list - a plan edited minutes ago above work from hours and days back, a blocked deploy note with uncommitted edits, a gitignored scratch file, an untracked status doc - beside an open implementation plan with its phase meter, decision table and due date."
+                    class="w-full dark:hidden"
+                    decoding="async"
+                  />
+                  <img
+                    src="/screenshots/hero-dark.webp"
+                    width="1536"
+                    height="920"
+                    alt="The sitrep shell in dark theme: an email-client-style project list - a plan edited minutes ago above work from hours and days back, a blocked deploy note with uncommitted edits, a gitignored scratch file, an untracked status doc - beside an open implementation plan with its phase meter, decision table and due date."
+                    class="hidden w-full dark:block"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption class="mx-auto mt-5 max-w-prose text-center text-sm text-ink-muted">
+                  Point it at folders. <Sitrep /> extracts the state your
+                  agents already wrote - no import, no new format, local-first.
+                </figcaption>
+              </figure>
+              <figure class="m-0 w-full min-w-0 flex-shrink-0" role="group" aria-roledescription="slide" aria-label="2 of 2">
+                <div class="overflow-hidden rounded-xl border border-line bg-surface-raised">
+                  <img
+                    src="/screenshots/attention-light.webp"
+                    width="1536"
+                    height="920"
+                    alt="The Needs attention view: the same list narrowed to open decisions, a blocked and overdue note, and left-behind plans from one to six months old, with a stale plan open in the reader wearing its badge."
+                    class="w-full dark:hidden"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="/screenshots/attention-dark.webp"
+                    width="1536"
+                    height="920"
+                    alt="The Needs attention view in dark theme: the same list narrowed to open decisions, a blocked and overdue note, and left-behind plans from one to six months old, with a stale plan open in the reader wearing its badge."
+                    class="hidden w-full dark:block"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption class="mx-auto mt-5 max-w-prose text-center text-sm text-ink-muted">
+                  One click from what is current to what needs attention:
+                  open decisions, overdue work, plans your projects outgrew.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <button
+            data-carousel-prev
+            aria-label="Previous screenshot"
+            class="absolute top-1/2 left-3 hidden size-9 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface/85 text-ink-muted backdrop-blur transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:flex"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+          <button
+            data-carousel-next
+            aria-label="Next screenshot"
+            class="absolute top-1/2 right-3 hidden size-9 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface/85 text-ink-muted backdrop-blur transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:flex"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        </div>
+        <div class="mt-4 flex items-center justify-center gap-2" role="group" aria-label="Screenshot picker">
+          <button data-carousel-dot="0" aria-label="Screenshot 1" class="h-1.5 w-6 rounded-full bg-accent transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"></button>
+          <button data-carousel-dot="1" aria-label="Screenshot 2" class="h-1.5 w-1.5 rounded-full bg-line transition-all hover:bg-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"></button>
+        </div>
       </div>
-      <p class="mt-6 max-w-prose text-ink-muted">
-        Point it at folders. <Sitrep /> extracts the state your agents already
-        wrote - status lines, phases, decisions, due dates - and shows it the
-        way an inbox shows mail: what moved minutes ago above what moved last
-        week, uncommitted and gitignored work flagged beside what made it to
-        git. Open any doc and read it in full fidelity. No import, no new
-        format, local-first.
-      </p>
-
-      <!-- Product shot: the attention lens -->
-      <div class="mt-10 overflow-hidden rounded-xl border border-line bg-surface-raised">
-        <img
-          src="/screenshots/attention-light.webp"
-          width="1600"
-          height="1000"
-          alt="The Needs attention view: the same list narrowed to open decisions, a blocked and overdue note, and left-behind plans from one to six months old, with a stale plan open in the reader wearing its badge."
-          class="w-full dark:hidden"
-          loading="lazy"
-          decoding="async"
-        />
-        <img
-          src="/screenshots/attention-dark.webp"
-          width="1600"
-          height="1000"
-          alt="The Needs attention view in dark theme: the same list narrowed to open decisions, a blocked and overdue note, and left-behind plans from one to six months old, with a stale plan open in the reader wearing its badge."
-          class="hidden w-full dark:block"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <p class="mt-6 max-w-prose text-ink-muted">
-        Then one click flips the same list from "what is current" to "what is
-        actually waiting on you": open decisions, blocked and overdue work,
-        and the plans your projects quietly outgrew - weeks and months old,
-        still claiming to be in progress.
-      </p>
-      <p class="mt-3 text-xs text-ink-faint">
+      <p class="mt-5 text-center text-xs text-ink-faint">
         <Sitrep /> is an AI project status dashboard, shown here over a demo
         corpus of fictional projects - the app and layout are real.
       </p>
     </section>
+
+    <script>
+      import EmblaCarousel from "embla-carousel";
+      import Autoplay from "embla-carousel-autoplay";
+
+      const root = document.querySelector<HTMLElement>("[data-carousel]");
+      const viewport = root?.querySelector<HTMLElement>("[data-carousel-viewport]");
+      if (root && viewport) {
+        const dots = [...root.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]")];
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const embla = EmblaCarousel(
+          viewport,
+          { loop: true, duration: reduced ? 0 : 22 },
+          reduced ? [] : [Autoplay({ delay: 7000, stopOnInteraction: true, stopOnMouseEnter: true })],
+        );
+        const stop = () => embla.plugins().autoplay?.stop();
+
+        const sync = () => {
+          const active = embla.selectedScrollSnap();
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("w-6", i === active);
+            dot.classList.toggle("bg-accent", i === active);
+            dot.classList.toggle("w-1.5", i !== active);
+            dot.classList.toggle("bg-line", i !== active);
+            dot.setAttribute("aria-current", String(i === active));
+          });
+        };
+        embla.on("select", sync);
+        sync();
+
+        dots.forEach((dot, i) =>
+          dot.addEventListener("click", () => {
+            stop();
+            embla.scrollTo(i);
+          }),
+        );
+        root.querySelector("[data-carousel-prev]")?.addEventListener("click", () => {
+          stop();
+          embla.scrollPrev();
+        });
+        root.querySelector("[data-carousel-next]")?.addEventListener("click", () => {
+          stop();
+          embla.scrollNext();
+        });
+        viewport.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+          e.preventDefault();
+          stop();
+          e.key === "ArrowLeft" ? embla.scrollPrev() : embla.scrollNext();
+        });
+        root.addEventListener("focusin", stop);
+      }
+    </script>
 
     <!-- The problem -->
     <section class="border-t border-line py-16 sm:py-20" aria-labelledby="problem">
