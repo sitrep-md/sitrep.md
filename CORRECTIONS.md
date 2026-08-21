@@ -15,6 +15,23 @@ wording polish do not qualify.
 
 ---
 
+## 2026-08-22 - /faq/ - "any other markdown, agent-written or human-written"
+
+**Claimed:** the agents question answered that sitrep reads "any other
+markdown, agent-written or human-written" - a promise of extraction from
+arbitrary prose, when extraction works only on the conventions sitrep
+parses (status lines, phase headings, decision lists and tables, due
+dates). A reader with a freeform vault would install expecting extracted
+state and get activity and staleness only.
+
+**Caught by:** self-caught, in a premise-grilling session that read the
+copy against the product's own bet: agent-written markdown converges on
+these conventions, arbitrary human prose does not.
+
+**Fix:** the answer names the conventions, says human-written docs work
+when they use them, and states what a doc without them shows. Commit
+`61529f4`.
+
 ## 2026-08-21 - /vs/* - eight pages said "in development" after launch
 
 **Claimed:** every comparison page ended "sitrep is in development,
