@@ -84,30 +84,61 @@ const promises = [
       </p>
     </section>
 
-    <!-- Product shot -->
-    <section class="pb-16 sm:pb-20" aria-label="The sitrep overview">
+    <!-- Product shot: the live view -->
+    <section class="pb-16 sm:pb-20" aria-label="The sitrep shell">
       <div class="overflow-hidden rounded-xl border border-line bg-surface-raised">
         <img
-          src="/screenshots/overview-light.webp"
-          width="1280"
-          height="800"
-          alt="The sitrep overview: an email-client-style list of fictional projects - a blocked deploy note, a plan in progress with a due date, an open-decision chip and a phase meter, newest activity first."
+          src="/screenshots/hero-light.webp"
+          width="1600"
+          height="1000"
+          alt="The sitrep shell: an email-client-style project list - a plan edited minutes ago above work from hours and days back, a blocked deploy note with uncommitted edits, a gitignored scratch file, an untracked status doc - beside an open implementation plan with its phase meter, decision table and due date."
           class="w-full dark:hidden"
           decoding="async"
         />
         <img
-          src="/screenshots/overview-dark.webp"
-          width="1280"
-          height="800"
-          alt="The sitrep overview in dark theme: an email-client-style list of fictional projects - a blocked deploy note, a plan in progress with a due date, an open-decision chip and a phase meter, newest activity first."
+          src="/screenshots/hero-dark.webp"
+          width="1600"
+          height="1000"
+          alt="The sitrep shell in dark theme: an email-client-style project list - a plan edited minutes ago above work from hours and days back, a blocked deploy note with uncommitted edits, a gitignored scratch file, an untracked status doc - beside an open implementation plan with its phase meter, decision table and due date."
           class="hidden w-full dark:block"
           decoding="async"
         />
       </div>
       <p class="mt-6 max-w-prose text-ink-muted">
         Point it at folders. <Sitrep /> extracts the state your agents already
-        wrote. You triage across every project - no import, no new format,
-        local-first.
+        wrote - status lines, phases, decisions, due dates - and shows it the
+        way an inbox shows mail: what moved minutes ago above what moved last
+        week, uncommitted and gitignored work flagged beside what made it to
+        git. Open any doc and read it in full fidelity. No import, no new
+        format, local-first.
+      </p>
+
+      <!-- Product shot: the attention lens -->
+      <div class="mt-10 overflow-hidden rounded-xl border border-line bg-surface-raised">
+        <img
+          src="/screenshots/attention-light.webp"
+          width="1600"
+          height="1000"
+          alt="The Needs attention view: the same list narrowed to open decisions, a blocked and overdue note, and left-behind plans from one to six months old, with a stale plan open in the reader wearing its badge."
+          class="w-full dark:hidden"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="/screenshots/attention-dark.webp"
+          width="1600"
+          height="1000"
+          alt="The Needs attention view in dark theme: the same list narrowed to open decisions, a blocked and overdue note, and left-behind plans from one to six months old, with a stale plan open in the reader wearing its badge."
+          class="hidden w-full dark:block"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <p class="mt-6 max-w-prose text-ink-muted">
+        Then one click flips the same list from "what is current" to "what is
+        actually waiting on you": open decisions, blocked and overdue work,
+        and the plans your projects quietly outgrew - weeks and months old,
+        still claiming to be in progress.
       </p>
       <p class="mt-3 text-xs text-ink-faint">
         <Sitrep /> is an AI project status dashboard, shown here over a demo
