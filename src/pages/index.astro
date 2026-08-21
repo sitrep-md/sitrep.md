@@ -53,7 +53,7 @@ const promises = [
 
   <main class="mx-auto w-full max-w-5xl px-6">
     <!-- Hero -->
-    <section class="flex flex-col items-start gap-6 pt-[12vh] pb-20 sm:pb-24">
+    <section class="flex flex-col items-start gap-6 pt-[12vh] pb-10 sm:pb-12">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">For Claude Code, Cursor and Codex workflows</p>
       <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
         Never open a cold project again.
@@ -63,24 +63,6 @@ const promises = [
         progress notes scattered across your repos. <Sitrep /> turns that
         markdown into a live view of where every project stands: what moved,
         what is stalled, what is waiting on you.
-      </p>
-      <div class="flex flex-wrap items-center gap-3">
-        <a
-          href="/download/"
-          class="rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          Download for macOS
-        </a>
-        <a
-          href="/pricing/"
-          class="rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          Pricing
-        </a>
-      </div>
-      <p class="text-sm text-ink-faint">
-        Free 14-day trial - the full product, no card, no account. Then
-        &euro;49, once - keep it forever.
       </p>
     </section>
 
@@ -119,10 +101,6 @@ const promises = [
                     decoding="async"
                   />
                 </div>
-                <figcaption class="mx-auto mt-5 max-w-prose text-center text-sm text-ink-muted">
-                  Point it at folders. <Sitrep /> extracts the state your
-                  agents already wrote - no import, no new format, local-first.
-                </figcaption>
               </figure>
               <figure class="m-0 w-full min-w-0 flex-shrink-0" role="group" aria-roledescription="slide" aria-label="2 of 2">
                 <div class="overflow-hidden rounded-xl border border-line bg-surface-raised">
@@ -145,10 +123,6 @@ const promises = [
                     decoding="async"
                   />
                 </div>
-                <figcaption class="mx-auto mt-5 max-w-prose text-center text-sm text-ink-muted">
-                  One click from what is current to what needs attention:
-                  open decisions, overdue work, plans your projects outgrew.
-                </figcaption>
               </figure>
             </div>
           </div>
@@ -172,10 +146,26 @@ const promises = [
           <button data-carousel-dot="1" aria-label="Screenshot 2" class="h-1.5 w-1.5 rounded-full bg-line transition-all hover:bg-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"></button>
         </div>
       </div>
-      <p class="mt-5 text-center text-xs text-ink-faint">
-        <Sitrep /> is an AI project status dashboard, shown here over a demo
-        corpus of fictional projects - the app and layout are real.
-      </p>
+      <div class="mt-10 flex flex-col items-center gap-4">
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/download/"
+            class="rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Download for macOS
+          </a>
+          <a
+            href="/pricing/"
+            class="rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Pricing
+          </a>
+        </div>
+        <p class="text-sm text-ink-faint">
+          Free 14-day trial - the full product, no card, no account. Then
+          &euro;49, once - keep it forever.
+        </p>
+      </div>
     </section>
 
     <script>
