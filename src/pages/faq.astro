@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: 'Which AI coding agents does sitrep work with?',
-    a: 'sitrep reads Claude Code, Cursor and Codex markdown across all your projects - and any other markdown, agent-written or human-written. It is agent-agnostic by construction: it parses conventions in the files themselves, not any tool-specific format.',
+    a: 'sitrep reads Claude Code, Cursor and Codex markdown across all your projects. It is agent-agnostic by construction: it parses conventions in the files themselves - status lines, phase headings, decision lists and tables, due dates - not any tool-specific format. Human-written docs work the same way when they use those conventions. A doc without them still appears in the overview with its activity and staleness (sitrep tracks when the file changed, so even an undated "in progress" goes stale on its own); it just carries no extracted state.',
   },
   {
     q: 'Do I need to add frontmatter or restructure my files?',
@@ -47,6 +47,10 @@ const faqs = [
   {
     q: 'Does sitrep replace my task manager?',
     a: 'No, and it refuses to become one. A task manager makes you author its format; authoring structured state is the exact friction sitrep removes. It surfaces the state your docs already contain, including the decisions still waiting on you.',
+  },
+  {
+    q: 'Can my team use sitrep?',
+    a: 'Yes, through git: the plans and decision docs live in your repos, so every teammate who pulls them can point their own sitrep at the same folders and read the same state. Workspaces and per-user configuration are local, so each person builds their own view over the shared sources - their own scopes, thresholds and saved views. Licensing is one license per person; there is no team plan yet.',
   },
   {
     q: 'How does sitrep know a document is stale?',
@@ -83,6 +87,10 @@ const faqs = [
   {
     q: 'What does sitrep cost?',
     a: 'A one-time purchase: €49 / $49, same number in both currencies. That includes a year of app updates, and the license is perpetual - the app keeps working forever, offline, with no account. The 14-day trial is the full product, no card up front.',
+  },
+  {
+    q: 'What happens when the trial ends?',
+    a: 'At day 14 the app locks until a license key is entered - the only time sitrep interrupts you. The promises hold behind the gate: no account, no online check (keys verify offline), nothing uploaded, your files never touched. The index stays on disk and a key unlocks in place, so you resume exactly where the trial ended.',
   },
   {
     q: 'When can I use it?',
