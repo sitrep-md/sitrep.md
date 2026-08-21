@@ -15,6 +15,36 @@ wording polish do not qualify.
 
 ---
 
+## 2026-08-21 - /vs/* - eight pages said "in development" after launch
+
+**Claimed:** every comparison page ended "sitrep is in development,
+launching first on macOS" - while /download/ was already shipping the
+signed 0.5.0 build and /faq/ answered "When can I use it?" with "Now".
+The Obsidian page also implied a waitlist ("not when a waitlist clears")
+that never existed.
+
+**Caught by:** self-caught, in a full-site copy audit the day after the
+macOS build went public.
+
+**Fix:** all eight pages and the Obsidian availability row now state the
+product is available on macOS with the full 14-day trial; the waitlist
+line names what is true - the read-only mobile mirror is planned, not
+shipped. Commit `5c8344e`.
+
+## 2026-08-21 - /faq/, llms.txt - shipped features trailing the claims again
+
+**Claimed:** the FAQ answered "Can my agents query sitrep?" with "That
+is the plan", although the read-only MCP server shipped 2026-08-09 and
+is in the packaged sidecar. llms.txt counted "three read-time checks"
+for staleness when the product ships four, omitting plan adrift.
+
+**Caught by:** self-caught, same audit.
+
+**Fix:** the FAQ states the MCP server as shipped and read-only;
+llms.txt names all four checks. Stale in the flattering direction, like
+the 2026-08-09 entry that created the audit-on-ship rule - launch pace
+outran the rule, so the audit was re-run whole-site. Commit `5c8344e`.
+
 ## 2026-08-10 - /about/ - the one unqualified big number
 
 **Claimed:** "This July alone, git counted roughly 190,000 added lines of
