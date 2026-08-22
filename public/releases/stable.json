@@ -1,15 +1,15 @@
 {
-  "version": "0.5.0",
-  "notes": "- Settings › About can make sitrep your default Markdown app: one click and\n  double-clicking .md, .markdown and .mdown files in Finder opens them here.\n  Per-user, no admin prompt, undoable anytime via Finder's Get Info › Open\n  With - and the choice survives updates, since macOS keys it on the app's\n  identity rather than its version.\n- Installing got the standard Mac treatment: the download opens as a window\n  where you drag sitrep into Applications, with the layout and background\n  to match.\n- The 14-day trial clock now heals itself: deleting individual files in\n  sitrep's app data no longer restarts the trial.",
-  "pub_date": "2026-08-20T21:04:53.136Z",
+  "version": "0.6.0",
+  "notes": "- The document list gives every fact a fixed home: a status icon then the\n  title on the first line (dashed circle = no status recorded, half-filled =\n  in progress, check = shipped), signal chips and the phase strip on the\n  second, time, commits and git state bottom left, the project tag bottom\n  right. Rich rows dropped from five lines to three, titles align down the\n  whole list, and the status excerpt no longer repeats what the badge says.\n- Dragging the list/reader divider resizes both panes live: the document\n  re-wraps as the pointer moves, and the expensive table re-fit waits for\n  the release instead of running every frame.\n- Settings save themselves: changes land once you pause, the header says so,\n  and Save/Cancel are gone. Creating a workspace stays a deliberate click -\n  the folder step's own \"Create workspace\" button - and removing one asks\n  \"Really remove?\" first.\n- Adding a workspace indexes only that workspace instead of re-reading every\n  other one; renaming a workspace, changing its monogram or adjusting\n  staleness thresholds reindexes nothing at all.\n- Picking a folder and saving no longer answers `workspace id \"\" must be\n  lowercase letters, digits and dashes` - the create action commits the\n  picked folder itself.\n- Cold opens survive launch: a document double-clicked in Finder while the\n  app is still starting lands in the reader once the server is up, and\n  previews refresh and link from disk.",
+  "pub_date": "2026-08-22T08:18:58.125Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVlVWTFzSGVBcHVIaTB4MFl6SXBOcFZ2WW5zK1J0dFBDM0doc0ZSbGZzSXYxdC84ZURqOXFjcXUyaXlDRXgvUVlFbjJVTG03YyttOE5SSG5VZnU5T1FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjU5NTMxCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKYkplSUptell4N3B5REdGM1hQNHFBenIvTHJPaVhMKzFWZ3F0c0FJbVFtUjMvNTJJaEFydnlLcjg4LzVTLzNENkdtdEVFUzFMNmdQclV3VGMzV25iQ0E9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.5.0/sitrep_0.5.0_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVVZUk1NU3BQbU40MWJ1WlJHeC9WWXBJWUtYaXMxdWV2MlB0UUVSZDZ4aFExMzhGa1U2YVVPZmFHWWJtWVY0eURoSEUzMFdBODFFUS9EdlZsYW9Fd0FrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3Mzg2Mzc2CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKcktXS0ZDOHhvRkpvV2p1bm1SZm5oNTBaNmpwM3Z4TkVWRU91dWxhTGhvS01TUGpnVXRxbHpEUXA4VnQ1V0grWFcxQytGZDRxZ1pHYXhHSTVremFLQVE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.6.0/sitrep_0.6.0_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWNrTTlHSU9IOFdFNmtnSzVLTktZMThraGZ6YWFmbGtoTFZ3cXh1eUNianhjQktIUU5STTdhYWlRWXhCakVhZExFMldDNGJRR0hacW1idjErYzdYQmdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3MjU5ODI0CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKNDR5MDlaOElYNW41b21tenB6bXFIS0o2dk1IYTlWaGkxYmQwUmpmbEtiei9zRkpxU09pcEU2cE84SGRnUzYxbG9Fa2g0aElnQmRhZ2FhT1ZWNFdYQlE9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.5.0/sitrep_0.5.0_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVgvbERocnFLZmRFZDJnRi9XVjlWN2FBZGtkTlcyYnNJOUowNFBsbkxiNFRpUE90K2NEaUhEZUYxYkQrSFBxSzdWS0prTWV5YmdNUU5uZmlCTFFQdGdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3Mzg2NjczCWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKZ29SUmwyVUFOSXlvZFMyRVp1Ylovelk5bXZQNmk2NFVYcDlZWVdmdGxOUmVSMEQwbzhvMGQyZ3g2TXF0ZDJOUHBCNXZvUEZNNjMxVDdrWFhwR0NRRHc9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.6.0/sitrep_0.6.0_x64.app.tar.gz"
     }
   }
 }

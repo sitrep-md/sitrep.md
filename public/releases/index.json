@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.6.0",
+    "date": "2026-08-22",
+    "channel": "stable",
+    "notes": "- The document list gives every fact a fixed home: a status icon then the\n  title on the first line (dashed circle = no status recorded, half-filled =\n  in progress, check = shipped), signal chips and the phase strip on the\n  second, time, commits and git state bottom left, the project tag bottom\n  right. Rich rows dropped from five lines to three, titles align down the\n  whole list, and the status excerpt no longer repeats what the badge says.\n- Dragging the list/reader divider resizes both panes live: the document\n  re-wraps as the pointer moves, and the expensive table re-fit waits for\n  the release instead of running every frame.\n- Settings save themselves: changes land once you pause, the header says so,\n  and Save/Cancel are gone. Creating a workspace stays a deliberate click -\n  the folder step's own \"Create workspace\" button - and removing one asks\n  \"Really remove?\" first.\n- Adding a workspace indexes only that workspace instead of re-reading every\n  other one; renaming a workspace, changing its monogram or adjusting\n  staleness thresholds reindexes nothing at all.\n- Picking a folder and saving no longer answers `workspace id \"\" must be\n  lowercase letters, digits and dashes` - the create action commits the\n  picked folder itself.\n- Cold opens survive launch: a document double-clicked in Finder while the\n  app is still starting lands in the reader once the server is up, and\n  previews refresh and link from disk."
+  },
+  {
     "version": "0.5.0",
     "date": "2026-08-20",
     "channel": "stable",
