@@ -39,9 +39,27 @@ const pricingSchema = [
     description:
       'AI project status dashboard for macOS - a state layer on top of the markdown your AI agents already generate. One-time purchase with a year of updates and a perpetual license.',
     brand: { '@type': 'Brand', name: 'sitrep.md' },
+    image: [
+      'https://sitrep.md/screenshots/hero-light.webp',
+      'https://sitrep.md/screenshots/overview-light.webp',
+      'https://sitrep.md/og.png',
+    ],
     offers: [
-      { '@type': 'Offer', price: '49', priceCurrency: 'EUR', url: 'https://sitrep.md/pricing/' },
-      { '@type': 'Offer', price: '49', priceCurrency: 'USD', url: 'https://sitrep.md/pricing/' },
+      // PreOrder until checkout opens; flip to InStock the day purchasing goes live.
+      {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/PreOrder',
+        url: 'https://sitrep.md/pricing/',
+      },
+      {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/PreOrder',
+        url: 'https://sitrep.md/pricing/',
+      },
     ],
   },
   {

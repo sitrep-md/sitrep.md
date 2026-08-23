@@ -22,8 +22,21 @@ const downloadSchema = [
     softwareVersion: version,
     downloadUrl: 'https://sitrep.md/download/',
     offers: [
-      { '@type': 'Offer', price: '49', priceCurrency: 'EUR', url: 'https://sitrep.md/pricing/' },
-      { '@type': 'Offer', price: '49', priceCurrency: 'USD', url: 'https://sitrep.md/pricing/' },
+      // PreOrder until checkout opens; flip to InStock the day purchasing goes live.
+      {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/PreOrder',
+        url: 'https://sitrep.md/pricing/',
+      },
+      {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/PreOrder',
+        url: 'https://sitrep.md/pricing/',
+      },
     ],
   },
 ];
