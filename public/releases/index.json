@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.7.0",
+    "date": "2026-08-25",
+    "channel": "stable",
+    "notes": "- A phase whose heading carries no state word now reads its own checklist:\n  every box under the heading ticked is done, some ticked is in flight. The\n  phase chip's receipt names the tally and jumps to the first box. A heading\n  word, a tracking bullet or the status line still outranks the ticks.\n- A phase can be superseded: from its own heading word (`SUPERSEDED`,\n  `OBSOLETE`, `REJECTED` and the rest of that list) or inherited from a\n  superseded document, which retires every phase it never finished. The\n  phase strip draws a retired phase as a red-hatched segment, the count\n  beside the strip disappears once nothing is open (every phase done or\n  struck: the segments already say it), and a retired plan no longer\n  counts as in\n  flight, planned or claiming work for the staleness badges. `sitrep_doc`\n  and the list rows carry `phases_open` beside `phases_done`.\n- A document opened from outside the list's scope (a followed link, Cmd+O,\n  a Finder open) names the mismatch: a one-line row under the list header\n  reads \"Reading in workspace / project\", and clicking either takes the\n  list there while the reader stays open. The list never switches on its\n  own.\n- The reader's breadcrumb carries a copy button for the document's full\n  path."
+  },
+  {
     "version": "0.6.0",
     "date": "2026-08-22",
     "channel": "stable",
