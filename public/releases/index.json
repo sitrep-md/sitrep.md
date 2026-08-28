@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.8.1",
+    "date": "2026-08-28",
+    "channel": "stable",
+    "notes": "- sitrep stays out of macOS's \"Using Significant Energy\" list. The background\n  git refresh reran every repo's full commit history every five minutes, which\n  kept a git process alive 65% of the time and the server near 11% CPU around\n  the clock. It now rereads history only when a repo's HEAD actually moved;\n  branch, ahead/behind and the clean/modified state of documents still refresh\n  every sweep."
+  },
+  {
     "version": "0.8.0",
     "date": "2026-08-26",
     "channel": "stable",
