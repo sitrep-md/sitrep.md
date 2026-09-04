@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.9.0",
+    "date": "2026-09-04",
+    "channel": "stable",
+    "notes": "- Every table in the reader has a ⋯ menu above it. \"Copy table\" puts the\n  table on the clipboard as both HTML and tab-separated text, so it pastes as\n  a real table into mail, a spreadsheet or a document and as plain text into\n  a chat window. The HTML carries structure and a grey border and no colour,\n  background or font, so it takes the destination's theme instead of dragging\n  dark-mode white text onto a white page. The menu also copies the table as\n  markdown or CSV and opens the Table view, which until now only a table too\n  wide for the pane offered. The Table view's own export gains the same\n  \"Copy table\" for the sorted, filtered view.\n- A folder can be ignored from the reader. The document actions menu now\n  says \"Ignore doc\" for the per-file rule and adds \"Ignore directory\", which\n  opens a picker over the document's own folder chain: project first, the\n  file's folder last, each level with the number of indexed documents it\n  holds and the list for the one picked. Confirming writes one `dir/**` rule,\n  the same one the triage tray and the workspace tree write, and Settings ›\n  Corpus removes it again.\n- Settings has a Mobile sync section for the sitrep-sync mirror. It shows\n  whether this Mac has a sync account, turns the pusher's watch on and off\n  (the app's server runs it as a child and resumes it at boot), shows the\n  pairing QR code behind an explicit click with a note on what the code\n  grants, reports how many documents were pushed and when a phone last\n  pulled, and can stop and wipe the mirror behind a confirm. It needs a\n  sitrep-sync checkout and your own worker; without them the section says so\n  and names the command that sets one up.\n- With no window open, sitrep's background git sweep runs hourly instead of\n  every 5 minutes. Opening a window resumes the 5-minute pace, and a sweep\n  that is overdue runs right then. Commits still show up while nobody is\n  looking: a repo's own .git events drive its refresh at any pace, so the\n  stretch only delays the catch-up for changes macOS never reported."
+  },
+  {
     "version": "0.8.1",
     "date": "2026-08-28",
     "channel": "stable",
