@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.9.1",
+    "date": "2026-09-06",
+    "channel": "stable",
+    "notes": "- Mobile sync tells you when it has stopped. The gear on the rail carries a\n  dot, with the sentence in its tooltip, whenever sync is enabled and either\n  the watch process is not running or it is running but has not pushed the\n  index's latest change for five minutes - the second case is what a watch\n  looked like after the app restarted on a new port: alive, silent, and\n  \"running\" in Settings for two days. Settings > Mobile sync spells out\n  which, with the exit code of a crashed watch or the age of the unpushed\n  change. The dot follows the server without polling: a sync event rides the\n  existing stream on enable, disable, a child exit and a 30s freshness check.\n- The pusher survives the app restarting. It re-reads the server's coordinates\n  and reconnects when the health poll fails instead of polling the dead port\n  for the rest of its life, retries a first push that fails, and the app hands\n  it the coordinates of the server that spawned it, so a source checkout's\n  child no longer pushes from the installed app's port. The watch log is\n  appended to, never truncated.\n- In a window narrower than about 1536px the open document used to cover the\n  whole shell, and the only way back to the list was to close it. The\n  document's header now has a sidebar toggle: it slides the workspace rail\n  and the list in beside the document, which gives up that width, and the\n  divider between them can be dragged. The choice sticks across documents and\n  restarts. Wide windows are unchanged.\n- 0.9.0 crashed on open for anyone who had turned Mobile sync on. The app's\n  server started the pusher with the bare command `bun`, which a Finder-launched\n  app cannot see on its PATH; the spawn threw at boot, the server died 0.1s\n  after reporting ready and the shell restarted it into the same wall. The\n  server now finds bun by absolute path (`~/.bun/bin`, Homebrew, `/usr/local`,\n  or `SITREP_SYNC_BUN`), a failed start can no longer take the server down, and\n  Settings › Mobile sync shows the reason the watch did not start instead of a\n  generic \"not running\"."
+  },
+  {
     "version": "0.9.0",
     "date": "2026-09-04",
     "channel": "stable",
