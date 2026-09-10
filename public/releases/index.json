@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.9.2",
+    "date": "2026-09-10",
+    "channel": "stable",
+    "notes": "- The server stays idle when you do. Every `git status` it ran took and\n  dropped `.git/index.lock`, the watcher read that as the index changing and\n  ran `git status` again, so the installed app re-read every repository every\n  few seconds around the clock and sat on macOS's significant-energy list.\n  The watcher now ignores the lock, and `verify:gitidle` measures the quiet."
+  },
+  {
     "version": "0.9.1",
     "date": "2026-09-06",
     "channel": "stable",
