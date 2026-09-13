@@ -15,6 +15,35 @@ wording polish do not qualify.
 
 ---
 
+## 2026-09-13 - /security/, /faq/, /pricing/, /about/, llms.txt, three /vs/ pages - sync "not built yet"
+
+**Claimed:** the security page said sync "is not built yet", with a design
+"published now, before any backend exists", a protocol that "will be public
+from day one" and a client that "will speak the same protocol to any
+S3-compatible endpoint". The FAQ called it "a future optional sync layer",
+the pricing FAQ "planned", three comparison tables "Planned", and the about
+page told readers to "read the sync protocol when it ships". 0.9.0 shipped
+Mobile sync on 2026-09-04 as a self-hosted proof of concept: a read-only,
+end-to-end-encrypted mirror on a phone, pushed to a Cloudflare Worker in
+the user's own account. The site kept describing it as unbuilt for nine
+days and two releases. A reader who opened Settings > Mobile sync in the
+app found a section the site said did not exist, and the security page's
+promise that the protocol would be public before anything shipped was not
+kept: the document and the worker's source are still unpublished.
+
+**Caught by:** self-caught, in the 2026-09-10 documentation sweep of the
+product repo, which found every strategy document stopped on 2026-08-20 and
+this site with it.
+
+**Fix:** every page names the proof of concept and its limit, that the
+worker's source is not published yet. The security page marks each design
+bullet shipped or not built against the 0.9.0 implementation: the key,
+QR pairing and the keyed-hash metadata scheme shipped; the passphrase,
+recovery key, existing-device approval and share links did not. The
+server-sees list drops the email address, since there is no account, and
+adds the version counter and last-pull time the worker does hold. Commit
+`16fd6d7`.
+
 ## 2026-08-22 - /faq/ - "any other markdown, agent-written or human-written"
 
 **Claimed:** the agents question answered that sitrep reads "any other
