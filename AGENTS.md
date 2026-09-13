@@ -53,13 +53,12 @@ this site:
 
 ## Writing style - unslop is mandatory
 
-Every session in this repo loads the **`unslop`** skill
-(`.claude/skills/unslop/SKILL.md`, 31 numbered patterns) and applies it to all
+Every session loads the **`unslop`** skill (global,
+`~/.claude/skills/unslop/SKILL.md`, 31 numbered patterns) and applies it to all
 prose it emits: page copy, meta descriptions, FAQ answers, `llms.txt`,
 `CORRECTIONS.md` entries, commit messages, this file, and chat replies. A
-`UserPromptSubmit` hook in `.claude/settings.json` restates the short version
-each turn from `.claude/unslop-reminder.txt`, so a long session cannot drift
-out of it.
+global `UserPromptSubmit` hook restates the short version each turn from
+`~/.claude/unslop-reminder.txt`, so a long session cannot drift out of it.
 
 This site is where the tells would be public, so three rules bind hardest. No
 em dashes, ever - a comma or a full stop, and parentheses are not a substitute.
@@ -74,9 +73,10 @@ banned-metaphor list: "surface" in "one writing surface" (and the product's
 "writing surface" language generally) is product-contract vocabulary, ruled
 2026-08-21 - keep it, do not rewrite it away.
 
-The skill is a verbatim copy of `pstack/skills/unslop/SKILL.md` from
-https://github.com/cursor/plugins. Keep it byte-identical so it can be diffed
-against upstream; local additions go here instead.
+The skill originates from `pstack/skills/unslop/SKILL.md` in
+https://github.com/cursor/plugins and lives globally with an `upstream:`
+provenance line; repo-specific additions go here or in
+`.claude/addenda/<name>.md`, never into the global file.
 
 ## Design
 
