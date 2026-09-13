@@ -23,9 +23,9 @@ from day one" and a client that "will speak the same protocol to any
 S3-compatible endpoint". The FAQ called it "a future optional sync layer",
 the pricing FAQ "planned", three comparison tables "Planned", and the about
 page told readers to "read the sync protocol when it ships". 0.9.0 shipped
-Mobile sync on 2026-09-04 as a self-hosted proof of concept: a read-only,
-end-to-end-encrypted mirror on a phone, pushed to a Cloudflare Worker in
-the user's own account. The site kept describing it as unbuilt for nine
+Mobile sync on 2026-09-04 as a proof of concept: a read-only,
+end-to-end-encrypted mirror on a phone, pushed to a Cloudflare Worker with
+no accounts in it. The site kept describing it as unbuilt for nine
 days and two releases. A reader who opened Settings > Mobile sync in the
 app found a section the site said did not exist, and the security page's
 promise that the protocol would be public before anything shipped was not
@@ -36,7 +36,8 @@ product repo, which found every strategy document stopped on 2026-08-20 and
 this site with it.
 
 **Fix:** every page names the proof of concept and its limit, that the
-worker's source is not published yet. The security page marks each design
+relay's source and the pusher are not published yet, so a reader cannot
+switch it on. The security page marks each design
 bullet shipped or not built against the 0.9.0 implementation: the key,
 QR pairing and the keyed-hash metadata scheme shipped; the passphrase,
 recovery key, existing-device approval and share links did not. The

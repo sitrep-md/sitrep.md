@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/security/',
     name: 'sitrep security and privacy',
     description:
-      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync shipped in 0.9.0 as a self-hosted proof of concept: end-to-end encrypted with keys held on your devices, running on a worker in your own Cloudflare account, the protocol being written up for publication.',
+      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync shipped in 0.9.0 as a proof of concept: end-to-end encrypted with keys held on your devices, the relay stores ciphertext, the protocol being written up for publication.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -39,7 +39,7 @@ const principles = [
   },
   {
     title: 'Claims are checkable',
-    body: 'Every claim on this page maps to a verification path above: cut the network, read the scheme, run the worker on your own account. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
+    body: 'Every claim on this page maps to a verification path above: cut the network, read the scheme, and, once the source is published, run the worker yourself. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
   },
 ];
 
@@ -59,7 +59,7 @@ const serverCannotSee = [
 
 <BaseLayout
   title="Security and privacy - sitrep"
-  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, shipped as a self-hosted proof of concept, that you can verify."
+  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, shipped as a proof of concept, that you can verify."
   schema={pageSchema}
 >
   <Nav />
@@ -86,13 +86,15 @@ const serverCannotSee = [
           <Sitrep /> is a local-first desktop app. There is no account, no server
           component, and no telemetry by default. Your files are indexed into
           a local database on your machine and never leave it. The complete
-          list of data we hold about you is: nothing.
+          list of data we hold about you is: nothing. Enable Mobile sync and
+          it becomes the ciphertext and the short list at the bottom of this
+          page.
         </p>
         <p>
           The only network traffic the shipped app produces is a static
           update-manifest check. If you enable Mobile sync, it also pushes
-          encrypted documents to a worker in your own Cloudflare account,
-          under the scheme at the bottom of this page.
+          encrypted documents to the sync relay, under the scheme at the
+          bottom of this page.
         </p>
       </div>
     </section>
@@ -154,8 +156,8 @@ const serverCannotSee = [
           <dt class="font-medium">Read the traffic</dt>
           <dd class="text-sm text-ink-muted">
             The shipped app's outbound connections are few enough to
-            enumerate: a static update-manifest fetch, and your own worker's
-            endpoint if you enabled Mobile sync. Watch them with any proxy or firewall; anything
+            enumerate: a static update-manifest fetch, and the sync relay if
+            you enabled Mobile sync. Watch them with any proxy or firewall; anything
             else appearing is a bug we want reported.
           </dd>
         </div>
@@ -174,9 +176,10 @@ const serverCannotSee = [
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Bring your own storage</dt>
           <dd class="text-sm text-ink-muted">
-            The proof of concept already runs on storage you own: the worker
-            and its R2 bucket (or D1 database) live in your Cloudflare
-            account, and you can inspect the ciphertext it writes there. An
+            The relay is one Cloudflare Worker with no account logic in it,
+            and its source is being prepared for publication. Once it is out
+            you can run the same worker on your own Cloudflare account, point
+            the app at it and inspect the ciphertext it writes there. An
             S3-compatible target is still on the list.
           </dd>
         </div>
@@ -185,8 +188,8 @@ const serverCannotSee = [
           <dd class="text-sm text-ink-muted">
             A third-party audit of the sync client is planned once the sync
             layer has the revenue to justify one. Until then, the protocol
-            and the self-hosted path exist so you do not have to wait for
-            our auditors.
+            and the run-it-yourself path exist so you do not have to wait
+            for our auditors.
           </dd>
         </div>
       </dl>
@@ -245,14 +248,15 @@ const serverCannotSee = [
         <p>
           Mobile sync, a read-only, encrypted mirror of parsed state and docs
           on a phone, shipped on 2026-09-04 in 0.9.0 as a
-          <strong class="font-medium text-ink">self-hosted proof of concept</strong>:
-          the app pushes to a Cloudflare Worker in your own account, and the
-          phone reads from it. The worker's source is not published yet, so
-          nobody outside that proof of concept can deploy it today.
-          Publishing the source and the protocol document, and the hosted
-          service, are the work in progress. The short version holds as
-          shipped: the key is generated on your Mac and never sent to the
-          server, and the server stores ciphertext.
+          <strong class="font-medium text-ink">proof of concept</strong>:
+          the app pushes ciphertext to a Cloudflare Worker sitrep runs, and
+          the phone reads from it. The relay has no accounts, no billing and
+          no quota, and its source, the pusher and the protocol document are
+          not published yet, so enabling it needs tooling you do not have
+          today. Publishing those, and the hosted service with accounts, are
+          the work in progress. The short version holds as shipped: the key
+          is generated on your Mac and never sent to the relay, and the relay
+          stores ciphertext.
         </p>
       </div>
       <details class="group mt-6 max-w-prose">
