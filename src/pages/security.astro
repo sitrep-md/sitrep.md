@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/security/',
     name: 'sitrep security and privacy',
     description:
-      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. The sync design is end-to-end encrypted with user-held keys, published before it ships, and verifiable - including bring-your-own storage.',
+      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync shipped in 0.9.0 as a self-hosted proof of concept: end-to-end encrypted with keys held on your devices, running on a worker in your own Cloudflare account, the protocol being written up for publication.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -19,7 +19,7 @@ const pageSchema = [
 const principles = [
   {
     title: 'Local-first, forever',
-    body: 'sitrep is fully functional with no account and no network - not as a trial mode, as the product. Local features are never metered, never expire, and never check entitlements. Sync, when it ships, is an optional layer on top; cancelling it leaves the local app whole.',
+    body: 'sitrep is fully functional with no account and no network - not as a trial mode, as the product. Local features are never metered, never expire, and never check entitlements. Sync is an optional layer on top, off until you enable it; turning it off leaves the local app whole.',
   },
   {
     title: 'No telemetry by default',
@@ -31,26 +31,26 @@ const principles = [
   },
   {
     title: 'We cannot read what we relay',
-    body: 'The planned sync layer is end-to-end encrypted with keys generated on your device and never sent to us; the server stores ciphertext. The protocol is published so the claim can be checked against a document rather than our sincerity.',
+    body: 'Mobile sync encrypts on your Mac with a key generated there and never sent to the server, which stores ciphertext. We are writing the protocol up for publication so the claim can be checked against a document rather than our sincerity.',
   },
   {
     title: 'No key escrow, no reset backdoor',
-    body: 'There is no recovery service on our side. Lose every device and the recovery key, and the mirror is gone - your local corpus is never at risk, and the mirror rebuilds from your desktop in minutes. An escrow would turn "we cannot read your data" into marketing copy.',
+    body: 'There is no recovery service on our side. Lose the Mac that generated the key and the phone paired to it, and the mirror is unreadable. Your local corpus is never at risk, and a fresh key plus one full push rebuild the mirror from your desktop in minutes. An escrow would turn "we cannot read your data" into marketing copy.',
   },
   {
     title: 'Claims are checkable',
-    body: 'Every claim on this page maps to a verification path above: cut the network, read the protocol, bring your own storage. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
+    body: 'Every claim on this page maps to a verification path above: cut the network, read the scheme, run the worker on your own account. If the implementation ever diverges from this page, that is a bug with the same priority as one in code.',
   },
 ];
 
 const serverSees = [
-  'The email address on the sync account',
-  'How many devices are paired',
-  'Encrypted blob sizes and timestamps',
+  'A random account id. There is no account, so no email address',
+  'How many encrypted blobs exist, their sizes and timestamps',
+  'A version counter, and when the phone last pulled',
 ];
 
 const serverCannotSee = [
-  'File names',
+  'File names: blob names are keyed hashes',
   'File contents',
   'Extracted state - statuses, decisions, due dates',
   'Project names or structure',
@@ -59,7 +59,7 @@ const serverCannotSee = [
 
 <BaseLayout
   title="Security and privacy - sitrep"
-  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and a published end-to-end-encrypted sync design you can verify."
+  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, shipped as a self-hosted proof of concept, that you can verify."
   schema={pageSchema}
 >
   <Nav />
@@ -73,9 +73,9 @@ const serverCannotSee = [
       <p class="max-w-prose text-lg text-ink-muted">
         <Sitrep /> is an AI project status dashboard that reads the markdown on
         your disk - which means it deserves more scrutiny than most apps, not
-        less. This page states what it does with your files, what any
-        future server could and could not see, and how you can verify each
-        claim instead of taking our word for it.
+        less. This page states what it does with your files, what the sync
+        server can and cannot see, and how you can verify each claim
+        instead of taking our word for it.
       </p>
     </header>
 
@@ -90,8 +90,9 @@ const serverCannotSee = [
         </p>
         <p>
           The only network traffic the shipped app produces is a static
-          update-manifest check - and sync, if you one day explicitly enable
-          it, under the design at the bottom of this page.
+          update-manifest check, and, if you enable Mobile sync, pushes to a
+          worker in your own Cloudflare account under the scheme at the
+          bottom of this page.
         </p>
       </div>
     </section>
@@ -153,35 +154,39 @@ const serverCannotSee = [
           <dt class="font-medium">Read the traffic</dt>
           <dd class="text-sm text-ink-muted">
             The shipped app's outbound connections are few enough to
-            enumerate: a static update-manifest fetch, and sync endpoints if
-            you enabled sync. Watch them with any proxy or firewall; anything
+            enumerate: a static update-manifest fetch, and your own worker's
+            endpoint if you enabled Mobile sync. Watch them with any proxy or firewall; anything
             else appearing is a bug we want reported.
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Read the protocol</dt>
           <dd class="text-sm text-ink-muted">
-            The sync protocol will be public from day one - what is encrypted
-            with what, what the server stores, what pairing exchanges. The
-            "we cannot read your data" claim should be checkable against a
-            document, not against our sincerity.
+            The sync protocol document, what is encrypted with what, what the
+            server stores, what pairing exchanges, is being prepared for
+            publication together with the worker's source. Until it is up,
+            the scheme at the bottom of this page is written from the 0.9.0
+            implementation, not from the design. The "we cannot read your
+            data" claim should be checkable against a document, not against
+            our sincerity.
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Bring your own storage</dt>
           <dd class="text-sm text-ink-muted">
-            The sync client will speak the same protocol to any S3-compatible
-            endpoint, including one you run yourself - and you can inspect the
-            ciphertext it writes there.
+            The proof of concept already runs on storage you own: the worker
+            and its R2 bucket (or D1 database) live in your Cloudflare
+            account, and you can inspect the ciphertext it writes there. An
+            S3-compatible target is still on the list.
           </dd>
         </div>
         <div class="flex flex-col gap-1.5">
           <dt class="font-medium">Independent audit</dt>
           <dd class="text-sm text-ink-muted">
             A third-party audit of the sync client is planned once the sync
-            layer has the revenue to justify one. Until then, the published
-            protocol and BYO-storage path exist precisely so you do not have
-            to wait for our auditors.
+            layer has the revenue to justify one. Until then, the protocol
+            and the self-hosted path exist so you do not have to wait for
+            our auditors.
           </dd>
         </div>
       </dl>
@@ -235,15 +240,19 @@ const serverCannotSee = [
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="sync-design">
-      <h2 id="sync-design" class="text-xl font-semibold tracking-tight">The sync design</h2>
+      <h2 id="sync-design" class="text-xl font-semibold tracking-tight">The sync design, and what the proof of concept has</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          Sync - a read-only, encrypted mirror of parsed state and docs on a
-          phone or second machine - is <strong class="font-medium text-ink">not built yet</strong>.
-          The design is decided and published now, before any backend exists,
-          so it can be judged before you are asked to trust it. The short
-          version: keys are generated on your device and never sent to us,
-          and the server stores ciphertext.
+          Mobile sync, a read-only, encrypted mirror of parsed state and docs
+          on a phone, shipped on 2026-09-04 in 0.9.0 as a
+          <strong class="font-medium text-ink">self-hosted proof of concept</strong>:
+          the app pushes to a Cloudflare Worker in your own account, and the
+          phone reads from it. The worker's source is not published yet, so
+          nobody outside that proof of concept can deploy it today.
+          Publishing the source and the protocol document, and the hosted
+          service, are the work in progress. The short version holds as
+          shipped: the key is generated on your Mac and never sent to the
+          server, and the server stores ciphertext.
         </p>
       </div>
       <details class="group mt-6 max-w-prose">
@@ -254,30 +263,39 @@ const serverCannotSee = [
         <div class="mt-5 flex flex-col gap-4 text-ink-muted">
           <ul class="flex list-disc flex-col gap-2.5 pl-5 text-sm">
             <li>
-              One symmetric account key, generated on your first device and
-              never sent to the server. All content is encrypted on your device
-              (XChaCha20-Poly1305 via libsodium) before anything is uploaded;
-              the server stores ciphertext.
+              <strong class="font-medium text-ink">Shipped.</strong> One
+              symmetric account key, generated on your Mac and never sent to
+              the server. Everything is encrypted on your Mac
+              (XChaCha20-Poly1305, with per-purpose subkeys derived by keyed
+              BLAKE2b) before upload; the server stores ciphertext.
             </li>
             <li>
-              New devices pair over a QR / short code: the existing device
-              approves and hands over the wrapped key directly. No passphrase
-              ceremony required at onboarding.
+              <strong class="font-medium text-ink">Shipped.</strong> The phone
+              pairs over a QR code shown behind an explicit click. The account
+              id, the key and a read-only token ride the URL fragment, which a
+              browser never sends, so the phone gets the key and the server
+              does not. The design's approve-from-an-existing-device step is
+              not built.
             </li>
             <li>
-              Optional hardening for the security-conscious: a user passphrase
-              (Argon2id-wrapped key) and a printable recovery key - offered
-              once, skippable, with a plain warning that we cannot reset it.
+              <strong class="font-medium text-ink">Not built.</strong> The
+              optional passphrase (Argon2id-wrapped key) and printable recovery
+              key stay in the design: offered once, skippable, with a plain
+              warning that we cannot reset them.
             </li>
             <li>
-              Metadata is minimized, not just content: blob names are HMAC-keyed
-              ids and the sync manifest itself is encrypted, so the server
-              cannot infer your project structure from the shapes it stores.
+              <strong class="font-medium text-ink">Shipped.</strong> Metadata
+              is minimized, not only content. Blob names are keyed BLAKE2b
+              hashes and the manifest itself is encrypted, so the server
+              cannot infer your project structure from the shapes it stores,
+              and associated data binds each ciphertext to its slot so blobs
+              cannot be swapped.
             </li>
             <li>
-              A read-only share link encrypts the shared subset with a per-link
-              key that travels in the URL fragment - which never reaches the
-              server. Revoking the link deletes the blobs.
+              <strong class="font-medium text-ink">Not built.</strong> A
+              read-only share link that encrypts the shared subset with a
+              per-link key in the URL fragment, which never reaches the
+              server, with revocation deleting the blobs.
             </li>
           </ul>
           <div class="mt-4 grid gap-8 sm:grid-cols-2">
@@ -309,9 +327,9 @@ const serverCannotSee = [
             </div>
           </div>
           <p class="text-sm">
-            When sync ships, this page will restate that list against the
-            actual implementation. If the two ever disagree, the page is wrong
-            or the product is - either one is treated as a bug.
+            The two lists above describe the 0.9.0 implementation, not the
+            design. If the product and this page ever disagree, one of them
+            is wrong, and either is treated as a bug.
           </p>
         </div>
       </details>
