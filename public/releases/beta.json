@@ -1,15 +1,15 @@
 {
-  "version": "0.9.2",
-  "notes": "- The server stays idle when you do. Every `git status` it ran took and\n  dropped `.git/index.lock`, the watcher read that as the index changing and\n  ran `git status` again, so the installed app re-read every repository every\n  few seconds around the clock and sat on macOS's significant-energy list.\n  The watcher now ignores the lock, and `verify:gitidle` measures the quiet.",
-  "pub_date": "2026-09-10T06:48:53.464Z",
+  "version": "0.9.3",
+  "notes": "- The update check now sends the app's version, the Mac's chip type and a\n  random id that the app replaces on the first check of every month, so\n  sitrep.md can count how many copies are running. The site keeps a hash of\n  the id for that month and nothing else; no IP address or document detail is\n  stored, and one month's id cannot be matched to the next. sitrep.md/security\n  lists exactly what is sent.\n\n- Mobile sync pushes from one server per Mac. The release app is the only\n  build that pushes; a source checkout or the dev app says so in Settings and\n  keeps its toggle disabled, unless started with `SITREP_SYNC=1`. A start also\n  stops the pusher a previous server left behind, read from `watch.pid`. On\n  2026-09-10 five pushers leaked by the dev server's reloads and the installed\n  app's one rewrote each other's documents 1,403 times and hit Cloudflare's\n  daily D1 write cap; the pusher now backs off after a failed push (5s\n  doubling to 5 minutes) instead of retrying every 3s.\n\n- Find highlights leave when you do. In the Mac app, deleting the find text or\n  closing the bar left every match painted, and a search's terms stayed under\n  the next find, because WebKit repaints a highlight only when the registered\n  object itself changes. The bar now empties its highlights in place, and\n  `verify:webkit` reads Safari's pixels to hold it.",
+  "pub_date": "2026-09-28T08:45:04.167Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVZjSzZyZWVIZkNMbFhsT3lwUDk2aUFIdTRxS3pmN3FhV28yTW9RZW4xRFZ5OHVJcitwdjdrSXlBUzlaUUwzT21yMnlxaW1tdmRwcFZDVkJnaUdTSXcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5MDIyNTY5CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKaE5nZUlJZ3Y2SDd3ZGp5TnFTYjZEekJNbWlESkJScU1SbjVZZ0ZwS3F4YjNwQkZ0WlJKYVVtTlBiT3BDQ09CRXgxS1lIL01VR2lWWm04WExyWE1wQ2c9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.9.2/sitrep_0.9.2_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWRVaHJCZ2djUjFrZmZWbTh4Nnk5MTRoL2t5Zmt1TUZFODN2YzQvMTB0bXZrekh5OGE0VGszZ21SbG05c2NWK0YyemtzVU5yZFRVYjZteEZzVDJlR2c0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTg0NzU5CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKaXVrR0dJME9SVG9HN1YrREc1WnYzVWE5a1VMbEVQYldEQjZ1SUQ5T0trQnM5VHc5L0lhNTNWa0ZocUluY3lkZTIyWjhtOXgyNWRsd1RJbStpN1Z6QkE9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.9.3/sitrep_0.9.3_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaVdSTG9ubkdoTVo0TlpmdXRXZmlDUzlvalJXVDArK3FLZmdrYXA1ZWNhUXc5Sm53WHFlK2tQS2R6TTF0amVVZVkwWVI0cEZSVmhodlEyMWFwU2dGalFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5MDIyODY2CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKNjFkakIxVDVCYUhZdUFNWENXU29YbTQ0Wlo2MjdqUWFFcHV3MmQxUG53YXg4MGZtUTQveWlscGRQM2gwdXl5dUNoQ0JMRnJUU2x2NFZoWjFIT1llQ2c9PQo=",
-      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.9.2/sitrep_0.9.2_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZHFBYWFjZHFxaWRxZ0tyUDVUbFF1aGdtNzhDZW0zZExSMitINnFJdkFvbHJOOVdkbjBWSGN3RGxJeWExT2ZKcHJSNFJndnc3Y3d2TUFMbHRhTWx4VDBGdnd5WXJiTlE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTg1MDM4CWZpbGU6c2l0cmVwLmFwcC50YXIuZ3oKZFdoZTVUTC9DR2lQOHFzRmM4cGNhWStuRFJFNW1wNWVSV0RzRGZCVHN5T042dytpMm1tNENxK05FQlp1TUVPZ0NlcFVncVJpY2Y4SDdSb3pUaUpPQWc9PQo=",
+      "url": "https://github.com/sitrep-md/sitrep.md/releases/download/v0.9.3/sitrep_0.9.3_x64.app.tar.gz"
     }
   }
 }
