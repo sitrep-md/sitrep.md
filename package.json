@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "indexnow": "bun run scripts/indexnow.mjs"
+    "indexnow": "bun run scripts/indexnow.mjs",
+    "installs": "bun run scripts/installs.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

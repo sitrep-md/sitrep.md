@@ -86,15 +86,24 @@ const serverCannotSee = [
           <Sitrep /> is a local-first desktop app. There is no account, no server
           component, and no telemetry by default. Your files are indexed into
           a local database on your machine and never leave it. The complete
-          list of data we hold about you is: nothing. Enable Mobile sync and
-          it becomes the ciphertext and the short list at the bottom of this
-          page.
+          list of data we hold about you is one row in an install count,
+          described below. Enable Mobile sync and it adds the ciphertext and
+          the short list at the bottom of this page.
         </p>
         <p>
-          The only network traffic the shipped app produces is a static
-          update-manifest check. If you enable Mobile sync, it also pushes
-          encrypted documents to the sync relay, under the scheme at the
-          bottom of this page.
+          The only network traffic the shipped app produces is the update
+          check, a fetch of one static file from sitrep.md. If you enable
+          Mobile sync, it also pushes encrypted documents to the sync relay,
+          under the scheme at the bottom of this page.
+        </p>
+        <p>
+          The update check carries the app's version, the Mac's chip type
+          and a random id that the app replaces on the first check of every
+          month. sitrep.md keeps a hash of that id to count how many copies
+          checked for updates that month, and nothing ties one month's id to
+          the next. Copies older than 0.9.3 send no id; for those it counts a
+          hash of the IP address, salted with a value it deletes at the end of
+          each day. No IP address, id or document detail is stored.
         </p>
       </div>
     </section>
@@ -156,7 +165,7 @@ const serverCannotSee = [
           <dt class="font-medium">Read the traffic</dt>
           <dd class="text-sm text-ink-muted">
             The shipped app's outbound connections are few enough to
-            enumerate: a static update-manifest fetch, and the sync relay if
+            enumerate: the update check described above, and the sync relay if
             you enabled Mobile sync. Watch them with any proxy or firewall; anything
             else appearing is a bug we want reported.
           </dd>
