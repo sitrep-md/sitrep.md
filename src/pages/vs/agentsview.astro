@@ -19,7 +19,7 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'Session analytics for coding agents - dashboards over the transcripts they leave on disk',
   },
   {
@@ -54,7 +54,7 @@ const rows = [
   },
   {
     dim: 'Agent integration',
-    sitrep: 'MCP server exposing parsed state, read-only first',
+    sitrep: 'Read-only MCP server with seven tools: parsed state, raw text and git standing',
     other: 'Reads the session files of many agent CLIs; the agents are the subject, not the client',
   },
   {
@@ -72,7 +72,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs AgentsView - session logs or project state"
-  description="AgentsView and sitrep are the closest neighbors in this space: both local-first, both passive, both cross-project. The difference is the source of truth - AgentsView reads the session logs your agents leave (activity and cost); sitrep reads the markdown they wrote (status and decisions)."
+  description="AgentsView and sitrep are the closest neighbors in this space: both local-first, both passive, both cross-project. The difference is the source of truth. AgentsView reads the session logs your agents leave, for activity and cost; sitrep is an AI agent docs reader for the markdown they wrote, with status and decisions parsed out."
   schema={pageSchema}
 >
   <Nav />
@@ -85,8 +85,9 @@ const rows = [
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
         Of every tool on these comparison pages, AgentsView is the closest
-        neighbor: free, open-source, local-first, passive, cross-project -
-        the same posture <Sitrep /> holds on every axis. The difference is what
+        neighbor: local-first, passive and cross-project, the same posture
+        <Sitrep /> holds. It is also free and open source, which <Sitrep /> is
+        not. The difference is what
         each one reads, and therefore what question it can answer. For "what
         did my agents actually do?", AgentsView is the better tool, plainly.
       </p>
@@ -106,9 +107,9 @@ const rows = [
           The other is the markdown they wrote on purpose - plans, analyses,
           decision logs, progress notes. AgentsView indexes the first trail
           and turns it into activity dashboards: what ran, when, at what
-          cost. <Sitrep /> parses the second and turns it into a status view:
-          where each project stands, what is stalled, what is waiting on
-          you.
+          cost. <Sitrep /> is an AI agent docs reader for the second trail: it
+          puts those docs in one list for reading and parses out where each
+          project stands, what is stalled and what is waiting on you.
         </p>
         <p>
           One is telemetry, the other is state. Telemetry tells you the
@@ -169,12 +170,13 @@ const rows = [
         </li>
       </ul>
       <p class="mt-6 max-w-prose text-sm text-ink-muted">
-        Session analytics is not on the roadmap - dashboards over
-        transcripts are AgentsView's job. The most <Sitrep /> takes from the
-        session trail is a timestamp: evidence that a project moved, feeding
-        its staleness signals - never a surface built over the transcripts
-        themselves. That is shipped now, and it is the whole of it: the
-        transcripts are never read, and the timestamps are never shown.
+        A transcript or session browser is on <Sitrep />'s
+        <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">list of things it will not become</a>;
+        dashboards over transcripts are AgentsView's job. The most <Sitrep />
+        takes from the session trail is a timestamp, evidence that a project
+        moved, which feeds its staleness signals. That is shipped, and it is
+        the whole of it: the transcripts are never opened, and the
+        timestamps are never shown.
       </p>
     </section>
 
@@ -189,8 +191,8 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          Re-entry is the pain: opening a cold project after weeks and
-          needing the state, not the history.
+          Re-entry is the pain: coming back to a project after weeks and
+          needing the current plan and its state, not the history.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>

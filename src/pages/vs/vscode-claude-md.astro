@@ -19,12 +19,12 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'Your editor, a file tree, and whatever discipline you bring',
   },
   {
     dim: 'Cross-project overview',
-    sitrep: 'The core feature - every project in one inbox, newest activity first',
+    sitrep: 'The core feature: every agent-written doc from every project in one list, newest activity first',
     other: 'None - one window per workspace; state across projects lives in your head',
   },
   {
@@ -34,12 +34,12 @@ const rows = [
   },
   {
     dim: 'Re-entry after weeks away',
-    sitrep: 'Open the inbox: what moved, what stalled, what is waiting on you',
+    sitrep: 'Open the list: the newest docs on top, with what stalled and what is waiting on you marked',
     other: 'Open the folder, grep, scroll, reconstruct - the first fifteen minutes of the session',
   },
   {
     dim: 'Who the context serves',
-    sitrep: 'You - CLAUDE.md and friends serve the agent; sitrep is the human-side view',
+    sitrep: 'You. CLAUDE.md and friends serve the agent; sitrep is where you read what the agents wrote',
     other: 'The agent - CLAUDE.md briefs the next session, not the person opening the repo',
   },
   {
@@ -67,7 +67,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs plain VS Code + CLAUDE.md"
-  description="The baseline comparison: do you need an AI project status dashboard at all, or is VS Code plus a hand-maintained CLAUDE.md enough? For one or two hot projects it genuinely is. Here is where the DIY setup stops scaling, concretely."
+  description="The baseline comparison: do you need an AI agent docs reader at all, or is VS Code plus a hand-maintained CLAUDE.md enough? For one or two hot projects it genuinely is. Here is where the DIY setup stops scaling, concretely."
   schema={pageSchema}
 >
   <Nav />
@@ -97,11 +97,11 @@ const rows = [
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           The DIY setup stores project state in files and in your head; you
-          are the extraction layer. <Sitrep /> is an AI project status
-          dashboard: a state layer on top of the markdown your AI agents
-          already generate - the status lines, phase headings, decision
-          tables and due dates scattered across your repos, parsed and
-          shown as one overview instead of re-read one file at a time.
+          are the extraction layer. <Sitrep /> is an AI agent docs reader:
+          every doc your agents wrote, from every repo, in one list, newest
+          first. The status lines, phase headings, decision tables and due
+          dates in those docs are parsed and shown beside each one, instead
+          of re-read one file at a time.
         </p>
         <p>
           Note what the DIY setup's own centerpiece is for: CLAUDE.md files

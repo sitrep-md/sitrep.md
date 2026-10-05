@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/vs/beads/',
     name: 'sitrep vs Beads - agent memory or human overview',
     description:
-      'A dependency-aware issue tracker that upgrades your coding agent by replacing organic markdown with its own git-synced database, versus a passive state layer parsed from the markdown your agents already wrote.',
+      'A dependency-aware issue tracker that upgrades your coding agent by replacing organic markdown with its own git-synced database, versus an AI agent docs reader for the markdown your agents already wrote, built for the human.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -19,12 +19,12 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'Dependency-aware issue tracker for coding agents: the bd CLI over a git-synced database',
   },
   {
     dim: 'Built for',
-    sitrep: 'The human - a glanceable overview you read',
+    sitrep: 'The human: a reader for the docs your agents wrote, with their state marked',
     other: 'The agent - structured memory it plans, claims and closes issues in',
   },
   {
@@ -39,12 +39,12 @@ const rows = [
   },
   {
     dim: 'Scope',
-    sitrep: 'Cross-project - one overview across every repo and workspace',
+    sitrep: 'Cross-project: one list across every repo and workspace',
     other: 'Per-repo; repos that never installed it do not exist for it',
   },
   {
     dim: 'Human overview',
-    sitrep: 'The core feature - status, decisions, staleness, newest activity first',
+    sitrep: 'The core feature: every doc in one list, newest activity first, with status, decisions and staleness marked',
     other: 'A CLI; dashboards exist only as third-party community tools',
   },
   {
@@ -54,7 +54,7 @@ const rows = [
   },
   {
     dim: 'Agent integration',
-    sitrep: 'MCP server exposing parsed state, read-only first',
+    sitrep: 'Read-only MCP server with seven tools: parsed state, raw text and git standing',
     other: 'Deep and agent-first: setup commands for the major agents, MCP, hooks, ready-work queues',
   },
   {
@@ -72,7 +72,7 @@ const rows = [
 
 <BaseLayout
   title="sitrep vs Beads - agent memory or human overview"
-  description="Beads upgrades your coding agent's memory by replacing markdown plans with a dependency-aware, git-synced issue tracker; sitrep is a status dashboard parsed from the markdown your agents already wrote. When to choose each, including when Beads is the better pick."
+  description="Beads upgrades your coding agent's memory by replacing markdown plans with a dependency-aware, git-synced issue tracker; sitrep is an AI agent docs reader for the markdown your agents already wrote. When to choose each, including when Beads is the better pick."
   schema={pageSchema}
 >
   <Nav />
@@ -105,9 +105,9 @@ const rows = [
           it replaces them with a structured issue graph - dependencies,
           blockers, epics, ready-work queues - that agents read and write
           through the bd CLI, versioned and synced through git. <Sitrep /> points
-          the other way: it is an AI project status dashboard for the human,
-          a state layer parsed out of the organic markdown your agents
-          already produce, with no format for anyone to adopt.
+          the other way: it is an AI agent docs reader for the human. It
+          reads the markdown your agents already produce and parses state
+          out of it, with no format for anyone to adopt.
         </p>
         <p>
           Put differently: Beads makes the agent smarter inside a repo that

@@ -19,7 +19,7 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'A capable agent re-reading your files and composing an answer on demand',
   },
   {
@@ -119,6 +119,11 @@ const rows = [
           happen twenty times a day.
         </p>
         <p>
+          And because <Sitrep /> is an AI agent docs reader, every answer leads
+          back to its source. Open any item in the list and you are reading
+          the doc it came from, rendered, rather than a summary of it.
+        </p>
+        <p>
           What the prompt has that <Sitrep /> never will: judgment. An agent
           reads meaning - it can notice that a doc marked active declares
           its own approach dead in the prose, weigh contradictions, answer
@@ -172,8 +177,8 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You want a conversation - follow-ups, "why", "what should I do
-          first" - not a dashboard.
+          You want a conversation, with follow-ups, "why" and "what should
+          I do first", not a list of docs to read.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -195,9 +200,9 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          Re-entry is the pain: opening a cold project after weeks away.
+          Re-entry is the pain: coming back to a project after weeks away.
           The minutes the prompt spends re-reading the record before it can
-          answer are exactly the cold open you are trying to skip.
+          answer are the minutes you are trying to skip.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -244,7 +249,7 @@ const rows = [
           throw it away. Run with <Sitrep /> underneath, the stale claims, due
           items and open decisions arrive as a worklist with file and line;
           the agent applies its judgment and makes the edits in your
-          session, where you see them; and the dashboard afterwards shows
+          session, where you see them; and the list afterwards shows
           whether the stale count actually dropped. The analyst works from
           the instrument's readings - and the instrument checks the
           analyst's work.

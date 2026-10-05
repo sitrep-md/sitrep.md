@@ -9,9 +9,9 @@ const pageSchema = [
     '@type': 'WebPage',
     '@id': 'https://sitrep.md/vs/backlog-md/#page',
     url: 'https://sitrep.md/vs/backlog-md/',
-    name: 'sitrep vs Backlog.md - task board or state layer',
+    name: 'sitrep vs Backlog.md - task board or docs reader',
     description:
-      'A git-native task board you and your agents author structured tasks into, versus a passive state layer parsed from the organic markdown your agents already wrote.',
+      'A git-native task board you and your agents author structured tasks into, versus an AI agent docs reader for the markdown your agents already wrote, with project state parsed out of it.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -19,7 +19,7 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'Git-native task manager: CLI plus kanban board, tasks as markdown files in the repo',
   },
   {
@@ -39,7 +39,7 @@ const rows = [
   },
   {
     dim: 'Scope',
-    sitrep: 'Cross-project - one overview across every repo and workspace',
+    sitrep: 'Cross-project: one list across every repo and workspace',
     other: 'Per-repo',
   },
   {
@@ -49,12 +49,12 @@ const rows = [
   },
   {
     dim: 'Agent integration',
-    sitrep: 'MCP server exposing parsed state, read-only first',
+    sitrep: 'Read-only MCP server with seven tools: parsed state, raw text and git standing',
     other: 'MCP server for task management',
   },
   {
     dim: 'Sharing and mobile',
-    sitrep: 'Read-only, end-to-end-encrypted phone mirror shipped in 0.9.0 as a proof of concept; share links planned',
+    sitrep: 'Mobile sync, in early access: a read-only, end-to-end-encrypted mirror on your phone',
     other: 'Git-based sharing; local web UI bound to 127.0.0.1, no mobile',
   },
   {
@@ -71,8 +71,8 @@ const rows = [
 ---
 
 <BaseLayout
-  title="sitrep vs Backlog.md - task board or state layer"
-  description="Backlog.md is a git-native task board you author structured tasks into; sitrep is an AI project status dashboard parsed from the markdown your agents already wrote. When to choose each, including when Backlog.md is the better pick."
+  title="sitrep vs Backlog.md - task board or docs reader"
+  description="Backlog.md is a git-native task board you author structured tasks into; sitrep is an AI agent docs reader for the markdown your agents already wrote. When to choose each, including when Backlog.md is the better pick."
   schema={pageSchema}
 >
   <Nav />
@@ -84,11 +84,11 @@ const rows = [
         <Sitrep /> vs Backlog.md
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        Backlog.md is free, open-source, local-first and markdown-native,
-        with an MCP server - the same values <Sitrep /> holds. The
-        difference is the job. If you want a
-        task board, Backlog.md is the better pick - a task manager is
-        exactly what <Sitrep /> refuses to become.
+        Backlog.md is local-first and markdown-native, with an MCP server,
+        and <Sitrep /> is all three of those too. Backlog.md is also free and
+        open source, which <Sitrep /> is not. The difference that matters is
+        the job. If you want a task board, Backlog.md is the better pick, and
+        a task manager is exactly what <Sitrep /> refuses to become.
       </p>
       <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
         Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
@@ -103,10 +103,9 @@ const rows = [
         <p>
           Backlog.md gives you and your agents a structured task format to
           author into - tasks live as markdown files in the repo, move across
-          a kanban board, and travel through git. <Sitrep /> is an AI project
-          status dashboard: a state layer on top of the markdown your AI
-          agents already generate - it authors nothing and asks you to author
-          nothing.
+          a kanban board, and travel through git. <Sitrep /> is an AI agent
+          docs reader for the markdown your agents already wrote. It authors
+          nothing and asks you to author nothing.
         </p>
         <p>
           Put differently: with Backlog.md, the source of truth is tasks you
@@ -187,9 +186,9 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You run several projects and need one overview: what moved, what is
-          stalled, what is waiting on a decision - across all of them, newest
-          activity first.
+          You run several projects and want their docs in one list, newest
+          activity first, with what is stalled and what is waiting on a
+          decision marked across all of them.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -198,9 +197,9 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          Re-entry is the pain - opening a cold project after weeks and
-          spending the first fifteen minutes reconstructing where things
-          stand.
+          Re-entry is the pain: coming back to a project after weeks and
+          spending the first fifteen minutes finding the current plan and
+          reconstructing where things stand.
         </li>
       </ul>
     </section>
@@ -209,8 +208,8 @@ const rows = [
       <h2 id="both" class="text-xl font-semibold tracking-tight">Using both</h2>
       <p class="mt-5 max-w-prose text-ink-muted">
         These tools are complementary, not substitutes. Backlog.md is an
-        authored task layer inside a repo; <Sitrep /> is a passive state layer
-        across repos. If your agents work Backlog.md tasks and also write
+        authored task layer inside a repo; <Sitrep /> is a reader across
+        repos. If your agents work Backlog.md tasks and also write
         plans and decision docs, it sits above both, reading whatever
         markdown is there. Nothing about adopting one forecloses the other,
         and they share the same posture:

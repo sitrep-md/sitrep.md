@@ -19,14 +19,14 @@ const pageSchema = [
     '@type': 'Person',
     '@id': 'https://sitrep.md/about/#person',
     name: 'Sander',
-    description: 'Developer in Estonia; maker of sitrep, the AI project status dashboard.',
+    description: 'Developer in Estonia; maker of sitrep, the AI agent docs reader.',
   },
 ];
 ---
 
 <BaseLayout
   title="About sitrep - one person, four workspaces"
-  description="Who makes sitrep and why: a developer running AI coding agents across four workspaces and dozens of projects, building the AI project status dashboard against their own corpus - and measuring every claim before making it."
+  description="Who makes sitrep and why: a developer running AI coding agents across four workspaces and dozens of projects, building an AI agent docs reader against their own corpus and measuring every claim before making it."
   schema={pageSchema}
 >
   <Nav />
@@ -84,11 +84,13 @@ const pageSchema = [
           specifically against drift. It helped. The drift came anyway. So
           the breaking point was ordinary. I opened a project after three
           weeks away and could not say what was decided, what was blocked,
-          or which plan still held. The state existed. It was written down.
-          It was scattered across hundreds of markdown files, and I was the
-          extraction layer. <Sitrep /> is that extraction layer as software: an
-          AI project status dashboard - a state layer on top of the
-          markdown your AI agents already generate.
+          or which plan still held. The state existed. It was written down,
+          in hundreds of markdown files across four workspaces, and the only
+          way to find it was to open them one at a time. <Sitrep /> is the tool
+          I wanted that day: an AI agent docs reader. Every doc my agents
+          wrote sits in one list, newest first, rendered for reading. The
+          status lines, open decisions and due dates are read out of the
+          text, and the docs the repo has moved past carry a flag.
         </p>
       </div>
     </section>

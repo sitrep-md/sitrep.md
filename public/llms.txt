@@ -30,11 +30,11 @@ Key facts:
 - [About](https://sitrep.md/about/): built by one developer against their own corpus of four workspaces; sitrep parses its own decision log, so extractor regressions surface in its own docs first
 - [Security & privacy](https://sitrep.md/security/): local-first posture, the sync encryption scheme as shipped in 0.9.0, what the server can and cannot see, and how to verify each claim
 - [FAQ](https://sitrep.md/faq/): the real question set, answered concretely
-- [sitrep vs Obsidian + Dataview](https://sitrep.md/vs/obsidian-dataview/): hand-built vault dashboards vs a passive state layer
-- [sitrep vs Backlog.md](https://sitrep.md/vs/backlog-md/): authored task board vs parsed project state
-- [sitrep vs Nimbalyst](https://sitrep.md/vs/nimbalyst/): a visual workspace you run sessions inside vs a passive cross-project overview
+- [sitrep vs Obsidian + Dataview](https://sitrep.md/vs/obsidian-dataview/): hand-built dashboards over a vault you author vs an AI agent docs reader over the markdown your agents already wrote
+- [sitrep vs Backlog.md](https://sitrep.md/vs/backlog-md/): a task board you author tasks into vs a reader for the docs your agents already wrote, with project state parsed out
+- [sitrep vs Nimbalyst](https://sitrep.md/vs/nimbalyst/): a visual workspace you run sessions inside vs a reader for the docs those sessions leave, across every project
 - [sitrep vs plain VS Code + CLAUDE.md](https://sitrep.md/vs/vscode-claude-md/): the baseline comparison - when the free DIY setup is enough and where it stops scaling
-- [sitrep vs Beads](https://sitrep.md/vs/beads/): agent-side issue tracker you adopt vs a human overview parsed from the markdown agents already wrote
-- [sitrep vs Task Master](https://sitrep.md/vs/task-master/): a PRD-to-tasks system that directs the agent vs a passive state layer that observes the work
-- [sitrep vs AgentsView](https://sitrep.md/vs/agentsview/): session-transcript telemetry (what agents did, what it cost) vs parsed project state (where things stand, what is waiting on you)
+- [sitrep vs Beads](https://sitrep.md/vs/beads/): agent-side issue tracker you adopt vs a reader for the human over the markdown agents already wrote
+- [sitrep vs Task Master](https://sitrep.md/vs/task-master/): a PRD-to-tasks system that directs the agent vs a reader for the docs the work left behind
+- [sitrep vs AgentsView](https://sitrep.md/vs/agentsview/): session-transcript telemetry, what agents did and what it cost, vs a reader for the docs they wrote, with where things stand and what is waiting on you
 - [sitrep vs just asking your agent](https://sitrep.md/vs/just-ask-your-agent/): the null-hypothesis comparison - "what is the status?" typed into Claude Code/Cursor/Codex re-derives the answer each ask; sitrep holds deterministic state with source lines, and feeds that same prompt through its MCP server

@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/security/',
     name: 'sitrep security and privacy',
     description:
-      'sitrep is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync shipped in 0.9.0 as a proof of concept: end-to-end encrypted with keys held on your devices, the relay stores ciphertext, the protocol being written up for publication.',
+      'sitrep, the AI agent docs reader, is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync, in early access, is a read-only phone mirror that shipped in 0.9.0 as a proof of concept: end-to-end encrypted with keys held on your devices, and the relay stores ciphertext. The protocol document is being written up for publication.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -23,7 +23,7 @@ const principles = [
   },
   {
     title: 'No telemetry by default',
-    body: 'The app ships with no analytics SDKs. Crash reports are opt-in and contain no document content and no paths beyond the app\'s own internals. What the app would ever send over the network is short enough to list, and it is listed on this page.',
+    body: 'The app ships with no analytics SDK and no crash reporter. What it sends over the network is short enough to list, and this page lists it: the update check, and the sync push if you turn Mobile sync on.',
   },
   {
     title: 'One narrow write path',
@@ -59,7 +59,7 @@ const serverCannotSee = [
 
 <BaseLayout
   title="Security and privacy - sitrep"
-  description="How sitrep handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, shipped as a proof of concept, that you can verify."
+  description="How sitrep, the AI agent docs reader, handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, in early access, that you can verify."
   schema={pageSchema}
 >
   <Nav />
@@ -71,9 +71,9 @@ const serverCannotSee = [
         Private by architecture, not by policy
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        <Sitrep /> is an AI project status dashboard that reads the markdown on
-        your disk - which means it deserves more scrutiny than most apps, not
-        less. This page states what it does with your files, what the sync
+        <Sitrep /> is an AI agent docs reader. It reads the markdown on your
+        disk, so it deserves more scrutiny than most apps, not less. This
+        page states what it does with your files, what the sync
         server can and cannot see, and how you can verify each claim
         instead of taking our word for it.
       </p>
@@ -116,7 +116,7 @@ const serverCannotSee = [
         <p>
           Almost everything <Sitrep /> knows comes from the folders you point
           it at: the markdown inside them, and each file's position in git.
-          There is one read outside those folders, and it is worth stating
+          One feature reads outside those folders, and it is worth stating
           plainly rather than letting you discover it.
         </p>
         <p>
@@ -124,17 +124,21 @@ const serverCannotSee = [
           docs are old but the work is live", <Sitrep /> needs to know when a
           project last moved - and git is a poor proxy, because the
           in-progress work is disproportionately untracked or gitignored. So
-          it reads two things under <code
-            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">~/.claude</code
-          >: the timestamps in <code
-            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">history.jsonl</code
-          >, and the modification times of the session transcript files.
+          it reads three things that Claude Code keeps: the timestamps in <code
+            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">~/.claude/history.jsonl</code
+          >, the modification times of the session transcript files under <code
+            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">~/.claude/projects</code
+          >, and the list of project paths in <code
+            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">~/.claude.json</code
+          >, which it uses to match transcript folders to projects.
         </p>
         <p>
           What it keeps from that is four columns: a workspace, a project, one
           timestamp, and which of the two sources it came from. The transcripts
           themselves are never opened. The prompt text in the history file is
-          parsed and thrown away. None of it is served on any screen, exported,
+          parsed and thrown away, and so is everything in <code
+            class="rounded bg-fill px-1 py-0.5 text-[0.9em]">~/.claude.json</code
+          > except the project paths. None of it is served on any screen, exported,
           or sent anywhere - it feeds the staleness signals and nothing else,
           and per-session scratch directories are deliberately not read at all.
           Setting <code class="rounded bg-fill px-1 py-0.5 text-[0.9em]"
@@ -238,9 +242,9 @@ const serverCannotSee = [
             valid with the network cable unplugged - forever.
           </li>
           <li>
-            Activation pings are optional and fail open, with a long offline
-            grace period. The app never bricks because our server is down,
-            your network is down, or we have a bad week.
+            There is no activation server and no activation ping. No server
+            takes part in checking a key, so the app never bricks because our
+            server is down, your network is down, or we have a bad week.
           </li>
           <li>
             Local features never check entitlements at all, and payment runs
@@ -255,17 +259,17 @@ const serverCannotSee = [
       <h2 id="sync-design" class="text-xl font-semibold tracking-tight">The sync design, and what the proof of concept has</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          Mobile sync, a read-only, encrypted mirror of parsed state and docs
-          on a phone, shipped on 2026-09-04 in 0.9.0 as a
+          Mobile sync puts a read-only, end-to-end-encrypted mirror of your
+          docs and their parsed state on a phone. It is in early access. It
+          shipped on 2026-09-04 in 0.9.0 as a
           <strong class="font-medium text-ink">proof of concept</strong>:
           the app pushes ciphertext to a Cloudflare Worker sitrep runs, and
           the phone reads from it. The relay has no accounts, no billing and
           no quota, and its source, the pusher and the protocol document are
           not published yet, so enabling it needs tooling you do not have
-          today. Publishing those, and the hosted service with accounts, are
-          the work in progress. The short version holds as shipped: the key
-          is generated on your Mac and never sent to the relay, and the relay
-          stores ciphertext.
+          today. Publishing those is the work in progress. The short version
+          holds as shipped: the key is generated on your Mac and never sent
+          to the relay, and the relay stores ciphertext.
         </p>
       </div>
       <details class="group mt-6 max-w-prose">

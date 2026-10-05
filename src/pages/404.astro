@@ -1,11 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Sitrep from '../components/Sitrep.astro';
 ---
 
 <BaseLayout title="Not found - sitrep" description="This page does not exist.">
   <main class="mx-auto flex max-w-2xl flex-col items-start gap-4 px-6 pt-[24vh]">
     <h1 class="text-3xl font-semibold tracking-tight">Not found</h1>
-    <p class="text-ink-muted">This page does not exist.</p>
+    <p class="text-ink-muted">
+      This page does not exist. <Sitrep /> is an AI agent docs reader for macOS,
+      and the home page says what it does.
+    </p>
     <a href="/" class="text-sm text-accent underline underline-offset-4">Back to sitrep.md</a>
   </main>
 </BaseLayout>

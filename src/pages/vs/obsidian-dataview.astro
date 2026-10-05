@@ -9,9 +9,9 @@ const pageSchema = [
     '@type': 'WebPage',
     '@id': 'https://sitrep.md/vs/obsidian-dataview/#page',
     url: 'https://sitrep.md/vs/obsidian-dataview/',
-    name: 'sitrep vs Obsidian + Dataview for AI project status',
+    name: 'sitrep vs Obsidian + Dataview for AI agent docs',
     description:
-      'Obsidian with Dataview or the built-in Bases, against sitrep, for tracking the state of AI coding projects: dashboards over a vault you author and structure, versus a passive state layer over the markdown your agents already generate.',
+      'Obsidian with Dataview or the built-in Bases, against sitrep, for reading and tracking the docs AI coding agents write: dashboards over a vault you author and structure, versus an AI agent docs reader over the markdown your agents already wrote.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -19,17 +19,17 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'Knowledge base and editor; Dataview adds a query language over your vault, the newer built-in Bases a visual database view',
   },
   {
     dim: 'Cross-project overview',
-    sitrep: 'The core feature - status, phases, decisions and staleness across every project, newest activity first',
+    sitrep: 'The core feature: every agent-written doc from every project in one list, newest first, with status, phases, decisions and staleness beside each',
     other: 'Possible, if you build and maintain the dashboards yourself with DQL queries',
   },
   {
     dim: 'Works on unmodified agent markdown',
-    sitrep: 'Yes - parses the organic conventions in plans, analyses and decision docs as agents write them',
+    sitrep: 'Yes. It renders the files as written and parses the conventions in plans, analyses and decision docs',
     other: 'No - Dataview needs frontmatter, tags or inline fields; Bases is stricter still, reading properties only and no body text',
   },
   {
@@ -39,12 +39,12 @@ const rows = [
   },
   {
     dim: 'Editing',
-    sitrep: 'Not an editor - three guarded state operations are the only writes',
+    sitrep: 'A reader, not an editor: three guarded state operations are the only writes',
     other: 'A full editor; writing is the point',
   },
   {
     dim: 'Mobile and sync',
-    sitrep: 'A read-only, end-to-end-encrypted mirror on a phone, shipped in 0.9.0 as a proof of concept',
+    sitrep: 'Mobile sync, in early access: a read-only, end-to-end-encrypted mirror on your phone',
     other: 'Mature mobile apps today, with a paid Sync service - Bases dashboards included',
   },
   {
@@ -66,8 +66,8 @@ const rows = [
 ---
 
 <BaseLayout
-  title="sitrep vs Obsidian + Dataview - AI project status"
-  description="Obsidian with Dataview - or the built-in Bases - is the closest DIY substitute for sitrep, and often the right choice. The difference is authoring: dashboards over a vault you structure with properties, versus a state layer that parses the markdown your AI agents already generate."
+  title="sitrep vs Obsidian + Dataview for AI agent docs"
+  description="Obsidian with Dataview, or the built-in Bases, is the closest DIY substitute for sitrep, and often the right choice. The difference is authoring: dashboards over a vault you structure with properties, versus an AI agent docs reader that renders and parses the markdown your agents already wrote."
   schema={pageSchema}
 >
   <Nav />
@@ -96,10 +96,10 @@ const rows = [
         <p>
           Obsidian is a knowledge base you author into; with Dataview, it
           rewards that authoring with dashboards you design yourself.
-          <Sitrep /> is an AI project status dashboard: a state layer on top of the
-          markdown your AI agents already generate - it parses status,
-          phases, decisions and due dates out of files nobody structured for
-          any tool.
+          <Sitrep /> is an AI agent docs reader: it collects the markdown your
+          agents already wrote, from every repo, into one list, renders it,
+          and reads status, phases, decisions and due dates out of files
+          nobody structured for any tool.
         </p>
         <p>
           Both are local-first markdown tools, which is why they get
@@ -152,9 +152,9 @@ const rows = [
           nothing else: no body text, not even the inline fields Dataview
           can read. Point a Base at the markdown Claude Code just wrote and
           you get an empty table, because agents do not write frontmatter.
-          <Sitrep />'s whole premise is that half: it parses status, phases and
-          decisions out of files nobody structured for any tool - zero
-          frontmatter, zero views to configure.
+          <Sitrep /> starts from that half. It reads files nobody structured
+          for any tool and parses status, phases and decisions out of them,
+          with no frontmatter and no views to configure.
         </p>
       </div>
     </section>
@@ -174,8 +174,9 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You need mobile access and sync today; <Sitrep />'s read-only
-          mirror is a proof of concept you cannot switch on yet.
+          You need mobile access and sync today. <Sitrep />'s read-only phone
+          mirror is in early access, and its tooling is not published yet,
+          so you cannot switch it on.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -205,8 +206,9 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You juggle several projects and the pain is re-entry: opening a
-          cold project and re-deriving where things stand.
+          You juggle several projects, and coming back to one after weeks
+          away means hunting for the newest plan before you can tell where
+          things stand.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>

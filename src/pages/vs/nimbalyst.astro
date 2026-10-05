@@ -9,9 +9,9 @@ const pageSchema = [
     '@type': 'WebPage',
     '@id': 'https://sitrep.md/vs/nimbalyst/#page',
     url: 'https://sitrep.md/vs/nimbalyst/',
-    name: 'sitrep vs Nimbalyst - workspace or status dashboard',
+    name: 'sitrep vs Nimbalyst - workspace or docs reader',
     description:
-      'A visual workspace you actively run AI coding sessions inside, versus a passive state layer over the markdown those sessions leave behind.',
+      'A visual workspace you actively run AI coding sessions inside, versus an AI agent docs reader for the markdown those sessions leave behind.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -19,12 +19,12 @@ const pageSchema = [
 const rows = [
   {
     dim: 'What it is',
-    sitrep: 'AI project status dashboard - a passive state layer over existing files',
+    sitrep: 'AI agent docs reader: the docs your agents wrote, from every repo, in one list, with status, open decisions and staleness parsed out',
     other: 'A visual workspace and session manager for AI coding agents (successor to Crystal)',
   },
   {
     dim: 'How you use it',
-    sitrep: 'Glance at it - it reads what already happened, whatever tool ran the session',
+    sitrep: 'Read in it: the docs your sessions left behind, whatever tool ran them',
     other: 'Work inside it - run sessions, review diffs, edit documents in its own editors',
   },
   {
@@ -34,7 +34,7 @@ const rows = [
   },
   {
     dim: 'Scope',
-    sitrep: 'Cross-project - one overview across every repo and workspace on disk',
+    sitrep: 'Cross-project: one list across every repo and workspace on disk',
     other: 'The workspaces and sessions you run inside it',
   },
   {
@@ -44,12 +44,12 @@ const rows = [
   },
   {
     dim: 'Editing',
-    sitrep: 'Not an editor - three guarded state operations are the only writes',
+    sitrep: 'A reader, not an editor: three guarded state operations are the only writes',
     other: 'Visual editors are part of the product',
   },
   {
     dim: 'Mobile',
-    sitrep: 'A read-only, end-to-end-encrypted mirror on a phone, shipped in 0.9.0 as a proof of concept',
+    sitrep: 'Mobile sync, in early access: a read-only, end-to-end-encrypted mirror on your phone',
     other: 'iOS companion app',
   },
   {
@@ -61,8 +61,8 @@ const rows = [
 ---
 
 <BaseLayout
-  title="sitrep vs Nimbalyst - workspace or status dashboard"
-  description="Nimbalyst is a visual workspace you run AI coding sessions inside; sitrep is an AI project status dashboard that reads the markdown those sessions leave behind. When to choose each, including when Nimbalyst is the better pick."
+  title="sitrep vs Nimbalyst - workspace or docs reader"
+  description="Nimbalyst is a visual workspace you run AI coding sessions inside; sitrep is an AI agent docs reader for the markdown those sessions leave behind. When to choose each, including when Nimbalyst is the better pick."
   schema={pageSchema}
 >
   <Nav />
@@ -78,7 +78,8 @@ const rows = [
         Claude Code and Codex sessions - open source, actively developed,
         with an iOS companion. The job here is different, and the fastest
         way to pick is to notice which direction you face: Nimbalyst is
-        where you work; <Sitrep /> is where you look.
+        where you work; <Sitrep /> is where you read what the work left
+        behind.
       </p>
       <p class="max-w-prose rounded-md border border-line bg-surface-raised px-4 py-3 text-sm text-ink-muted">
         Disclosure: this page is written by <a href="/about/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">the maker of sitrep</a>. Read the
@@ -93,17 +94,17 @@ const rows = [
         <p>
           Nimbalyst is a workspace you operate inside: it runs parallel agent
           sessions, shows you their diffs, and gives you visual editors for
-          the documents around them. <Sitrep /> is an AI project status
-          dashboard: a state layer on top of the markdown your AI agents
-          already generate - it runs nothing, edits nothing, and works the
-          same whichever tool produced the files.
+          the documents around them. <Sitrep /> is an AI agent docs reader
+          for the markdown your agents already wrote. It runs nothing, edits
+          nothing, and works the same whichever tool produced the files.
         </p>
         <p>
           The two answer different moments. Nimbalyst is for the hours you
-          are actively driving agents. <Sitrep /> is for the moment before that:
-          opening a cold project after days away and needing to know what
-          moved, what is stalled, and what is waiting on you - across every
-          project, not just the ones in a workspace.
+          are actively driving agents. <Sitrep /> is for reading what they
+          wrote: the plan before you approve it, the handoff after the
+          session, and, after days away, what moved, what is stalled and what
+          is waiting on you. That covers every project, not just the ones in
+          a workspace.
         </p>
       </div>
     </section>
@@ -170,8 +171,9 @@ const rows = [
       <ul class="mt-6 grid max-w-2xl gap-3 text-ink-muted">
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          Your question is not "how do I run agents" but "where do my
-          projects stand" - especially after time away.
+          Your question is not "how do I run agents" but "what did they
+          write, and where do my projects stand", especially after time
+          away.
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
@@ -187,8 +189,8 @@ const rows = [
         </li>
         <li class="flex gap-3 text-sm">
           <span aria-hidden="true" class="text-accent select-none">&rarr;</span>
-          You want a tool that never runs, edits or restructures anything -
-          a glance, not a second cockpit.
+          You want a tool that never runs, edits or restructures anything: a
+          reader, not a second cockpit.
         </li>
       </ul>
     </section>
@@ -199,8 +201,9 @@ const rows = [
         There is no migration between these tools, because <Sitrep /> demands
         nothing: point it at the folders your Nimbalyst workspaces (and
         everything else) write into, and it starts parsing state from the
-        markdown that is already there. Drive sessions in Nimbalyst;
-        open <Sitrep /> when you come back cold. Neither tool has to know the other
+        markdown that is already there. Drive sessions in Nimbalyst; open
+        <Sitrep /> to read what they wrote, or when you come back after days
+        away. Neither tool has to know the other
         exists - which is the whole idea behind <a href="/principles/" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">zero adoption cost</a>.
       </p>
       <p class="mt-4 max-w-prose text-sm text-ink-faint">

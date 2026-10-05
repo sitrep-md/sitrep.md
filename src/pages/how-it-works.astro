@@ -7,7 +7,7 @@ import Sitrep from '../components/Sitrep.astro';
 
 <BaseLayout
   title="How sitrep works - conventions, not configuration"
-  description="How an AI project status dashboard reads state out of ordinary markdown: the status lines, phase headings and decision tables sitrep extracts, the staleness signals that flag docs your repo moved past, and the rules that keep it honest."
+  description="How sitrep, the AI agent docs reader, finds the docs your agents wrote, renders them, and reads state out of ordinary markdown: the status lines, phase headings and decision tables it extracts, the staleness signals that flag docs your repo moved past, and the rules that keep it honest."
 >
   <Nav />
 
@@ -18,10 +18,10 @@ import Sitrep from '../components/Sitrep.astro';
         Conventions, not configuration
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        <Sitrep /> is a state layer on top of the markdown your AI agents already
-        generate. It does not define a format - it recognizes the shapes that
-        agents and humans already use, and turns them into cross-project
-        state.
+        <Sitrep /> is an AI agent docs reader. It finds the docs your agents
+        wrote across every repo, renders them for reading, and reads status,
+        phases, decisions and due dates out of shapes that agents and humans
+        already use. It does not define a format of its own.
       </p>
     </header>
 
@@ -117,26 +117,39 @@ import Sitrep from '../components/Sitrep.astro';
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="overview">
-      <h2 id="overview" class="text-xl font-semibold tracking-tight">3. The overview: an email client for project state</h2>
+      <h2 id="overview" class="text-xl font-semibold tracking-tight">3. The list and the reader</h2>
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
-          The reading surface is shaped like an email client, not a file
-          tree: newest activity first, pending items surfaced,
-          filters as removable chips. Across every project at once you see
-          what moved, what is stalled, what is waiting on a decision, and
-          what the docs claim beside when they last changed.
+          The list is shaped like an email client, not a file tree: every
+          doc from every project in one column, newest activity first, with
+          filters as removable chips. Beside each doc you see what it claims
+          and when it last changed, and Needs attention collects the open
+          decisions and due dates.
         </p>
         <p>
-          Opening a document gives full reading fidelity - GitHub-flavored
-          markdown, syntax-highlighted code with copy buttons, Mermaid
-          diagrams rendered offline and theme-aware, KaTeX, callouts, fast on
-          multi-thousand-line files. Rendering is a floor <Sitrep /> meets, not
-          the product it sells.
+          Opening a document renders it in full: GitHub-flavored markdown,
+          syntax-highlighted code with copy buttons, Mermaid diagrams drawn
+          offline in the current theme, KaTeX and callouts, with no lag on
+          files several thousand lines long. An outline sits beside the page,
+          and the full path of the doc is one click away.
+        </p>
+        <p>
+          Every table has a menu with Copy table, which puts it on the
+          clipboard as HTML and tab-separated text. Mail, Google Docs and
+          Numbers get a real table; Slack gets plain columns. The same menu
+          copies markdown or CSV and opens the Table view, which sorts and
+          filters a table without touching the file.
         </p>
         <p>
           And nothing takes the page away from you: when a watched file
           changes, the open document refreshes in place, scroll re-anchored;
           reload restores your position; Esc peels one layer at a time.
+        </p>
+        <p>
+          Mobile sync, in early access, mirrors the same list and reader to
+          your phone, read-only and end-to-end encrypted. The
+          <a href="/security/#sync-design" class="text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">security page</a>
+          lists what the relay can and cannot see.
         </p>
       </div>
       <div class="mt-8 overflow-hidden rounded-xl border border-line bg-surface-raised">

@@ -29,7 +29,7 @@ const pageSchema = [
     url: 'https://sitrep.md/changelog/',
     name: 'sitrep changelog - every release, what it lets you do',
     description:
-      'Every sitrep release with its notes: what each version of the AI project status dashboard lets you do that the one before it did not.',
+      'Every sitrep release with its notes: what each version of the AI agent docs reader lets you do that the one before it did not.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -37,7 +37,7 @@ const pageSchema = [
 
 <BaseLayout
   title="Changelog - what each sitrep release can do"
-  description="Every sitrep release with its notes. Entries name capabilities: what each version of the AI project status dashboard lets you do that the one before it did not."
+  description="Every sitrep release with its notes. Entries name capabilities: what each version of the AI agent docs reader lets you do that the one before it did not."
   schema={pageSchema}
 >
   <Nav />
@@ -49,8 +49,9 @@ const pageSchema = [
         What each release lets you do
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        Every <Sitrep /> release, newest first. Notes name capabilities - what
-        the version can do that the one before it could not. The same record
+        Every release of <Sitrep />, the AI agent docs reader, newest first.
+        Notes name capabilities: what the version can do that the one before
+        it could not. The same record
         drives the app's update manifests, so this page and the updater can
         never disagree.
       </p>
