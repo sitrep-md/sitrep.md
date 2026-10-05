@@ -11,7 +11,7 @@ const pageSchema = [
     url: 'https://sitrep.md/security/',
     name: 'sitrep security and privacy',
     description:
-      'sitrep, the AI agent docs reader, is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync, in early access, is a read-only phone mirror that shipped in 0.9.0 as a proof of concept: end-to-end encrypted with keys held on your devices, and the relay stores ciphertext. The protocol document is being written up for publication.',
+      'sitrep, the AI agent docs reader, is local-first: fully functional with no account and no network, no telemetry by default. Licensing is verified offline and never phones home to stay valid. Mobile sync, a closed preview not open to users yet, is a read-only phone mirror that shipped in 0.9.0 as a proof of concept: end-to-end encrypted with keys held on your devices, and the relay stores ciphertext. The protocol document is being written up for publication.',
     isPartOf: { '@id': 'https://sitrep.md/#website' },
   },
 ];
@@ -59,7 +59,7 @@ const serverCannotSee = [
 
 <BaseLayout
   title="Security and privacy - sitrep"
-  description="How sitrep, the AI agent docs reader, handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, in early access, that you can verify."
+  description="How sitrep, the AI agent docs reader, handles your files: local-first with no account, no network and no telemetry by default, one guarded write path, offline-verifiable licensing that never bricks, and an end-to-end-encrypted mobile sync, in closed preview, that you can verify."
   schema={pageSchema}
 >
   <Nav />
@@ -260,7 +260,7 @@ const serverCannotSee = [
       <div class="mt-5 flex max-w-prose flex-col gap-4 text-ink-muted">
         <p>
           Mobile sync puts a read-only, end-to-end-encrypted mirror of your
-          docs and their parsed state on a phone. It is in early access. It
+          docs and their parsed state on a phone. It is a closed preview, not open to users yet. It
           shipped on 2026-09-04 in 0.9.0 as a
           <strong class="font-medium text-ink">proof of concept</strong>:
           the app pushes ciphertext to a Cloudflare Worker sitrep runs, and

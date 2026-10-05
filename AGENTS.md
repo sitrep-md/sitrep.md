@@ -42,7 +42,8 @@ this site:
   repo and on the phone, with project state (stale docs, open decisions,
   due dates) as the reason to pick it over a single-file viewer. Not an
   editor, not agent orchestration, not a transcript reader.
-- Mobile sync is in early access: copy may describe the mirror (read-only,
+- Mobile sync is a closed preview, not open to users (its relay and
+  pusher are unpublished, so no reader can switch it on): copy may describe the mirror (read-only,
   end-to-end encrypted) but never promise a hosted service, a date or a
   price until the decision log rules on sync billing.
 - Core promises that marketing must never contradict: zero adoption cost

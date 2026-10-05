@@ -15,6 +15,32 @@ wording polish do not qualify.
 
 ---
 
+## 2026-10-05 - /security/, llms.txt, /vs/backlog-md, /vs/agentsview - crash reports, activation pings, a missing read
+
+**Claimed:** the security page said "Crash reports are opt-in and contain
+no document content" and "Activation pings are optional and fail open,
+with a long offline grace period"; llms.txt repeated "fail-open
+activation". The app has no crash reporter and no activation server: a
+key is checked on the Mac and nothing else takes part. Both lines dated
+from 2026-08-09, written against the plan before licensing was built. The
+same page listed two reads under `~/.claude` (the timestamps in
+`history.jsonl` and the transcript files' modification times) and left
+out a third: `sessions.ts` also reads `~/.claude.json` to match transcript
+folders to projects, keeps the project paths and drops the rest. Two
+comparison pages implied sitrep matches tools that are free and open
+source: /vs/backlog-md said it holds "the same values" and /vs/agentsview
+"the same posture on every axis". sitrep is closed source and paid.
+
+**Caught by:** self-caught, in the 2026-10-05 copy review that followed the
+repositioning as an AI agent docs reader.
+
+**Fix:** the security page says the app ships no crash reporter and that
+no server takes part in checking a key, and lists all three reads; the
+two comparison pages name the differences. The same review found the new
+homepage copy calling Mobile sync "early access" while no reader can
+switch it on; that wording never reached sitrep.md and was changed to
+"closed preview, not open to users yet" before promotion.
+
 ## 2026-09-13 - /security/, /faq/, /pricing/, /about/, llms.txt, three /vs/ pages - sync "not built yet"
 
 **Claimed:** the security page said sync "is not built yet", with a design
