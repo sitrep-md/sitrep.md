@@ -7,7 +7,7 @@ symlink to this file.
 
 ## What this is
 
-The public landing site for **sitrep - an AI project status dashboard**.
+The public landing site for **sitrep - an AI agent docs reader**.
 Astro (static output) + Tailwind v4, built with Bun, served as Cloudflare
 Workers static assets. This repo is the site and the public record; the
 app's source lives in a private repo.
@@ -30,23 +30,29 @@ The source of truth for positioning is the product repo's strategy layer;
 sessions with access read it before writing page copy. The parts that bind
 this site:
 
-- Category phrase: **"AI project status dashboard"**. Use it verbatim and
-  consistently - category discipline is a ground rule, not a style choice.
-  Where it lives (ratified 2026-08-21): retrieval surfaces - page titles,
-  meta descriptions, JSON-LD, FAQ, footer, llms.txt - plus at least one
-  visible on-page use per page. The homepage hero deliberately does NOT
-  lead with it: the hero leads with the pain ("Never open a cold project
-  again") and the differentiated line ("your agents already wrote down
-  what happened"), because the category reads generic as a pitch while
-  staying essential as a classification.
-- Tagline: **"Never open a cold project again."**
-- Positioning: a **state layer** on top of the markdown AI agents already
-  generate - not a viewer, not an editor, not agent orchestration.
+- Category phrase: **"AI agent docs reader"** (repositioned 2026-10-05,
+  replacing "AI project status dashboard"). Use it verbatim in retrieval
+  surfaces - page titles, meta descriptions, JSON-LD, FAQ, footer,
+  llms.txt. The old phrase may stay as a secondary description in JSON-LD
+  and on the /vs/ pages until those are rewritten; never lead with it.
+- Tagline: **"Every doc your agents wrote, in one place."** The old tagline
+  "Never open a cold project again." is retired as a tagline; the re-entry
+  pain may still appear as body copy.
+- Positioning: a **reader** for the markdown AI agents write, across every
+  repo and on the phone, with project state (stale docs, open decisions,
+  due dates) as the reason to pick it over a single-file viewer. Not an
+  editor, not agent orchestration, not a transcript reader.
+- Mobile sync is in early access: copy may describe the mirror (read-only,
+  end-to-end encrypted) but never promise a hosted service, a date or a
+  price until the decision log rules on sync billing.
 - Core promises that marketing must never contradict: zero adoption cost
   (no frontmatter, no new format), local-first, privacy (no telemetry by
   default), one writing surface in the product.
 - The anti-roadmap is binding: never promise editor features, agent
-  orchestration, mobile control, or an account-required core.
+  orchestration, mobile control, transcript reading, or an
+  account-required core.
+- Feature copy claims only what a released build does. Anything under
+  "Unreleased" in the app's CHANGELOG stays off the site until it ships.
 - Claims are concrete and checkable, never superlative. A material public
   claim that turns out wrong, stale, or unbacked gets a dated entry in
   `CORRECTIONS.md` with the fix - regardless of how it looks.

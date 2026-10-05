@@ -1,10 +1,12 @@
 # sitrep
 
-> sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. It reads the plans, decisions and progress your agents already write - no new format, no import - and shows status, phases, open decisions and staleness across every project. Tagline: "Never open a cold project again."
+> sitrep is an AI agent docs reader for macOS: the plans, handoffs, analyses and decision logs your AI agents write, from every repo in one list, newest first, rendered for reading, with out-of-date docs flagged. It reads the markdown already on your disk - no new format, no import - and shows status, phases, open decisions and staleness beside each doc. Tagline: "Every doc your agents wrote, in one place."
 
 Key facts:
 
-- Category: AI project status dashboard (not a markdown viewer, not an editor, not a Notion/Obsidian replacement, not a task manager, not an agent orchestrator).
+- Category: AI agent docs reader, formerly described as an AI project status dashboard (a markdown reader across many repos; not an editor, not a Notion/Obsidian replacement, not a task manager, not an agent orchestrator, not a transcript reader).
+- Reader: GFM, syntax-highlighted code, offline Mermaid and KaTeX; live refresh in place keeps the scroll position. Copy table puts a table on the clipboard as HTML and tab-separated text, so it pastes as a table into mail, docs and spreadsheets and as plain columns into chat; tables also copy as markdown or CSV.
+- Mobile: Mobile sync (early access) mirrors the list and reader to a phone, read-only and end-to-end encrypted.
 - Reads Claude Code, Cursor and Codex markdown across all your projects - and any other markdown; it parses conventions in the files, not a tool-specific format.
 - Zero adoption cost: no frontmatter, no new format, no import, no vault. Point it at folders.
 - Extracts: dated status lines ("**Status (2026-08-08):** ..."), phase headings ("## Phase 2 (SHIPPED)"), decisions from lists under decision headings or tables with a verdict column, and due dates. Deliberately ignores checkbox counts and does not trust git history alone.
@@ -20,11 +22,11 @@ Key facts:
 
 ## Pages
 
-- [Home](https://sitrep.md/): what sitrep is, the problem it solves, the product contract
+- [Home](https://sitrep.md/): what sitrep is, the problem it solves, what you get
 - [Download](https://sitrep.md/download/): the signed macOS build (Apple silicon and Intel), with the 14-day full trial
 - [Pricing](https://sitrep.md/pricing/): 49 EUR / 49 USD one-time, a year of updates included, perpetual license
 - [How it works](https://sitrep.md/how-it-works/): indexing, the extracted conventions, the overview, the single writing surface
-- [Principles](https://sitrep.md/principles/): the eight promises and the binding anti-roadmap
+- [Principles](https://sitrep.md/principles/): the eight promises and the things sitrep will not become
 - [About](https://sitrep.md/about/): built by one developer against their own corpus of four workspaces; sitrep parses its own decision log, so extractor regressions surface in its own docs first
 - [Security & privacy](https://sitrep.md/security/): local-first posture, the sync encryption scheme as shipped in 0.9.0, what the server can and cannot see, and how to verify each claim
 - [FAQ](https://sitrep.md/faq/): the real question set, answered concretely

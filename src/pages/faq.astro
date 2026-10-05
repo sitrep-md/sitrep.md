@@ -6,11 +6,11 @@ import Footer from '../components/Footer.astro';
 const faqs = [
   {
     q: 'What is sitrep?',
-    a: 'sitrep is an AI project status dashboard: a state layer on top of the markdown your AI agents already generate. It reads the plans, decisions and progress your agents already write - no new format, no import - and shows what moved, what is stalled and what is waiting on you, across every project.',
+    a: 'sitrep is an AI agent docs reader for macOS. It collects the plans, handoffs, analyses and decision logs your AI agents write, from every repo you point it at, into one list with the newest on top. It renders them for reading and flags the ones your repo has moved past. No new format, no import.',
   },
   {
-    q: 'What is an AI project status dashboard?',
-    a: 'A tool that turns the markdown files AI coding agents produce - plans, analyses, decision logs, progress notes - into a glanceable overview of project state. Instead of re-reading documents to work out where things stand, you see extracted status, phases, open decisions and staleness across all your projects at once.',
+    q: 'What is an AI agent docs reader?',
+    a: 'A reader for the markdown files AI coding agents produce: plans, analyses, decision logs, handoffs and progress notes. A single-file markdown viewer opens one document. An agent docs reader shows all of them across your repos, newest first, and reads the status, phases, open decisions and due dates out of them, so you can tell which doc is current before you open it.',
   },
   {
     q: 'Which AI coding agents does sitrep work with?',
@@ -30,7 +30,15 @@ const faqs = [
   },
   {
     q: 'Is sitrep a markdown viewer or editor?',
-    a: 'Neither. sitrep renders markdown at full fidelity - GFM, highlighted code, Mermaid, KaTeX, callouts - but rendering is the floor, not the product. It is not an editor at all: it will never restructure, rewrite or manage your files.',
+    a: 'A viewer, for many repos at once. It renders GFM, highlighted code, Mermaid, KaTeX and callouts, and adds the cross-repo list, the stale flags and the phone mirror. It is not an editor: it never restructures, rewrites or manages your files.',
+  },
+  {
+    q: 'Can I read my docs on my phone?',
+    a: 'Yes, in early access. Mobile sync mirrors the list and the reader to your phone, read-only and end-to-end encrypted: the relay stores ciphertext and has no accounts. You can read on the phone but not edit, and it never starts, stops or prompts an agent.',
+  },
+  {
+    q: 'Can I paste a table from a doc into Slack or an email?',
+    a: 'Yes. Every table in the reader has a menu with Copy table, which puts the table on the clipboard as HTML and tab-separated text. Mail, Google Docs and spreadsheets get a real table; a chat window gets plain columns. The same menu copies the table as markdown or CSV.',
   },
   {
     q: 'Does sitrep write to my files?',
@@ -42,7 +50,7 @@ const faqs = [
   },
   {
     q: 'How is sitrep different from Obsidian or a second-brain app?',
-    a: 'Obsidian is a knowledge base you author into; sitrep is a status dashboard over files you never authored for it. There are no vaults, no backlink graphs and no embeddings - search stays scoped to jumping to the decision or doc you need. If you want a second brain, use Obsidian; sitrep answers a different question: where do my projects stand?',
+    a: 'Obsidian is a knowledge base you author into; sitrep is a reader over files you never authored for it. There are no vaults, no backlink graphs and no embeddings - search stays scoped to jumping to the decision or doc you need. If you want a second brain, use Obsidian; sitrep answers a different question: where do my projects stand?',
   },
   {
     q: 'Does sitrep replace my task manager?',
@@ -62,7 +70,7 @@ const faqs = [
   },
   {
     q: 'Is sitrep the same as the getsitrep npm package?',
-    a: 'No - they are unrelated projects that happen to share a name. getsitrep is a CLI that tracks session cost and continuity by writing its own files into each repo. sitrep - this product, at sitrep.md - is an AI project status dashboard that reads the markdown your agents already wrote: nothing added to your repos, no per-repo install.',
+    a: 'No - they are unrelated projects that happen to share a name. getsitrep is a CLI that tracks session cost and continuity by writing its own files into each repo. sitrep - this product, at sitrep.md - is an AI agent docs reader for the markdown your agents already wrote: nothing added to your repos, no per-repo install.',
   },
   {
     q: 'How do I keep track of all the markdown files Claude Code creates?',
@@ -116,8 +124,8 @@ const faqSchema = [
 ---
 
 <BaseLayout
-  title="sitrep FAQ - AI project status dashboard, answered"
-  description="What an AI project status dashboard is, which agents sitrep reads, whether it needs frontmatter, what it writes, where your data lives, and how it differs from Obsidian or a task manager."
+  title="sitrep FAQ - the AI agent docs reader, answered"
+  description="What an AI agent docs reader is, which agents sitrep reads, whether it needs frontmatter, what it writes, where your data lives, and how it differs from Obsidian or a task manager."
   schema={faqSchema}
 >
   <Nav />

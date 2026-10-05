@@ -10,12 +10,12 @@ const promises = [
     body: 'sitrep reads what agents already write - no new format, no frontmatter requirement, no import, no vault, no restructuring. Point it at folders. Extraction conventions are editable settings, never demands on your files.',
   },
   {
-    title: '2. State first',
-    body: 'Status, phases, decisions, due dates and staleness are extracted and glanceable across projects, newest activity first, pending items surfaced - an email client for project state, not a file tree.',
+    title: '2. Every repo, one list',
+    body: 'Docs from every folder you point it at land in one list, newest activity first. Status, phases, decisions, due dates and staleness sit beside each doc, so the list says which one to open before you open it.',
   },
   {
-    title: '3. Reading parity',
-    body: 'The rendering bundle every AI-native viewer ships is the floor, not the product: full GFM, syntax-highlighted code with copy buttons, offline theme-aware Mermaid, KaTeX, callouts, and no lag on multi-thousand-line files. sitrep never competes on rendering; it also never loses to it.',
+    title: '3. Reading comes first',
+    body: 'Reading agent docs is the main job: full GFM, syntax-highlighted code with copy buttons, offline theme-aware Mermaid, KaTeX, callouts, and no lag on multi-thousand-line files. What you read leaves the app in a usable shape: a table pastes as a table, a path as a path.',
   },
   {
     title: '4. Nothing takes the page away from you',
@@ -41,8 +41,8 @@ const promises = [
 
 const never = [
   {
-    what: 'A general markdown editor or prettier viewer',
-    why: 'Reading parity yes, viewer identity no. The viewer market is a commodity; the job sitrep does is bigger than rendering.',
+    what: 'A markdown editor',
+    why: 'Agents and your editor write the docs. sitrep reads them. Its three guarded edits are the only exception, and the list will not grow into an editor.',
   },
   {
     what: 'Agent orchestration or a parallel-session runner',
@@ -58,7 +58,11 @@ const never = [
   },
   {
     what: 'Live agent control from mobile',
-    why: 'sitrep sells state visibility, explicitly not steering. A future mobile mirror is read-only.',
+    why: 'The mobile mirror is for reading. It is read-only, and it will not grow buttons that start, stop or prompt an agent.',
+  },
+  {
+    what: 'A transcript or session browser',
+    why: 'sitrep reads the docs your agents write, never their chat transcripts. Transcripts hold more than you chose to keep, and other tools index them already.',
   },
   {
     what: 'A cloud-only or account-required core',
@@ -68,8 +72,8 @@ const never = [
 ---
 
 <BaseLayout
-  title="Principles - the sitrep product contract"
-  description="The eight promises sitrep is tested against and the anti-roadmap it refuses to build: no editor, no agent orchestration, no vaults, no account-required core. Local-first, one writing surface, measured claims."
+  title="Principles - how sitrep is built"
+  description="The eight promises sitrep, the AI agent docs reader, is tested against and the things it will not build: no editor, no agent orchestration, no transcript reading, no account-required core."
 >
   <Nav />
 
@@ -77,11 +81,11 @@ const never = [
     <header class="flex flex-col gap-4 pt-16 pb-12 sm:pt-20">
       <p class="text-xs font-medium tracking-widest text-accent uppercase">Principles</p>
       <h1 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-        The product contract
+        How sitrep is built
       </h1>
       <p class="max-w-prose text-lg text-ink-muted">
-        <Sitrep /> is an AI project status dashboard - and just as importantly, a
-        list of things it refuses to become. Both halves are written down,
+        <Sitrep /> is an AI agent docs reader, and it comes with a list of
+        things it will not become. Both halves are written down,
         and every feature is tested against them. A feature that breaks a
         promise is wrong even if it is useful.
       </p>
@@ -102,11 +106,11 @@ const never = [
     </section>
 
     <section class="border-t border-line py-12 sm:py-16" aria-labelledby="anti-roadmap">
-      <h2 id="anti-roadmap" class="text-xl font-semibold tracking-tight">The anti-roadmap</h2>
+      <h2 id="anti-roadmap" class="text-xl font-semibold tracking-tight">What it will not become</h2>
       <p class="mt-3 max-w-prose text-ink-muted">
-        Not a viewer, not an editor, not a Notion/Obsidian replacement. Each
-        refusal has a reason, and the list is binding - features that drift
-        toward it get stopped, not shipped.
+        Not an editor, not an agent runner, not a Notion or Obsidian
+        replacement. Each refusal has a reason. A feature that drifts toward
+        one of them does not ship.
       </p>
       <dl class="mt-8 grid gap-7">
         {

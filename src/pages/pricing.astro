@@ -23,7 +23,7 @@ const questions = [
   },
   {
     q: 'Is there a subscription?',
-    a: 'Not for the app. Mobile sync shipped in 0.9.0 as a proof of concept with no accounts and no billing in it. A sync service is planned as a separate subscription, priced when it ships; cancelling it would stop sync and nothing else.',
+    a: 'Not for the app. Mobile sync, which puts your docs on your phone, is in early access with no accounts and no billing yet. It will be a separate subscription. Cancelling it stops sync and nothing else, and the desktop app keeps working.',
   },
   {
     q: 'Does the license phone home?',
@@ -37,7 +37,7 @@ const pricingSchema = [
     '@id': 'https://sitrep.md/#product',
     name: 'sitrep',
     description:
-      'AI project status dashboard for macOS - a state layer on top of the markdown your AI agents already generate. One-time purchase with a year of updates and a perpetual license.',
+      'AI agent docs reader for macOS - every doc your AI agents wrote, from every repo, in one list. One-time purchase with a year of updates and a perpetual license.',
     brand: { '@type': 'Brand', name: 'sitrep.md' },
     image: [
       'https://sitrep.md/screenshots/hero-light.webp',
