@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.9.5",
+    "date": "2026-11-09",
+    "channel": "stable",
+    "notes": "- sitrep goes quiet within seconds of launch on a large corpus. With about\n  10,000 documents the catch-up scan after launch held a full processor core\n  for 71 minutes; the same scan now takes 7 seconds. The counts beside the\n  list answer in 0.2 seconds where they took 6.7.\n\n- Search finds a document by its file name. Every word you type can match\n  anywhere in the path, in any order, and a file whose name holds them all\n  is listed first, with the words marked in its title and file name.\n\n- The copy button on the reader's path has a menu: copy the full or relative\n  path, copy the file itself (paste it into Finder, Slack or Mail), copy its\n  markdown, or show it in Finder. One click on the icon still copies the full\n  path.\n\n- Cmd+O opens relative paths. `docs/plan.md` resolves against the document\n  you are reading, its project, then any indexed file whose path ends that\n  way; when several do, the dialog lists them.\n\n- Each folder in the reader's path is a link that lists every document in\n  that folder. The folder chip it leaves in the list header shows it in\n  Finder, ignores it, or tags it. A tag is kept by sitrep, never written into\n  your files, covers every document under the folder, and gets its own\n  section in the Filter menu.\n\n- A repository cloned into a workspace shows up while sitrep is running.\n  `git clone` creates the folder seconds before it writes the files, and the\n  watcher looked only once, when the folder appeared, so a clone stayed\n  invisible until the next restart. The watcher now looks again whenever\n  anything moves inside a new folder during its first minutes.\n\n- Folders named `adr` are indexed without asking in new workspaces, next to\n  `docs`. Existing configs keep their own list; add `**/adr/**` to Settings >\n  Corpus > Auto-include globs to get the same."
+  },
+  {
     "version": "0.9.3",
     "date": "2026-09-28",
     "channel": "stable",
